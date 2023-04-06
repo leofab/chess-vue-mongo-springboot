@@ -24,13 +24,12 @@
   right: 0;
   background-color: #2f2f2f;
   box-shadow: 0 2px 4px rgba(231, 229, 229, 0.1);
-  padding: 10px;
+  padding: 10px 40px 10px 0px;
 }
 
 
 .topbar__nav {
-  display: flex;  
-  align-items: flex-start;
+  display: flex;
   justify-content: space-between;
 }
 
@@ -43,6 +42,9 @@
   list-style: none;
   margin: 0;
   display: flex;
+}
+.right_nav {
+  margin-right: 1rem;
 }
 
 .topbar__nav li {
