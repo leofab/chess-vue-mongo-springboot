@@ -26,8 +26,6 @@ export default {
     },
     data() {
         return {
-            header: 'Jogar',
-            footer: ''
         }
     }
 }

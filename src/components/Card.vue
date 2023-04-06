@@ -1,27 +1,17 @@
 <template>
     <div class="card">
         <div class="card__header">
-            <slot :name="header"></slot>
+            <slot name="header"></slot>
         </div>
         <div class="card__body">
             <slot></slot>
         </div>
         <div class="card__footer">
-            <slot :name="footer"></slot>
+            <slot name="footer"></slot>
         </div>
     </div>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            header: 'default message from Child!',
-            footer: 'default message from Footer!'
-        }
-    }
-}
-</script>
 <style scoped>
 .card {
     background-color: #fff;
@@ -33,7 +23,6 @@ export default {
 .card__header {
     font-size: 18px;
     font-weight: bold;
-    color: #2f2f2f;
     margin-bottom: 10px;
 }
 .card__footer {
