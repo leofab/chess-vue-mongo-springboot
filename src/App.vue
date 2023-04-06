@@ -6,8 +6,8 @@ import FloaterFooter from "./components/FloaterFooter.vue";
 </script>
 
 <template>
-  <Topbar />
-  <SideBar />
-  <Body />
+<!--  <Topbar />-->
+<!--  <SideBar />-->
+<!--  <Body />-->
   <FloaterFooter />
 </template>
