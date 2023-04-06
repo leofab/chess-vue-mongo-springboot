@@ -4,11 +4,34 @@
             <h1>Welcome to Chess VMSP</h1>
         </div>
         <div class="body__content">
-            <p></p>
+            <Card>
+                <template v-slot:header>
+                    <h2>Card Title</h2>
+                </template>
+                <p>Card Content Goes Here</p>
+                <template v-slot:footer>
+                    <button>Click Me</button>
+                </template>
+            </Card>
         </div>
     </div>
 </template>
 
+<script>
+import Card from './Card.vue'
+
+export default {
+    components: {
+        Card
+    },
+    data() {
+        return {
+            header: 'Jogar',
+            footer: ''
+        }
+    }
+}
+</script>
 <style scoped>
 .body {
     margin-left: 200px;
