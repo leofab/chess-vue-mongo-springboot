@@ -22,7 +22,7 @@
   padding: 10px;
   display: flex;
   justify-content: flex-start;  
-  align-items: center;
+  align-items: start;
 }
 
 .topbar a {
