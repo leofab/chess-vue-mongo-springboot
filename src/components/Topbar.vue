@@ -24,14 +24,14 @@
   right: 0;
   background-color: #2f2f2f;
   box-shadow: 0 2px 4px rgba(231, 229, 229, 0.1);
-  padding: 10px 40px 10px 0px;
+  padding: 10px 40px 10px 20px;
   z-index: 999;
 }
 
 
 .topbar__nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .topbar__nav a:hover {
