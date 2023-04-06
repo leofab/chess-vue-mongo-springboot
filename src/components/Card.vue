@@ -18,8 +18,10 @@
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-    padding: 2rem;
+    margin-bottom: 1.25rem;
+    padding: 4.55rem;
+    display: flex;
+    flex-direction: column;
 }
 .card__header {
     font-size: 1.8rem;
@@ -27,8 +29,7 @@
     margin-bottom: 1rem;
 }
 .card__footer {
-
-    margin-top: 1rem;
-    text-align: right;
+    margin-top: 6.225rem;
+    text-align: center;
 }
 </style>
