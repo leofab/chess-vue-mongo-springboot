@@ -12,33 +12,32 @@
   </template>
   
   <style scoped>
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: white;
-      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-      padding: 0.5rem 1rem;
-    }
-    .topbar__logo {
-      font-weight: bold;
-      font-size: 1.5rem;
-    }
-    .topbar__nav ul {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .topbar__nav li:not(:last-child) {
-      margin-right: 1rem;
-    }
-    .topbar__nav a {
-      color: #333;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .topbar__nav a:hover {
-      color: #646cff;
-    }
-  </style>
+.topbar {
+    position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start;  
+  align-items: center;
+}
+
+.topbar a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.topbar a:hover {
+  color: #555;
+}
+</style>
+
+
+
+
+
