@@ -32,8 +32,8 @@ export default {
 </script>
 <style scoped>
 .body {
-    margin-left: 200px;
-    padding: 20px;
+    margin-left: 20rem;
+    padding: 2.25rem;
     background-color: #868686;
     border-color: white;
     box-shadow: 2px 2px 4px #bebebe;
@@ -41,7 +41,7 @@ export default {
 }
 
 .body__header {
-    padding: 10px 0;
+    padding: 0.825rem 0;
     background-color: #2f2f2f;
     color: #ececec;
     text-align: center;
@@ -51,12 +51,12 @@ export default {
 
 .body__header h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 2.625rem;
 }
 
 .body__content {
-    margin-top: 20px;
-    padding: 20px;
-    font-size: 16px;
+    margin-top: 0.825rem;
+    padding: 0.825rem;
+    font-size: 0.625rem;
 }
 </style>

@@ -59,6 +59,7 @@
   
   <style scoped>
   a{
+      font-size: 1.75rem;
       display: flex;
       flex-direction: column;
       justify-items: center;

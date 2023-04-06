@@ -14,18 +14,18 @@
 .topbar {
     position: relative;
     background-color: #2f2f2f;
-    margin-left: 200px;
+    margin-left: 20rem;
     box-shadow: 0 2px 4px rgba(231, 229, 229, 0.1);
 }
 ul{
     display: flex;
     justify-content: space-between;
-    padding: 10px 18px 10px 18px;
+    padding: 0.925rem 1.275rem 0.925rem 1.275rem;
 }
 a {
     color: #fff;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 1.625rem;
 }
 </style>
 
