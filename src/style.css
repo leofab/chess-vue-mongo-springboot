@@ -13,6 +13,9 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+*{
+  transition: all 0.5s ease;
+}
 
 ul{
   list-style-type: none;

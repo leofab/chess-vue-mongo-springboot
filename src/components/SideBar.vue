@@ -84,7 +84,7 @@
       top: 0;
     left: 0;
     bottom: 0;
-    width: 200px;
+    width: 140px;
     background-color: #2f2f2f;
     color: #fff;
     padding: 10px 10px 10px 10px;
