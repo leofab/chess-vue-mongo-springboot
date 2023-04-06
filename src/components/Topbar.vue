@@ -13,11 +13,11 @@
   
   <style scoped>
 .topbar {
-    position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: #000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;
   display: flex;
@@ -25,15 +25,18 @@
   align-items: start;
 }
 
-.topbar a {
+.topbar_logo a {
   color: #333;
   text-decoration: none;
   font-size: 1.2rem;
   margin-right: 1rem;
 }
 
-.topbar a:hover {
+.topbar_nav a:hover {
+  width: 2em;
   color: #555;
+  display: flex;
+  align-items: flex-start;
 }
 </style>
 
