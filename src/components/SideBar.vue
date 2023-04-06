@@ -24,23 +24,35 @@
       justify-items: auto;
   }
   .sidebar {
-    position: fixed;
-    right: 0;
+      position: fixed;
+    top: 0;
+    left: 0;
     bottom: 0;
     width: 200px;
     background-color: #2f2f2f;
     color: #fff;
     padding: 70px 10px 10px 50px;
+    display: flex;
   }
   
   .sidebar ul {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 8.25px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-items: center;
   }
   
   .sidebar li {
     margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 16px;
+
   }
   
   .sidebar a {

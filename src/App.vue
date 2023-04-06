@@ -4,6 +4,5 @@ import SideBar from './components/SideBar.vue';
 </script>
 
 <template>
-  <Topbar />
   <SideBar />
 </template>
