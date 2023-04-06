@@ -1,6 +1,5 @@
 <template>
     <div class="topbar">
-      <div class="topbar__logo"></div>
         <nav class="topbar__nav">
             <ul>
               <li><a href="#">Chess VMSP</a></li>
@@ -14,7 +13,7 @@
             </ul>
           </nav>                 
     </div>
-  </template>
+</template>
   
   <style scoped>
   
@@ -26,20 +25,13 @@
   background-color: #2f2f2f;
   box-shadow: 0 2px 4px rgba(231, 229, 229, 0.1);
   padding: 10px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-.topbar__logo {
-  color: #8c8b8b;
-  text-decoration: none;
-  font-size: 1.2rem;
-  padding-right: 1em;
 }
 
 
 .topbar__nav {
-  display: flex;
+  display: flex;  
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .topbar__nav a:hover {
@@ -51,9 +43,6 @@
   list-style: none;
   margin: 0;
   display: flex;
-}
-.topbar__nav ul:first-of-type {
-  margin-left: auto;
 }
 
 .topbar__nav li {
