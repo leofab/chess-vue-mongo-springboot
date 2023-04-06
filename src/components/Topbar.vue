@@ -12,6 +12,7 @@
   </template>
   
   <style scoped>
+  
 .topbar {
   position: fixed;
   top: 0;
@@ -21,8 +22,6 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 10px;
   display: flex;
-  justify-content: flex-start;  
-  align-items: start;
 }
 
 .topbar_logo a {
@@ -36,7 +35,25 @@
   width: 2em;
   color: #555;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+}
+.topbar__nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.topbar__nav li {
+  margin-left: 20px;
+}
+
+.topbar__nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
 }
 </style>
 
