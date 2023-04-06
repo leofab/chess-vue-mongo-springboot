@@ -16,6 +16,7 @@
     background-color: #868686;
     border-color: white;
     box-shadow: 2px 2px 4px #bebebe;
+
 }
 
 .body__header {
@@ -24,6 +25,7 @@
     color: #ececec;
     text-align: center;
     box-shadow: 0 2px 4px rgba(231, 228, 228, 0.1);
+
 }
 
 .body__header h1 {
