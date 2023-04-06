@@ -61,20 +61,40 @@
   a{
       display: flex;
       flex-direction: column;
-      justify-items: auto;
+      justify-items: center;
+      text-align: center;
+  }
+  ul{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
   }
   .side_login{
   display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-items: center;
+      justify-content: center;
+      text-align: center;
   }
+
   .sidebar {
     position: fixed;
-    right: 0;
+      top: 0;
+    left: 0;
     bottom: 0;
     width: 200px;
     background-color: #2f2f2f;
     color: #fff;
-    padding: 40px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+  }
+  .sidebar ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 10px;
   }
 
   .sidebar li {
