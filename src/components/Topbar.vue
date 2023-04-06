@@ -15,6 +15,7 @@
     position: relative;
     background-color: #2f2f2f;
     margin-left: 20rem;
+    margin-right: 2rem;
     box-shadow: 0 2px 4px rgba(231, 229, 229, 0.1);
 }
 ul{

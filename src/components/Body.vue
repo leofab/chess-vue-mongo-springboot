@@ -33,6 +33,8 @@ export default {
 <style scoped>
 .body {
     margin-left: 20rem;
+    margin-right: 2rem;
+    margin-top: 1.625rem;
     padding: 2.25rem;
     background-color: #868686;
     border-color: white;
