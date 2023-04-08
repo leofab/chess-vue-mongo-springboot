@@ -1,3 +1,4 @@
+
 <template>
     <div class="login-container">
         <div class="login-overlay"></div>
@@ -20,6 +21,7 @@
 
 <script>
 import Card from './Card.vue';
+
 
 export default {
     components: {
