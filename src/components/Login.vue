@@ -3,8 +3,7 @@
     <div class="login-container">
         <div class="login-overlay"></div>
         <div class="login-card">
-            <Card>
-                <h2>Login Form</h2>
+                <h2>Login</h2>
                 <form>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username">
@@ -14,7 +13,6 @@
                     <br>
                     <button type="submit">Login</button>
                 </form>
-            </Card>
         </div>
     </div>
 </template>
@@ -32,6 +30,8 @@ export default {
 
 <style scoped>
 .login-container {
+    color: #2f2f2f;
+    font-size: 6rem;
     position: fixed;
     top: 0;
     left: 0;
@@ -43,18 +43,23 @@ export default {
 }
 
 .login-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 34rem;
+    height: 43rem;
+    border-radius: 1rem;
+    background-color: rgb(239, 235, 235);
     backdrop-filter: blur(5px);
     z-index: 10;
 }
 
 .login-card {
+    width: 5rem;
     position: relative;
+    bottom: 9rem;
     z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 </style>
