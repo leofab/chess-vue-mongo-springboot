@@ -89,7 +89,6 @@
     background-color: #2f2f2f;
     color: #fff;
     padding: 10px 10px 10px 10px;
-      z-index: 999;
   }
   .sidebar ul {
       display: flex;
