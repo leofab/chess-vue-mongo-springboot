@@ -1,6 +1,6 @@
 <template>
     <div class="floating-footer">
-        <p>© 2023 Chess VMSP. All rights reserved.</p>
+        <p>© 2023 Chess VMSP. All rights reserved</p>
         <div>
             <ul class="footer_side_login">
                 <li><a href="#">
@@ -48,7 +48,7 @@
     right: 0;
     width: 100%;
     background-color: #444444;
-    color: #fff;
+    color: #e8e8e8;
     padding: 0.675rem 1rem 0.675rem 1rem;
     box-shadow: 0 -4px 4px rgba(234, 233, 233, 0.1);
     text-align: end;
