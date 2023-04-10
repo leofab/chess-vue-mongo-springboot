@@ -4,12 +4,12 @@ import App from './App.vue'
 import router from "@/routes/router";
 import client_secret from "../secret/client_secret.json"
 // @ts-ignore
-import gAuthClient from "vue3-google-login";
+import v3GoogleLogin from "vue3-google-login";
 
 const app = createApp(App)
 
 app.use(router)
-app.use(gAuthClient, {
+app.use(v3GoogleLogin, {
     clientId: client_secret.web.client_id
 })
 
