@@ -5,9 +5,16 @@ export default createStore({
           userName: '',
           profilePicUrl:''
     },
+    getters:{
+        getUserName(){
+
+        }
+    },
+    actions:{
+        // methods
+    },
     mutations: {
         setUserName(state, userName) {
-
             state.userName = userName;
         },
         setProfilePicUrl(state, profilePicUrl) {

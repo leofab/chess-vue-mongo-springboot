@@ -40,7 +40,7 @@ export default {
             this.setProfilePicUrl(userData.picture);
 
             // Redirect to Home.vue component
-            this.$router.push('/');
+            this.$router.push('/user');
         }
     }
 }

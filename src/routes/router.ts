@@ -1,18 +1,28 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Home from '@/components/Home.vue';
-import Login from '@/components/Login.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'Home',
-        component: Home,
+        component: ()=>import(/*webpackChunkName: "home"*/"../components/Home.vue"),
     },
     {
         path: '/login',
         name: 'Login',
-        component: Login,
+        component: ()=>import(/*webpackChunkName: "login"*/"../components/Login.vue"),
     },
+    {
+        path: '/login',
+        name: 'Login',
+        component: ()=>import(/*webpackChunkName: "login"*/"../components/Login.vue"),
+    },
+
+    {
+        path: '/user',
+        name: 'User',
+        component: ()=>import(/*webpackChunkName: "user"*/"../components/UserSideBarHome.vue"),
+    },
+
 ];
 
 const router = createRouter({

@@ -1,10 +1,5 @@
 <script lang="ts">
-import UserSideBar from "@/components/UserSideBar.vue";
-import {defineComponent} from "vue";
 
-export default defineComponent({
-    components: {UserSideBar}
-})
 
 
 </script>
@@ -12,7 +7,6 @@ export default defineComponent({
 
 <template>
     <div id="app">
-<!--        <router-view></router-view>-->
-       <UserSideBar></UserSideBar>
+        <router-view></router-view>
     </div>
 </template>
