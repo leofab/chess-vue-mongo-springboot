@@ -1,13 +1,8 @@
 <script lang="js">
-import {defineComponent} from "vue";
-import board from "/public/Chess_Board.svg"
 
-export default defineComponent({
-    components: {board}
-})
 </script>
 <template>
-    <img src="/Chess_Board.svg" alt="Board" class="board">
+    <svg ></svg>
 </template>
 
 <style scoped>
