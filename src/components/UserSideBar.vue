@@ -1,10 +1,15 @@
 <script setup lang="js">
     import Login from "@/components/Login.vue";
+    import store from '../store.ts'
 
     export default {
-        data(){
-            return{
-                profilePicUrl: Login.data().profilePicUrl,
+
+        computed:{
+            userName(){
+                return store.state.userName
+            },
+            profilePicUrl(){
+                return store.state.profilePicUrl
             }
         }
     }
@@ -49,8 +54,8 @@
         </ul>
         <ul class="user_profile">
                 <li><a href="#">
-                    <img src="profilePicUrl" alt="Profile Picture" class="prof__pic">
-                    <a>{{ profilePicUrl }}</a>
+                    <img src="https://lh3.googleusercontent.com/a/AGNmyxabeCs4-80JJJolv8H6kH5g-BsCGe37tPEAJr6x=s96-c" alt="Profile Picture" class="prof__pic">
+                  {{ userName }}
                     </a></li>
             <li><a href="#">
 
@@ -61,7 +66,7 @@
 
                     </path>
                 </svg>
-                Log Out</a></li>
+                NAME</a></li>
         </ul>
     </div>
 </template>

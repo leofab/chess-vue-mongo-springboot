@@ -39,7 +39,8 @@ export default {
             console.log("Handle the userData", userData);
             console.log("Handle the userData", userData.picture);
             this.profilePicUrl = userData.picture;
-            this.userName = userData.name;
+            this.$store.commit('setUserName',userData.name);
+            this.$store.commit('setProfilePicUrl',userData.picture);
 
             // Redirect to Home.vue component
             this.$router.push('/');
