@@ -17,6 +17,12 @@ const routes: Array<RouteRecordRaw> = [
         component: ()=>import(/*webpackChunkName: "user"*/"../view/HomeUser.vue"),
     },
 
+    {
+        path: '/play/',
+        name: 'Play',
+        component: ()=>import(/*webpackChunkName: "user"*/"../view/Play.vue"),
+    },
+
 ];
 
 const router = createRouter({
