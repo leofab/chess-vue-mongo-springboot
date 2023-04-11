@@ -18,7 +18,7 @@ const routes: Array<RouteRecordRaw> = [
     },
 
     {
-        path: '/user',
+        path: '/user/:userName',
         name: 'User',
         component: ()=>import(/*webpackChunkName: "user"*/"../components/UserSideBarHome.vue"),
     },
