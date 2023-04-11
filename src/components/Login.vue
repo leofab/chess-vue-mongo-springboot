@@ -32,7 +32,7 @@ export default {
             console.log("Handle the userData", userData);
 
             // Redirect to Home.vue component
-            this.$router.push('home');
+            this.$router.push('/');
         }
     }
 }
