@@ -1,11 +1,13 @@
 <script lang="js">
 import BoardSVG from "../assets/Chess_Board.svg?component"
 import Square from "../assets/noun-square-5656370.svg?component"
+import Pawn from "../assets/whitepieces/noun-pawn-1823090.svg?component"
 
 export default {
     components:{
         BoardSVG,
-        Square
+        Square,
+        Pawn
     }
 
 }
@@ -22,7 +24,9 @@ export default {
     <Square class="square_nw_12"/>
     <Square class="square_tw_11"/>
 
-    <Square class="square_pw_28"/>
+    <Square class="square_pw_28">
+
+    </Square>
     <Square class="square_pw_27"/>
     <Square class="square_pw_26"/>
     <Square class="square_pw_25"/>
@@ -85,6 +89,37 @@ export default {
     <Square class="square_nb_82"/>
     <Square class="square_tb_81"/>
 
+    <Pawn style="
+    fill: cornsilk;
+    " class="square_pw_28"/>
+
+    <Pawn style="
+    fill: cornsilk;
+    " class="square_pw_27"/>
+
+    <Pawn style="
+    fill: cornsilk;
+    " class="square_pw_26"/>
+
+    <Pawn style="
+    fill: cornsilk;
+    " class="square_pw_25"/>
+
+    <Pawn style="
+    fill: cornsilk;
+    " class="square_pw_24"/>
+
+    <Pawn style="
+    fill: cornsilk;
+    " class="square_pw_23"/>
+
+    <Pawn style="
+    fill: cornsilk;
+    " class="square_pw_22"/>
+
+    <Pawn style="
+    fill: cornsilk;
+    " class="square_pw_21"/>
 
 </template>
 
