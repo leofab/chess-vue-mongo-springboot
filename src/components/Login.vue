@@ -12,6 +12,7 @@
                     <input type="password" id="password" name="password">
                     <br>
                     <button type="submit">Login</button>
+                    <GoogleLogin />>
                 </form>
         </div>
     </div>
@@ -23,8 +24,7 @@ import Card from './Card.vue';
 
 export default {
     components: {
-        Card,
-        GoogleLogin
+        Card
     }
 }
 </script>
