@@ -1,8 +1,15 @@
 <script lang="js">
+import BoardSVG from "../assets/Chess_Board.svg"
 
+export default {
+    components:{
+        BoardSVG
+    }
+
+}
 </script>
 <template>
-    <svg ></svg>
+    <BoardSVG/>
 </template>
 
 <style scoped>
