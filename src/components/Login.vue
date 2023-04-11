@@ -10,19 +10,32 @@
                     <br>
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password">
-                    <GoogleLogin />
+                    <GoogleLogin :callback="callback" prompt auto-login/>
                 </form>
         </div>
     </div>
 </template>
 
-<script>
+<script setup lang="js">
 import Card from './Card.vue';
+import {useRouter} from 'vue-router';
+import { decodeCredential } from "vue3-google-login";
 
 
 export default {
     components: {
         Card
+    },
+    methods: {
+        callback(response) {
+            // Handle the response from Google Login
+            const userData = decodeCredential(response.credential);
+            console.log("Handle the userData", userData);
+
+            // Redirect to Home.vue component
+            const router = useRouter();
+            router.push('/');
+        }
     }
 }
 </script>
