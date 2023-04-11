@@ -19,19 +19,16 @@
 <script setup lang="js">
 import Card from './Card.vue';
 import { decodeCredential } from "vue3-google-login";
+import { mapMutations } from 'vuex';
 
 
 export default {
     components: {
         Card
     },
-    data(){
-      return {
-          profilePicUrl: '',
-          userName: ''
-      };
-    },
+
     methods: {
+        ...mapMutations(['setUserName', 'setProfilePicUrl']),
         callback(response) {
             // Handle the response from Google Login
             const userData = decodeCredential(response.credential);
@@ -39,8 +36,8 @@ export default {
             console.log("Handle the userData", userData);
             console.log("Handle the userData", userData.picture);
             this.profilePicUrl = userData.picture;
-            this.$store.commit('setUserName',userData.name);
-            this.$store.commit('setProfilePicUrl',userData.picture);
+            this.setUserName(userData.name);
+            this.setProfilePicUrl(userData.picture);
 
             // Redirect to Home.vue component
             this.$router.push('/');

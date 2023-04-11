@@ -1,7 +1,7 @@
-import { createStore } from 'vuex';
+import Vuex from 'vuex';
 
-export default createStore({
-    state() {
+export default new Vuex.Store({
+    state(){
         return {
             userName: '',
             profilePicUrl:''
@@ -9,10 +9,11 @@ export default createStore({
     },
     mutations: {
         setUserName(state, userName) {
+
             state.userName = userName;
         },
         setProfilePicUrl(state, profilePicUrl) {
             state.profilePicUrl = profilePicUrl;
         },
     }
-});
+})
