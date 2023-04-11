@@ -1,6 +1,7 @@
-
 <script setup lang="js">
-
+    export default {
+        props: ['profilePicUrl'],
+    }
 </script>
 <template>
     <div class="sidebar">
@@ -42,16 +43,18 @@
         </ul>
         <ul class="user_profile">
                 <li><a href="#">
-                    <img src="">
+                    <img src="profilePicUrl" alt="Profile Picture" class="prof__pic">
                     </a></li>
             <li><a href="#">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     width="24" height="24" viewBox="0 0 24 24"
-                     style="fill: rgb(255,85,0);transform: ;msFilter:;">
-                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z">
-                </path>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                     viewBox="0 0 24 24" style="fill: rgb(255,0,0);transform: ;msFilter:;">
+                    <path d="m2 12 5 4v-3h9v-2H7V8z"></path>
+                    <path d="M13.001 2.999a8.938 8.938 0 0 0-6.364 2.637L8.051 7.05c1.322-1.322 3.08-2.051 4.95-2.051s3.628.729 4.95 2.051 2.051 3.08 2.051 4.95-.729 3.628-2.051 4.95-3.08 2.051-4.95 2.051-3.628-.729-4.95-2.051l-1.414 1.414c1.699 1.7 3.959 2.637 6.364 2.637s4.665-.937 6.364-2.637c1.7-1.699 2.637-3.959 2.637-6.364s-.937-4.665-2.637-6.364a8.938 8.938 0 0 0-6.364-2.637z">
+
+                    </path>
                 </svg>
-                Sign In</a></li>
+                Log Out</a></li>
         </ul>
     </div>
 </template>
@@ -105,3 +108,8 @@ ul{
     color: #fff;
     text-decoration: none;
 }
+.prof__pic{
+    width: 2.865rem;
+    height: 2.865rem;
+}
+</style>
