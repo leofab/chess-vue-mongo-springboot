@@ -1,6 +1,12 @@
 <script setup lang="js">
+    import Login from "@/components/Login.vue";
+
     export default {
-        props: ['profilePicUrl'],
+        data(){
+            return{
+                profilePicUrl: Login.data().profilePicUrl,
+            }
+        }
     }
 </script>
 <template>
@@ -44,6 +50,7 @@
         <ul class="user_profile">
                 <li><a href="#">
                     <img src="profilePicUrl" alt="Profile Picture" class="prof__pic">
+                    <a>{{ profilePicUrl }}</a>
                     </a></li>
             <li><a href="#">
 

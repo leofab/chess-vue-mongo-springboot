@@ -27,7 +27,8 @@ export default {
     },
     data(){
       return {
-          profilePicUrl: ''
+          profilePicUrl: '',
+          userName: ''
       };
     },
     methods: {
@@ -38,6 +39,7 @@ export default {
             console.log("Handle the userData", userData);
             console.log("Handle the userData", userData.picture);
             this.profilePicUrl = userData.picture;
+            this.userName = userData.name;
 
             // Redirect to Home.vue component
             this.$router.push('/');
