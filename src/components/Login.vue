@@ -18,7 +18,6 @@
 
 <script setup lang="js">
 import Card from './Card.vue';
-import {useRouter} from 'vue-router';
 import { decodeCredential } from "vue3-google-login";
 
 
@@ -33,8 +32,7 @@ export default {
             console.log("Handle the userData", userData);
 
             // Redirect to Home.vue component
-            const router = useRouter();
-            router.push('/');
+            this.$router.push('home');
         }
     }
 }
