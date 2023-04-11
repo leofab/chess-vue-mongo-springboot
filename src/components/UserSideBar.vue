@@ -1,19 +1,13 @@
-<script setup lang="js">
-    import {useStore} from 'vuex'
-    import {computed} from 'vue'
+<script lang="js">
+    import store from '@/store.ts'
 
     export default {
-
-        setup(){
-            const store = useStore();
-            const userName = computed(()=>store.state.userName);
-            const profilePicUrl = computed(()=>store.state.profilePicUrl);
-
-            return {
-                userName,
-                profilePicUrl
+        computed:{
+            userName(){
+                return store.state.userName;
             }
         }
+
     }
 </script>
 <template>

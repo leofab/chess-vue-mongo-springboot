@@ -16,7 +16,7 @@
     </div>
 </template>
 
-<script setup lang="js">
+<script lang="js">
 import Card from './Card.vue';
 import { decodeCredential } from "vue3-google-login";
 import { mapMutations } from 'vuex';

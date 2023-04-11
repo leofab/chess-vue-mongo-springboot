@@ -9,10 +9,11 @@ import v3GoogleLogin from "vue3-google-login";
 
 const app = createApp(App)
 
-app.use(router)
-app.use(store)
 app.use(v3GoogleLogin, {
     clientId: client_secret.web.client_id
 })
+app.use(router)
+app.use(store)
+
 
 app.mount('#app')
