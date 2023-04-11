@@ -53,7 +53,7 @@
         </ul>
         <ul class="user_profile">
                 <li><a href="#">
-                    <img :src="profilePicUrl" width="36" height="36">
+                    <img :src="profilePicUrl" alt="Profile Picture" class="prof__pic">
                   {{ userName }}
                     </a></li>
             <li><a href="#">

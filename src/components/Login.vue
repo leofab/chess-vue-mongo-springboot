@@ -32,15 +32,15 @@ export default {
         callback(response) {
             // Handle the response from Google Login
             const userData = decodeCredential(response.credential);
-
-            console.log("Handle the userData", userData);
-            console.log("Handle the userData", userData.picture);
+            //
+            // console.log("Handle the userData", userData);
+            // console.log("Handle the userData", userData.picture);
             this.profilePicUrl = userData.picture;
             this.setUserName(userData.name);
             this.setProfilePicUrl(userData.picture);
 
             // Redirect to Home.vue component
-            this.$router.push('/user');
+            this.$router.push({name:'User', params:{userName:userData.name}});
         }
     }
 }
