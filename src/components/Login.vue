@@ -10,9 +10,7 @@
                     <br>
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password">
-                    <br>
-                    <button type="submit">Login</button>
-                    <GoogleLogin />>
+                    <GoogleLogin />
                 </form>
         </div>
     </div>
