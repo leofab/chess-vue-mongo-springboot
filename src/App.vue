@@ -1,12 +1,12 @@
-<script setup lang="ts">
-import UserSideBar from "@/components/UserSideBar.vue";
+<script lang="ts">
+
+
 
 </script>
 
 
 <template>
     <div id="app">
-<!--        <router-view></router-view>-->
-        <UserSideBar/>
+        <router-view></router-view>
     </div>
 </template>
