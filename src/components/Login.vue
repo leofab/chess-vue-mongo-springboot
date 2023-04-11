@@ -25,11 +25,19 @@ export default {
     components: {
         Card
     },
+    data(){
+      return {
+          profilePicUrl: ''
+      };
+    },
     methods: {
         callback(response) {
             // Handle the response from Google Login
             const userData = decodeCredential(response.credential);
+
             console.log("Handle the userData", userData);
+            console.log("Handle the userData", userData.picture);
+            this.profilePicUrl = userData.picture;
 
             // Redirect to Home.vue component
             this.$router.push('/');
