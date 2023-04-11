@@ -277,7 +277,7 @@ export default {
     width: 90px;
     height: 90px;
     position: fixed;
-    left: 325px;
+    left: 583px;
     top:325px;
 }
 .square_tw_46{
@@ -333,7 +333,7 @@ export default {
     width: 90px;
     height: 90px;
     position: fixed;
-    left: 325px;
+    left: 583px;
     top:261px;
 }
 .square_tw_56{
@@ -389,7 +389,7 @@ export default {
     width: 90px;
     height: 90px;
     position: fixed;
-    left: 325px;
+    left: 583px;
     top:197px;
 }
 .square_tw_66{
@@ -445,7 +445,7 @@ export default {
     width: 90px;
     height: 90px;
     position: fixed;
-    left: 325px;
+    left: 583px;
     top:133px;
 }
 .square_tw_76{
@@ -501,7 +501,7 @@ export default {
     width: 90px;
     height: 90px;
     position: fixed;
-    left: 325px;
+    left: 583px;
     top:69px;
 }
 .square_tw_86{
