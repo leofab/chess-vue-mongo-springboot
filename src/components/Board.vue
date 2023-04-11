@@ -11,8 +11,7 @@ export default {
 }
 </script>
 <template>
-<!--    <BoardSVG class="board" />-->
-
+    <BoardSVG class="board" />
 
     <Square class="square_tw_18"/>
     <Square class="square_nw_17"/>
