@@ -1,6 +1,7 @@
 <template>
         <div class="sidebar">
             <ul>
+                <router-link :to="{name: 'Play'}">
                 <li><a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          width="48" height="48" viewBox="0 0 24 24"
@@ -11,6 +12,7 @@
                     </svg>
                     Play</a>
                 </li>
+                </router-link>
                 <li><a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          width="48" height="48" viewBox="0 0 24 24"
@@ -37,7 +39,7 @@
                     Home</a></li>
             </ul>
             <ul class="side_login">
-                <router-link to="/login">
+                <router-link :to="{name: 'Login'}">
                 <li><a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg"
                          width="24" height="24" viewBox="0 0 24 24"
