@@ -1,13 +1,23 @@
 <script lang="js">
 import BoardSVG from "../assets/Chess_Board.svg?component"
 import Square from "../assets/noun-square-5656370.svg?component"
-import Pawn from "../assets/whitepieces/noun-pawn-1823090.svg?component"
+import Pawn from "../assets//whitepieces/noun-pawn-1823090.svg?component"
+import Bishop from "../assets/whitepieces/noun-bishop-1823093.svg?component"
+import Rook from "../assets/whitepieces/noun-rook-1823091.svg?component"
+import Knight from "../assets/whitepieces/noun-knight-1823092.svg?component"
+import Queen from "../assets/whitepieces/noun-queen-1823094.svg?component"
+import King from "../assets/whitepieces/noun-king-1823095.svg?component"
 
 export default {
     components:{
         BoardSVG,
         Square,
-        Pawn
+        Pawn,
+        Bishop,
+        Rook,
+        Knight,
+        Queen,
+        King
     }
 
 }
@@ -120,6 +130,38 @@ export default {
     <Pawn style="
     fill: cornsilk;
     " class="square_pw_21"/>
+
+    <Bishop style="
+    fill: cornsilk;
+    " class="square_bw_13"/>
+
+    <Bishop style="
+    fill: cornsilk;
+    " class="square_bw_16"/>
+
+    <Knight style="
+    fill: cornsilk;
+    " class="square_nw_12"/>
+
+    <Knight style="
+    fill: cornsilk;
+    " class="square_nw_17"/>
+
+    <Rook style="
+    fill: cornsilk;
+    " class="square_tw_18"/>
+
+    <Rook style="
+    fill: cornsilk;
+    " class="square_tw_11"/>
+
+    <Queen style="
+    fill: cornsilk;
+    " class="square_qw_14"/>
+
+    <King style="
+    fill: cornsilk;
+    " class="square_kw_15"/>
 
 </template>
 
