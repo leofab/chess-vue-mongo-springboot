@@ -2,7 +2,7 @@
     <div>
         <Topbar />
         <div class="container">
-            <UserSideBar />
+            <UserSideBarHome />
             <Body />
         </div>
         <FloaterFooter />
@@ -11,15 +11,15 @@
 
 <script>
 import Body from "@/components/Body.vue";
-import SideBar from "@/components/SideBar.vue";
 import Topbar from "@/components/Topbar.vue";
 import FloaterFooter from "@/components/FloaterFooter.vue";
 import Card from "@/components/Card.vue";
+import UserSideBarHome from "@/components/UserSideBarHome.vue";
 
 export default {
     components: {
         Body,
-        UserSideBar,
+        UserSideBarHome,
         Topbar,
         FloaterFooter,
         Card,
