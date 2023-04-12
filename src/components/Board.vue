@@ -99,9 +99,8 @@ export default {
     <Square class="square_nb_82"/>
     <Square class="square_tb_81"/>
 
-    <Pawn style="
-    fill: cornsilk;
-    " class="square_pw_28"/>
+
+    <Pawn style="fill: cornsilk;" class="square_pw_28"/>
 
     <Pawn style="
     fill: cornsilk;
@@ -162,6 +161,70 @@ export default {
     <King style="
     fill: cornsilk;
     " class="square_kw_15"/>
+
+    <Pawn style="
+    fill: gold;
+    " class="square_pb_78"/>
+
+    <Pawn style="
+    fill: gold;
+    " class="square_pb_77"/>
+
+    <Pawn style="
+    fill: gold;
+    " class="square_pb_76"/>
+
+    <Pawn style="
+    fill: gold;
+    " class="square_pb_75"/>
+
+    <Pawn style="
+    fill: gold;
+    " class="square_pb_74"/>
+
+    <Pawn style="
+    fill: gold;
+    " class="square_pb_73"/>
+
+    <Pawn style="
+    fill: gold;
+    " class="square_pb_72"/>
+
+    <Pawn style="
+    fill: gold;
+    " class="square_pb_71"/>
+
+    <Bishop style="
+    fill: gold;
+    " class="square_bb_83"/>
+
+    <Bishop style="
+    fill: gold;
+    " class="square_bb_86"/>
+
+    <Knight style="
+    fill: gold;
+    " class="square_nb_82"/>
+
+    <Knight style="
+    fill: gold;
+    " class="square_nb_87"/>
+
+    <Rook style="
+    fill: gold;
+    " class="square_tb_88"/>
+
+    <Rook style="
+    fill: gold;
+    " class="square_tb_81"/>
+
+    <Queen style="
+    fill: gold;
+    " class="square_qb_85"/>
+
+    <King style="
+    fill: gold;
+    " class="square_kb_84"/>
 
 </template>
 
