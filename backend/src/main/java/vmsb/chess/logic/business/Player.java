@@ -1,9 +1,11 @@
 package vmsb.chess.logic.business;
 
+import vmsb.chess.logic.business.utils.Functional;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Player {
+public class Player implements Functional
     private String name;
     private boolean color;
     private ArrayList<Piece> pieces;
@@ -79,4 +81,31 @@ public class Player {
     public int hashCode() {
         return Objects.hash(name, color, pieces, cemetery, history);
     }
+
+        @Override
+        public ArrayList<Integer> splitCoordinatesString(String str) {
+            return null;
+        }
+
+        @Override
+        public int[] splitDataPair(ArrayList<Integer> data) {
+            return new int[0];
+        }
+
+        @Override
+        public char toCharCoordinate(int cr) {
+            return 0;
+        }
+
+        @Override
+        public ArrayList<Integer> reverseCoordinate(ArrayList<Integer> coord) {
+            return null;
+        }
+
+        @Override
+        public Object deepCopy(Object odlObj) {
+            return null;
+        }
+
+} {
 }
