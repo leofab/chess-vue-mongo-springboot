@@ -1,11 +1,11 @@
 package vmsb.chess.logic.business;
 
-public class Pawn extends Piece{
-    public Pawn(char pieceSign) {
+public class Knight extends Piece{
+    public Knight(char pieceSign) {
         super(pieceSign);
     }
 
-    public Pawn(boolean color){
+    public Knight(boolean color){
         super();
 
     }
