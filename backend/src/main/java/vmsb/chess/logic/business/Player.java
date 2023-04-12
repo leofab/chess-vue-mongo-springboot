@@ -5,7 +5,7 @@ import vmsb.chess.logic.business.utils.Functional;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Player implements Functional
+public class Player implements Functional{
     private String name;
     private boolean color;
     private ArrayList<Piece> pieces;
@@ -107,5 +107,5 @@ public class Player implements Functional
             return null;
         }
 
-} {
 }
+
