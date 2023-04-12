@@ -16,6 +16,7 @@ public class Board {
     }
 
     public Board(Board b){
+
         this.gameBoard = b.gameBoard;
 
     }

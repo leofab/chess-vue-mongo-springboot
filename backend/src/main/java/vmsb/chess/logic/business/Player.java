@@ -16,15 +16,15 @@ public class Player {
     }
 
     private void createPieces(){
-
+        //TODO create logic of createPieces
     }
 
     public void addToHistory(int from, int to, Piece pieceFrom, Piece pieceTo, Piece promotionPiece){
-
+        //TODO create logic of addToHistory
     }
 
     public void addToHistory(String str){
-
+        //TODO create logic of addToHistory
     }
 
     public String getName() {

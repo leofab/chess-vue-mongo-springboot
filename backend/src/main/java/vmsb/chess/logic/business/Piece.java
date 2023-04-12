@@ -13,12 +13,17 @@ public class Piece {
         this.pieceSign = pieceSign;
     }
 
+    public Piece() {
+
+    }
+
     public boolean pieceVerifyMove(Board board, int[] from, int[] to){
+        //TODO implement the logic of pieceVerifyMove
         return true;
     }
 
     public void addMovePath(int coord){
-
+        //TODO implement the logic of addMovePath
     }
 
     public char getPieceSign() {
