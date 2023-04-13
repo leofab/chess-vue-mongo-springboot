@@ -16,6 +16,7 @@ public class Chess extends ManagePlayerTurn {
         Board board = new Board(playerW,playerB);
         System.out.println(board);
 
+
     }
 
     public void setUserUI(UserInterface userUI) {
