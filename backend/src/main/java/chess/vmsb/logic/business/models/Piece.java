@@ -12,6 +12,7 @@ public class Piece {
     private ArrayList<int[]> lastMovePath;
 
     public Piece(char pieceSign) {
+        moved = false;
         this.pieceSign = pieceSign;
     }
 
@@ -68,10 +69,12 @@ public class Piece {
         this.lastMovePath = lastMovePath;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Piece{" +
-//                "pieceSign=" + pieceSign +
-//                '}'+"\n";
-//    }
+    @Override
+    public String toString() {
+        return "Piece{" +
+                "pieceSign=" + pieceSign +
+                ", dx=" + dx +
+                ", dy=" + dy +
+                '}';
+    }
 }
