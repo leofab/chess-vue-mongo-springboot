@@ -1,6 +1,8 @@
 package chess.vmsb.logic.business.board;
 
-import chess.vmsb.logic.business.models.Player;
+import chess.vmsb.logic.business.models.*;
+
+import java.util.ArrayList;
 
 public class Board{
     private Player playerW;
@@ -11,36 +13,74 @@ public class Board{
 //        super();
 //    }
 
+    //Invoke Board with two players and set up the board with the pieces
     public Board (Player playerW, Player playerB){
         this.gameBoard = new Square[8][8];
-        for (int i = 0; i < gameBoard.length; i++) {
-            for (int j = 0; j < gameBoard[i].length; j++) {
-                gameBoard[2][j] = new Square(2,j,'-');
-                gameBoard[3][j] = new Square(3,j,'-');
-                gameBoard[4][j] = new Square(4,j,'-');
-                gameBoard[5][j] = new Square(5,j,'-');
-                gameBoard[1][j] = new Square(1,j,'P');
-                gameBoard[6][j] = new Square(6,j,'P');
-                gameBoard[7][7] = new Square(6,j,'R');
-                gameBoard[7][0] = new Square(6,j,'R');
-                gameBoard[0][7] = new Square(6,j,'R');
-                gameBoard[0][0] = new Square(6,j,'R');
-                gameBoard[7][6] = new Square(6,j,'N');
-                gameBoard[7][1] = new Square(6,j,'N');
-                gameBoard[0][6] = new Square(6,j,'N');
-                gameBoard[0][1] = new Square(6,j,'N');
-                gameBoard[7][5] = new Square(6,j,'B');
-                gameBoard[7][2] = new Square(6,j,'B');
-                gameBoard[0][5] = new Square(6,j,'B');
-                gameBoard[0][2] = new Square(6,j,'B');
-                gameBoard[7][4] = new Square(6,j,'K');
-                gameBoard[7][3] = new Square(6,j,'Q');
-                gameBoard[0][4] = new Square(6,j,'K');
-                gameBoard[0][3] = new Square(6,j,'Q');
-            }
-        }
         this.playerW = playerW;
         this.playerB = playerB;
+
+        //Set up the board
+        for (int i = 0; i < gameBoard.length; i++) {
+            for (int j = 0; j < gameBoard[i].length; j++) {
+                if (i == 2 || i == 3 || i == 4 || i == 5) {
+                    gameBoard[i][j] = new Square(i,j,'-');
+                } else if (i == 1 || i == 6) {
+                    gameBoard[i][j] = new Square(i,j,'P');
+                    gameBoard[i][j].setPiece(new Pawn(gameBoard[i][j].getValue()));
+                } else if ((i == 0 && (j == 0 || j == 7)) || (i == 7 && (j == 0 || j == 7))) {
+                    gameBoard[i][j] = new Square(i,j,'R');
+                    gameBoard[i][j].setPiece(new Rook(gameBoard[i][j].getValue()));
+                } else if ((i == 0 && (j == 1 || j == 6)) || (i == 7 && (j == 1 || j == 6))) {
+                    gameBoard[i][j] = new Square(i,j,'N');
+                    gameBoard[i][j].setPiece(new Knight(gameBoard[i][j].getValue()));
+                } else if ((i == 0 && (j == 2 || j == 5)) || (i == 7 && (j == 2 || j == 5))) {
+                    gameBoard[i][j] = new Square(i,j,'B');
+                    gameBoard[i][j].setPiece(new Bishop(gameBoard[i][j].getValue()));
+                } else if ((i == 0 && j == 4) || (i == 7 && j == 4)) {
+                    gameBoard[i][j] = new Square(i,j,'K');
+                    gameBoard[i][j].setPiece(new King(gameBoard[i][j].getValue()));
+                } else if ((i == 0 && j == 3) || (i == 7 && j == 3)) {
+                    gameBoard[i][j] = new Square(i,j,'Q');
+                    gameBoard[i][j].setPiece(new Queen(gameBoard[i][j].getValue()));
+                }
+            }
+        }
+
+        //Set up the player pieces
+
+        ArrayList<Piece> piecesW = new ArrayList<>();
+        ArrayList<Piece> piecesB = new ArrayList<>();
+        for (int i = 0; i < gameBoard.length; i++) {
+            for (int j = 0; j < gameBoard[i].length; j++) {
+                if (gameBoard[i][j].getValue() == 'P' && i == 1) {
+                    piecesW.add(gameBoard[i][j].getPiece());
+                } else if (gameBoard[i][j].getValue() == 'P' && i == 6) {
+                    piecesB.add(gameBoard[i][j].getPiece());
+                } else if (gameBoard[i][j].getValue() == 'R' && i == 0) {
+                    piecesW.add(gameBoard[i][j].getPiece());
+                } else if (gameBoard[i][j].getValue() == 'R' && i == 7) {
+                    piecesB.add(gameBoard[i][j].getPiece());
+                } else if (gameBoard[i][j].getValue() == 'N' && i == 0) {
+                    piecesW.add(gameBoard[i][j].getPiece());
+                } else if (gameBoard[i][j].getValue() == 'N' && i == 7) {
+                    piecesB.add(gameBoard[i][j].getPiece());
+                } else if (gameBoard[i][j].getValue() == 'B' && i == 0) {
+                    piecesW.add(gameBoard[i][j].getPiece());
+                } else if (gameBoard[i][j].getValue() == 'B' && i == 7) {
+                    piecesB.add(gameBoard[i][j].getPiece());
+                } else if (gameBoard[i][j].getValue() == 'K' && i == 0) {
+                    piecesW.add(gameBoard[i][j].getPiece());
+                } else if (gameBoard[i][j].getValue() == 'K' && i == 7) {
+                    piecesB.add(gameBoard[i][j].getPiece());
+                } else if (gameBoard[i][j].getValue() == 'Q' && i == 0) {
+                    piecesW.add(gameBoard[i][j].getPiece());
+                } else if (gameBoard[i][j].getValue() == 'Q' && i == 7) {
+                    piecesB.add(gameBoard[i][j].getPiece());
+                }
+            }
+        }
+        playerW.setPieces(piecesW);
+        playerB.setPieces(piecesB);
     }
 
     public Board(Board b){
@@ -66,6 +106,9 @@ public class Board{
             }
             System.out.println();
         }
-        return "\nPlayer White: " + playerW.getName() + "\nPlayer Black: " + playerB.getName() + "\nChessBoard v1.0 ";
+        return "\nPlayer White: " + playerW.getName() +
+                "\nWhite Pieces : " + playerW.getPieces() +
+                "\nPlayer Black: " + playerB.getName() +
+                "\nChessBoard v1.0 ";
     }
 }

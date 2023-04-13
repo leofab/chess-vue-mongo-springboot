@@ -67,4 +67,11 @@ public class Piece {
     public void setLastMovePath(ArrayList<int[]> lastMovePath) {
         this.lastMovePath = lastMovePath;
     }
+
+    @Override
+    public String toString() {
+        return "Piece{" +
+                "pieceSign=" + pieceSign +
+                '}';
+    }
 }
