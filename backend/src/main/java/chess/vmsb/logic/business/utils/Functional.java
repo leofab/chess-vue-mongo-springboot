@@ -1,11 +1,11 @@
-package vmsb.chess.logic.business.utils;
+package chess.vmsb.logic.business.utils;
 
 import java.util.ArrayList;
 
 public interface Functional {
-    public ArrayList<Integer> splitCoordinatesString(String str);
-    public int[] splitDataPair(ArrayList<Integer> data);
-    public char toCharCoordinate(int cr);
-    public ArrayList<Integer> reverseCoordinate(ArrayList<Integer> coord);
-    public Object deepCopy(Object odlObj);
+    ArrayList<Integer> splitCoordinatesString(String str);
+    int[] splitDataPair(ArrayList<Integer> data);
+    char toCharCoordinate(int cr);
+    ArrayList<Integer> reverseCoordinate(ArrayList<Integer> coord);
+    Object deepCopy(Object odlObj);
 }
