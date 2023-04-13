@@ -11,7 +11,7 @@ public class MovementHandler implements Functional{
     //TODO talks to VUE
 //    private UI userUI;
 
-    protected int[] getKingXY (Board board, Player[] player, int whichPlayer){
+    protected int[] getKingXY (Board board, Player[] player, boolean whichPlayer){
         //TODO implement getKingXY logic
         return new int[2];
     }
@@ -120,6 +120,33 @@ public class MovementHandler implements Functional{
     @Override
     public char toCharCoordinate(int cr) {
         return 0;
+    }
+
+    @Override
+    public int[] toIntCoordinate(String cr) {
+        // Convert the input String to lowercase to ensure case-insensitive comparison
+        cr = cr.toLowerCase();
+
+        // Check that the input String has exactly 2 characters
+        if (cr.length() != 2) {
+            throw new IllegalArgumentException("Input String must have exactly 2 characters");
+        }
+
+        // Extract the file (column) and rank (row) characters from the input String
+        char fileChar = cr.charAt(0);
+        char rankChar = cr.charAt(1);
+
+        // Check that the file and rank characters are valid
+        if (fileChar < 'a' || fileChar > 'h' || rankChar < '1' || rankChar > '8') {
+            throw new IllegalArgumentException("Invalid input String. Must be in the format 'fileRank', e.g., 'e4'");
+        }
+
+        // Calculate the corresponding numerical values for file and rank
+        int file = fileChar - 'a' + 1;
+        int rank = rankChar - '1' + 1;
+
+        // Create and return the int[] with file and rank values
+        return new int[] {file, rank};
     }
 
     @Override

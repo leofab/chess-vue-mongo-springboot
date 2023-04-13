@@ -107,7 +107,6 @@ public class Board{
             System.out.println();
         }
         return "\nPlayer White: " + playerW.getName() +
-                "\nWhite Pieces : " + playerW.getPieces() +
                 "\nPlayer Black: " + playerB.getName() +
                 "\nChessBoard v1.0 ";
     }
