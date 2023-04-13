@@ -68,10 +68,12 @@ public class Piece {
         this.lastMovePath = lastMovePath;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Piece{" +
-//                "pieceSign=" + pieceSign +
-//                '}'+"\n";
-//    }
+    @Override
+    public String toString() {
+        return "Piece{" +
+                "pieceSign=" + pieceSign +
+                ", dx=" + dx +
+                ", dy=" + dy +
+                '}';
+    }
 }

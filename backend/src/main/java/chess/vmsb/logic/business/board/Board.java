@@ -31,10 +31,14 @@ public class Board{
                     gameBoard[i][j] = new Square(i,j,'P');
                     if(i == 1){
                         Pawn pawn = new Pawn(gameBoard[i][j].getValue());
+                        pawn.setDx(i);
+                        pawn.setDy(j);
                         gameBoard[i][j].setPiece(pawn);
                         piecesW.add(pawn);
                     }else{
                         Pawn pawn = new Pawn(gameBoard[i][j].getValue());
+                        pawn.setDx(i);
+                        pawn.setDy(j);
                         gameBoard[i][j].setPiece(pawn);
                         piecesB.add(pawn);
                     }
@@ -42,10 +46,14 @@ public class Board{
                     gameBoard[i][j] = new Square(i,j,'R');
                     if((i == 0) ){
                         Rook rook = new Rook(gameBoard[i][j].getValue());
+                        rook.setDx(i);
+                        rook.setDy(j);
                         gameBoard[i][j].setPiece(rook);
                         piecesW.add(rook);
                     }else{
                         Rook rook = new Rook(gameBoard[i][j].getValue());
+                        rook.setDx(i);
+                        rook.setDy(j);
                         gameBoard[i][j].setPiece(rook);
                         piecesB.add(rook);
                     }
@@ -53,10 +61,14 @@ public class Board{
                     gameBoard[i][j] = new Square(i,j,'N');
                     if((i == 0 ) ){
                         Knight knight = new Knight(gameBoard[i][j].getValue());
+                        knight.setDx(i);
+                        knight.setDy(j);
                         gameBoard[i][j].setPiece(knight);
                         piecesW.add(knight);
                     }else{
                         Knight knight = new Knight(gameBoard[i][j].getValue());
+                        knight.setDx(i);
+                        knight.setDy(j);
                         gameBoard[i][j].setPiece(knight);
                         piecesB.add(knight);
                     }
@@ -64,10 +76,14 @@ public class Board{
                     gameBoard[i][j] = new Square(i,j,'B');
                     if((i == 0) ){
                         Bishop bishop = new Bishop(gameBoard[i][j].getValue());
+                        bishop.setDx(i);
+                        bishop.setDy(j);
                         gameBoard[i][j].setPiece(bishop);
                         piecesW.add(bishop);
                     }else{
                         Bishop bishop = new Bishop(gameBoard[i][j].getValue());
+                        bishop.setDx(i);
+                        bishop.setDy(j);
                         gameBoard[i][j].setPiece(bishop);
                         piecesB.add(bishop);
                     }
@@ -75,10 +91,14 @@ public class Board{
                     gameBoard[i][j] = new Square(i,j,'K');
                     if((i == 0) ){
                         King king = new King(gameBoard[i][j].getValue());
+                        king.setDx(i);
+                        king.setDy(j);
                         gameBoard[i][j].setPiece(king);
                         piecesW.add(king);
                     }else{
                         King king = new King(gameBoard[i][j].getValue());
+                        king.setDx(i);
+                        king.setDy(j);
                         gameBoard[i][j].setPiece(king);
                         piecesB.add(king);
                     }
@@ -86,14 +106,17 @@ public class Board{
                     gameBoard[i][j] = new Square(i,j,'Q');
                     if((i == 0) ){
                         Queen queen = new Queen(gameBoard[i][j].getValue());
+                        queen.setDx(i);
+                        queen.setDy(j);
                         gameBoard[i][j].setPiece(queen);
                         piecesW.add(queen);
                     }else{
                         Queen queen = new Queen(gameBoard[i][j].getValue());
+                        queen.setDx(i);
+                        queen.setDy(j);
                         gameBoard[i][j].setPiece(queen);
                         piecesB.add(queen);
                     }
-                    gameBoard[i][j].setPiece(new Queen(gameBoard[i][j].getValue()));
                 }
             }
         }
@@ -123,7 +146,7 @@ public class Board{
         for(int i = gameBoard.length-1; i >= 0; i--){
             for(int j = 0; j < gameBoard[i].length; j++){
 
-              System.out.print(gameBoard[i][j].getValue() + " ");
+              System.out.print(gameBoard[i][j].getPiece() + " ");
             }
             System.out.println();
         }
