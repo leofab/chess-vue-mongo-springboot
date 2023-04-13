@@ -12,6 +12,7 @@ public class Piece {
     private ArrayList<int[]> lastMovePath;
 
     public Piece(char pieceSign) {
+        moved = false;
         this.pieceSign = pieceSign;
     }
 

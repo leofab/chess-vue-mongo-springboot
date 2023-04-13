@@ -4,8 +4,9 @@ import chess.vmsb.logic.business.models.Piece;
 import chess.vmsb.logic.business.models.Player;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class UserInterface {
+public class UserInterface extends MovementHandler{
 
 //    + onWinMessage(Player player) : void
     public void onWinMessage(Player player){
@@ -94,8 +95,24 @@ public class UserInterface {
 //
 //+inputMove() : ArrayList<ArrayList<Integer>>
     public ArrayList<ArrayList<Integer>> inputMove(){
-    //TODO
-    return null;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the coordinates of the piece you want to move: \n -> ");
+        String coord = sc.nextLine();
+        int[] from = toIntCoordinate(coord);
+        System.out.println("Enter the coordinates of the square you want to move to: \n -> ");
+        coord = sc.nextLine();
+        int[] to = toIntCoordinate(coord);
+        ArrayList<ArrayList<Integer>> move = new ArrayList<>();
+            ArrayList<Integer> innerList = new ArrayList<>();
+            innerList.add(from[0]);
+            innerList.add(from[1]);
+            move.add(innerList);
+            innerList = new ArrayList<>();
+            innerList.add(to[0]);
+            innerList.add(to[1]);
+            move.add(innerList);
+        System.out.println(move);
+    return move;
     }
 //+ askPromotioPiece(boolean color) : Piece
     public Piece askPromotioPiece(boolean color){
