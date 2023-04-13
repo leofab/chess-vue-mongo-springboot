@@ -32,66 +32,66 @@ public class Board{
                     if(i == 1){
                         Pawn pawn = new Pawn(gameBoard[i][j].getValue());
                         gameBoard[i][j].setPiece(pawn);
-                        piecesW.add(pawn);
+                        piecesB.add(pawn);
                     }else{
                         Pawn pawn = new Pawn(gameBoard[i][j].getValue());
                         gameBoard[i][j].setPiece(pawn);
-                        piecesB.add(pawn);
+                        piecesW.add(pawn);
                     }
                 } else if ((i == 0 && (j == 0 || j == 7)) || (i == 7 && (j == 0 || j == 7))) {
                     gameBoard[i][j] = new Square(i,j,'R');
                     if((i == 0) ){
                         Rook rook = new Rook(gameBoard[i][j].getValue());
                         gameBoard[i][j].setPiece(rook);
-                        piecesW.add(rook);
+                        piecesB.add(rook);
                     }else{
                         Rook rook = new Rook(gameBoard[i][j].getValue());
                         gameBoard[i][j].setPiece(rook);
-                        piecesB.add(rook);
+                        piecesW.add(rook);
                     }
                 } else if ((i == 0 && (j == 1 || j == 6)) || (i == 7 && (j == 1 || j == 6))) {
                     gameBoard[i][j] = new Square(i,j,'N');
                     if((i == 0 ) ){
                         Knight knight = new Knight(gameBoard[i][j].getValue());
                         gameBoard[i][j].setPiece(knight);
-                        piecesW.add(knight);
+                        piecesB.add(knight);
                     }else{
                         Knight knight = new Knight(gameBoard[i][j].getValue());
                         gameBoard[i][j].setPiece(knight);
-                        piecesB.add(knight);
+                        piecesW.add(knight);
                     }
                 } else if ((i == 0 && (j == 2 || j == 5)) || (i == 7 && (j == 2 || j == 5))) {
                     gameBoard[i][j] = new Square(i,j,'B');
                     if((i == 0) ){
                         Bishop bishop = new Bishop(gameBoard[i][j].getValue());
                         gameBoard[i][j].setPiece(bishop);
-                        piecesW.add(bishop);
+                        piecesB.add(bishop);
                     }else{
                         Bishop bishop = new Bishop(gameBoard[i][j].getValue());
                         gameBoard[i][j].setPiece(bishop);
-                        piecesB.add(bishop);
+                        piecesW.add(bishop);
                     }
-                } else if ((i == 0 && j == 4) || (i == 7 && j == 4)) {
+                } else if ((i == 0 && j == 3) || (i == 7 && j == 3)) {
                     gameBoard[i][j] = new Square(i,j,'K');
                     if((i == 0) ){
                         King king = new King(gameBoard[i][j].getValue());
                         gameBoard[i][j].setPiece(king);
-                        piecesW.add(king);
+                        piecesB.add(king);
                     }else{
                         King king = new King(gameBoard[i][j].getValue());
                         gameBoard[i][j].setPiece(king);
-                        piecesB.add(king);
+                        piecesW.add(king);
                     }
-                } else if ((i == 0 && j == 3) || (i == 7 && j == 3)) {
+                } else if ((i == 0 && j == 4) || (i == 7 && j == 4)) {
                     gameBoard[i][j] = new Square(i,j,'Q');
                     if((i == 0) ){
                         Queen queen = new Queen(gameBoard[i][j].getValue());
                         gameBoard[i][j].setPiece(queen);
-                        piecesW.add(queen);
+                        piecesB.add(queen);
                     }else{
                         Queen queen = new Queen(gameBoard[i][j].getValue());
                         gameBoard[i][j].setPiece(queen);
-                        piecesB.add(queen);
+                        piecesW.add(queen);
                     }
                     gameBoard[i][j].setPiece(new Queen(gameBoard[i][j].getValue()));
                 }
