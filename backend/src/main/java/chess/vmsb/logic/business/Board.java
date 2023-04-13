@@ -19,6 +19,12 @@ public class Board {
 
         this.gameBoard = b.gameBoard;
 
+    }public Board(Board b, Player playerW, Player playerB){
+
+        this.gameBoard = b.gameBoard;
+        this.playerW = playerW;
+        this.playerB = playerB;
+
     }
 
     public Square[][] getGameBoard() {
