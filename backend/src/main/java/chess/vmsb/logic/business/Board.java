@@ -33,12 +33,14 @@ public class Board {
 
     @Override
     public String toString() {
+        String nameW = playerW.getName();
+        String nameB = playerB.getName();
         for(int i = 0; i < gameBoard.length; i++){
             for(int j = 0; j < gameBoard[i].length; j++){
-               System.out.print(gameBoard[i][j] + " ");
+              System.out.print(gameBoard[i][j] + " ");
             }
             System.out.println();
         }
-        return null;
+        return "\nPlayer White: " + nameW + "\nPlayer Black: " + nameB + "\nChessBoard v1.0 ";
     }
 }
