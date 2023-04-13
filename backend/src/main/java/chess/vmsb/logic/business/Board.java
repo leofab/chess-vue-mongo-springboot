@@ -1,4 +1,4 @@
-package vmsb.chess.logic.business;
+package chess.vmsb.logic.business;
 
 public class Board {
     private Player playerW;

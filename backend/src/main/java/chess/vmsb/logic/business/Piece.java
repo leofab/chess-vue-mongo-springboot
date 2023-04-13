@@ -1,4 +1,6 @@
-package vmsb.chess.logic.business;
+package chess.vmsb.logic.business;
+
+import chess.vmsb.logic.business.Board;
 
 import java.util.ArrayList;
 

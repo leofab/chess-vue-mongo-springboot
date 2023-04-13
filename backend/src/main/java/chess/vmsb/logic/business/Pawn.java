@@ -1,13 +1,12 @@
-package vmsb.chess.logic.business;
+package chess.vmsb.logic.business;
 
-public class King extends Piece{
+public class Pawn extends Piece {
 
-
-    public King(char pieceSign) {
+    public Pawn(char pieceSign) {
         super(pieceSign);
     }
 
-    public King(boolean color){
+    public Pawn(boolean color){
         super();
 
     }

@@ -1,4 +1,6 @@
-package vmsb.chess.logic.business;
+package chess.vmsb.logic.business;
+
+import chess.vmsb.logic.business.Piece;
 
 public class Square {
     private int row;

@@ -1,6 +1,6 @@
-package vmsb.chess.logic.business;
+package chess.vmsb.logic.business;
 
-public class Bishop extends Piece{
+public class Bishop extends Piece {
 
     public Bishop(char pieceSign) {
         super(pieceSign);
