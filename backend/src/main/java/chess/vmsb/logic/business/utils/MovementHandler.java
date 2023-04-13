@@ -118,8 +118,22 @@ public class MovementHandler implements Functional{
     }
 
     @Override
-    public char toCharCoordinate(int cr) {
-        return 0;
+    public char[] toCharCoordinate(int cr) {
+        // Extract the file (column) and rank (row) values from the input int
+        int file = cr / 10;
+        int rank = cr % 10;
+
+        // Check that the file and rank values are valid
+        if (file < 1 || file > 8 || rank < 1 || rank > 8) {
+            throw new IllegalArgumentException("Invalid input int. Must be in the range of 11 to 88.");
+        }
+
+        // Calculate the corresponding characters for file and rank
+        char fileChar = (char) ('a' + file - 1);
+        char rankChar = (char) ('1' + rank - 1);
+
+        // Create and return the char[] with file and rank characters
+        return new char[] {fileChar, rankChar};
     }
 
     @Override
