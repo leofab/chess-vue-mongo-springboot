@@ -11,7 +11,7 @@ public class MovementHandler implements Functional{
     //TODO talks to VUE
 //    private UI userUI;
 
-    protected int[] getKingXY (Board board, Player[] player, int whichPlayer){
+    protected int[] getKingXY (Board board, Player[] player, boolean whichPlayer){
         //TODO implement getKingXY logic
         return new int[2];
     }
@@ -118,8 +118,49 @@ public class MovementHandler implements Functional{
     }
 
     @Override
-    public char toCharCoordinate(int cr) {
-        return 0;
+    public char[] toCharCoordinate(int cr) {
+        // Extract the file (column) and rank (row) values from the input int
+        int file = cr / 10;
+        int rank = cr % 10;
+
+        // Check that the file and rank values are valid
+        if (file < 1 || file > 8 || rank < 1 || rank > 8) {
+            throw new IllegalArgumentException("Invalid input int. Must be in the range of 11 to 88.");
+        }
+
+        // Calculate the corresponding characters for file and rank
+        char fileChar = (char) ('a' + file - 1);
+        char rankChar = (char) ('1' + rank - 1);
+
+        // Create and return the char[] with file and rank characters
+        return new char[] {fileChar, rankChar};
+    }
+
+    @Override
+    public int[] toIntCoordinate(String cr) {
+        // Convert the input String to lowercase to ensure case-insensitive comparison
+        cr = cr.toLowerCase();
+
+        // Check that the input String has exactly 2 characters
+        if (cr.length() != 2) {
+            throw new IllegalArgumentException("Input String must have exactly 2 characters");
+        }
+
+        // Extract the file (column) and rank (row) characters from the input String
+        char fileChar = cr.charAt(0);
+        char rankChar = cr.charAt(1);
+
+        // Check that the file and rank characters are valid
+        if (fileChar < 'a' || fileChar > 'h' || rankChar < '1' || rankChar > '8') {
+            throw new IllegalArgumentException("Invalid input String. Must be in the format 'fileRank', e.g., 'e4'");
+        }
+
+        // Calculate the corresponding numerical values for file and rank
+        int file = fileChar - 'a' + 1;
+        int rank = rankChar - '1' + 1;
+
+        // Create and return the int[] with file and rank values
+        return new int[] {file, rank};
     }
 
     @Override
