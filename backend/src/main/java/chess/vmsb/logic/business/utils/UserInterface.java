@@ -4,6 +4,7 @@ import chess.vmsb.logic.business.models.Piece;
 import chess.vmsb.logic.business.models.Player;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class UserInterface extends MovementHandler{
@@ -96,23 +97,16 @@ public class UserInterface extends MovementHandler{
 //+inputMove() : ArrayList<ArrayList<Integer>>
     public ArrayList<ArrayList<Integer>> inputMove(){
         Scanner sc = new Scanner(System.in);
+        ArrayList<ArrayList<Integer>> move = new ArrayList<>();
         System.out.println("Enter the coordinates of the piece you want to move: \n -> ");
         String coord = sc.nextLine();
         int[] from = toIntCoordinate(coord);
+        move.add(new ArrayList<>(Arrays.asList(from[0], from[1])));
         System.out.println("Enter the coordinates of the square you want to move to: \n -> ");
         coord = sc.nextLine();
         int[] to = toIntCoordinate(coord);
-        ArrayList<ArrayList<Integer>> move = new ArrayList<>();
-            ArrayList<Integer> innerList = new ArrayList<>();
-            innerList.add(from[0]);
-            innerList.add(from[1]);
-            move.add(innerList);
-            innerList = new ArrayList<>();
-            innerList.add(to[0]);
-            innerList.add(to[1]);
-            move.add(innerList);
-        System.out.println(move);
-    return move;
+        move.add(new ArrayList<>(Arrays.asList(to[0], to[1])));
+        return move;
     }
 //+ askPromotioPiece(boolean color) : Piece
     public Piece askPromotioPiece(boolean color){
