@@ -1,7 +1,7 @@
 package chess.vmsb.logic.business.utils;
 
-import chess.vmsb.logic.business.Board;
-import chess.vmsb.logic.business.Player;
+import chess.vmsb.logic.business.board.Board;
+import chess.vmsb.logic.business.models.Player;
 
 import java.util.ArrayList;
 

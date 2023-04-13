@@ -1,5 +1,7 @@
 package chess.vmsb.logic.business;
 
+import chess.vmsb.logic.business.board.Board;
+import chess.vmsb.logic.business.models.Player;
 import chess.vmsb.logic.business.utils.ManagePlayerTurn;
 import chess.vmsb.logic.business.utils.UserInterface;
 

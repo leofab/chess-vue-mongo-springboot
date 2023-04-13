@@ -1,6 +1,6 @@
-package chess.vmsb.logic.business;
+package chess.vmsb.logic.business.board;
 
-import java.util.Arrays;
+import chess.vmsb.logic.business.models.Player;
 
 public class Board {
     private Player playerW;
@@ -37,7 +37,8 @@ public class Board {
         String nameB = playerB.getName();
         for(int i = 0; i < gameBoard.length; i++){
             for(int j = 0; j < gameBoard[i].length; j++){
-              System.out.print(gameBoard[i][j] + " ");
+
+              System.out.print("- ");
             }
             System.out.println();
         }

@@ -1,4 +1,6 @@
-package chess.vmsb.logic.business;
+package chess.vmsb.logic.business.models;
+
+import chess.vmsb.logic.business.board.Board;
 
 public class Knight extends Piece{
 
