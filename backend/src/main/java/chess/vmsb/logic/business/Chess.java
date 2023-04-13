@@ -12,6 +12,7 @@ public class Chess extends ManagePlayerTurn {
         Player playerB = new Player("Maria",false);
 
         Board board = new Board(playerW,playerB);
+        System.out.println(board);
 
     }
 

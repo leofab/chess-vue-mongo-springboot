@@ -1,5 +1,7 @@
 package chess.vmsb.logic.business;
 
+import java.util.Arrays;
+
 public class Board {
     private Player playerW;
     private Player playerB;
@@ -27,5 +29,16 @@ public class Board {
 
     public void setGameBoard(Square[][] gameBoard) {
         this.gameBoard = gameBoard;
+    }
+
+    @Override
+    public String toString() {
+        for(int i = 0; i < gameBoard.length; i++){
+            for(int j = 0; j < gameBoard[i].length; j++){
+               System.out.print(gameBoard[i][j] + " ");
+            }
+            System.out.println();
+        }
+        return null;
     }
 }
