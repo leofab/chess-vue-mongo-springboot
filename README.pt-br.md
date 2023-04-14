@@ -18,7 +18,7 @@ Esta é uma aplicação de xadrez de código aberto baseada na web, construída 
 
 ### Lógica de Xadrez em Java:
 
-- DeepBlue UML: Uma inspiração para a lógica de negócio do xadrez implementada neste projeto. [!Referência DeepBlue UML](https://example.com/deepblue-uml) 📈
+- DeepBlue UML: Uma inspiração para a lógica de negócio do xadrez implementada neste projeto. [!Referência DeepBlue UML](https://raw.githubusercontent.com/edwmapa/JavaChess/master/UML/Deep%20Blue.png) 📈
 
 ## Fluxo de Trabalho 🚀
 

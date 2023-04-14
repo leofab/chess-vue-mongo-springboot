@@ -22,7 +22,7 @@ This is a web-based open chess application built with Vue.js for the frontend, M
 
 ### Java Chess Logic:
 
-- DeepBlue UML: An inspiration for the chess business logic that is implemented in this project. [!DeepBlue UML Reference](https://example.com/deepblue-uml) 📈
+- DeepBlue UML: An inspiration for the chess business logic that is implemented in this project. [!DeepBlue UML Reference](https://raw.githubusercontent.com/edwmapa/JavaChess/master/UML/Deep%20Blue.png) 📈
 
 ## Workflow 🚀
 
