@@ -6,19 +6,19 @@ This is a web-based open chess application built with Vue.js for the frontend, M
 
 ### Frontend:
 
-Vite: Fast build tool and development server that is used in this project along with Vue.js for building the frontend. [https://vuejs.org/](Vite Documentation)🚀
-Vue.js: A progressive JavaScript framework for building user interfaces. [https://vuejs.org/](Vue.js Documentation)😎
-Vuex: A state management library for Vue.js that is used for managing the application's state. [https://vuex.vuejs.org/](Vuex Documentation)📊
-VueRouter: A routing library for Vue.js that is used for navigating between different views in the application. [https://router.vuejs.org/](VueRouter Documentation)🚦
+Vite: Fast build tool and development server that is used in this project along with Vue.js for building the frontend. [!Vite Documentation](https://vuejs.org/)🚀
+Vue.js: A progressive JavaScript framework for building user interfaces. [!Vue.js Documentation](https://vuejs.org/)😎
+Vuex: A state management library for Vue.js that is used for managing the application's state. [!Vuex Documentation](https://vuex.vuejs.org/)📊
+VueRouter: A routing library for Vue.js that is used for navigating between different views in the application. [!VueRouter Documentation](https://router.vuejs.org/)🚦
 
 ### Backend:
 
-SpringBoot: A Java-based framework that is used for building the backend of the application. It provides a simple and efficient way to build APIs and handle HTTP requests. [https://spring.io/projects/spring-boot](SpringBoot Documentation) 🚀
-MongoDB: A NoSQL database that is used for storing data related to the chess application. [https://docs.mongodb.com/](MongoDB Documentation) 📊
+SpringBoot: A Java-based framework that is used for building the backend of the application. It provides a simple and efficient way to build APIs and handle HTTP requests. [!SpringBoot Documentation](https://spring.io/projects/spring-boot) 🚀
+MongoDB: A NoSQL database that is used for storing data related to the chess application. [!MongoDB Documentation](https://docs.mongodb.com/) 📊
 
 ### Java Chess Logic:
 
-DeepBlue UML: An inspiration for the chess business logic that is implemented in this project. [https://example.com/deepblue-uml](DeepBlue UML Reference) 📈
+DeepBlue UML: An inspiration for the chess business logic that is implemented in this project. [!DeepBlue UML Reference](https://example.com/deepblue-uml) 📈
 
 ## Workflow 🚀
 
