@@ -1,3 +1,7 @@
+### Lang
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/leofab/chess-vue-mongo-springboot/blob/main/README.md)
+[![pt-br](https://github.com/leofab/chess-vue-mongo-springboot/blob/main/README.pt-br.md)
+
 # Open Source Chess Application 🏁
 
 This is a web-based open chess application built with Vue.js for the frontend, MongoDB for the database, Java for the chess logic, and SpringBoot for the backend requisitions and routing.
