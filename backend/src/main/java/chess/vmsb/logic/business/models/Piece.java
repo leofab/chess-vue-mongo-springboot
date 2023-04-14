@@ -5,6 +5,16 @@ import chess.vmsb.logic.business.board.Board;
 import java.util.ArrayList;
 
 public class Piece {
+    protected boolean color;
+
+    public boolean isColor() {
+        return color;
+    }
+
+    public void setColor(boolean color) {
+        this.color = color;
+    }
+
     private char pieceSign;
     private boolean moved;
     private int dx;

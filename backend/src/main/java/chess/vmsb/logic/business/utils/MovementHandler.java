@@ -1,6 +1,8 @@
 package chess.vmsb.logic.business.utils;
 
 import chess.vmsb.logic.business.board.Board;
+import chess.vmsb.logic.business.models.King;
+import chess.vmsb.logic.business.models.Piece;
 import chess.vmsb.logic.business.models.Player;
 
 import java.util.ArrayList;
@@ -11,9 +13,28 @@ public class MovementHandler implements Functional{
     //TODO talks to VUE
 //    private UI userUI;
 
-    protected int[] getKingXY (Board board, Player[] player, boolean whichPlayer){
-        //TODO implement getKingXY logic
-        return new int[2];
+    protected int[] getKingXY (Board board, Player[] player){
+        Player playerW = player[0];
+        Player playerB = player[1];
+        int[] wKingXY = new int[2];
+        int[] bKingXY = new int[2];
+        Piece wKing = playerW.getPieces().stream().filter(piece -> piece.getPieceSign() == 'K').findFirst().get();
+        Piece bKing = playerB.getPieces().stream().filter(piece -> piece.getPieceSign() == 'K').findFirst().get();
+        for (int i = 0; i < board.getGameBoard().length; i++) {
+            for (int j = 0; j < board.getGameBoard()[i].length; j++) {
+                if (board.getGameBoard()[i][j].getPiece() == wKing){
+                    wKingXY[0] = i;
+                    wKingXY[1] = j;
+                    return wKingXY;
+                }
+                if (board.getGameBoard()[i][j].getPiece() == bKing){
+                    bKingXY[0] = i;
+                    bKingXY[1] = j;
+                    return bKingXY;
+                }
+            }
+        }
+        return null;
     }
     protected boolean isFromEmpty(Board board, int from){
         //TODO implement isFromEmpty logic
