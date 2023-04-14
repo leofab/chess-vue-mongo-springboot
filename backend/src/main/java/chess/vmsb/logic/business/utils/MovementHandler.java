@@ -13,28 +13,27 @@ public class MovementHandler implements Functional{
     //TODO talks to VUE
 //    private UI userUI;
 
-    protected int[] getKingXY (Board board, Player[] player){
+    public int[] getKingXY (Board board, Player[] player){
         Player playerW = player[0];
         Player playerB = player[1];
         int[] wKingXY = new int[2];
         int[] bKingXY = new int[2];
+        int[] wbKingXY = new int[4];
         Piece wKing = playerW.getPieces().stream().filter(piece -> piece.getPieceSign() == 'K').findFirst().get();
         Piece bKing = playerB.getPieces().stream().filter(piece -> piece.getPieceSign() == 'K').findFirst().get();
         for (int i = 0; i < board.getGameBoard().length; i++) {
             for (int j = 0; j < board.getGameBoard()[i].length; j++) {
                 if (board.getGameBoard()[i][j].getPiece() == wKing){
-                    wKingXY[0] = i;
-                    wKingXY[1] = j;
-                    return wKingXY;
+                    wbKingXY[0] = i;
+                    wbKingXY[1] = j;
                 }
                 if (board.getGameBoard()[i][j].getPiece() == bKing){
-                    bKingXY[0] = i;
-                    bKingXY[1] = j;
-                    return bKingXY;
+                    wbKingXY[2] = i;
+                    wbKingXY[3] = j;
                 }
             }
         }
-        return null;
+        return wbKingXY;
     }
     protected boolean isFromEmpty(Board board, int from){
         //TODO implement isFromEmpty logic

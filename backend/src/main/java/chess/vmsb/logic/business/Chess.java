@@ -20,10 +20,13 @@ public class Chess extends ManagePlayerTurn {
         board.initComponent(playerW,playerB);
         System.out.println(board);
 
-        UserInterface userUI = new UserInterface();
-        userUI.performMove(board, players, userUI.inputMove());
+        MovementHandler move = new MovementHandler();
+        System.out.println(move.getKingXY(board,players));
 
-        System.out.println(board);
+//        UserInterface userUI = new UserInterface();
+//        userUI.performMove(board, players, userUI.inputMove());
+//
+//        System.out.println(board);
 
     }
 
