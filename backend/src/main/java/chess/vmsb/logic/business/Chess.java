@@ -13,13 +13,15 @@ public class Chess extends ManagePlayerTurn {
 
         Player playerW = new Player("joao",true);
         Player playerB = new Player("Maria",false);
+        Player[] players = {playerW,playerB};
 
         Board board = new Board(playerW,playerB);
         System.out.println(board);
 
         UserInterface userUI = new UserInterface();
-        userUI.inputMove();
+        userUI.performMove(board, players, userUI.inputMove());
 
+        System.out.println(board);
 
     }
 

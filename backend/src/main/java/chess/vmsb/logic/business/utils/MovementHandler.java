@@ -19,11 +19,11 @@ public class MovementHandler implements Functional{
         //TODO implement isFromEmpty logic
         return true;
     }
-    protected boolean isValidMove(Board board, int from, int to, int whichPlayer){
+    public boolean isValidMove(Board board, int from, int to, boolean whichPlayer){
         //TODO implement isValidMove logic
         return true;
     }
-    protected boolean isValidMove(Board board, ArrayList<ArrayList<Integer>> moveData, int whichPlayer){
+    protected boolean isValidMove(Board board, ArrayList<ArrayList<Integer>> moveData){
         //TODO implement isValidMove logic
         return true;
     }
@@ -129,8 +129,8 @@ public class MovementHandler implements Functional{
         }
 
         // Calculate the corresponding characters for file and rank
-        char fileChar = (char) ('a' + file - 1);
-        char rankChar = (char) ('1' + rank - 1);
+        char fileChar = (char) ('a' + file );
+        char rankChar = (char) ('1' + rank );
 
         // Create and return the char[] with file and rank characters
         return new char[] {fileChar, rankChar};
@@ -156,8 +156,8 @@ public class MovementHandler implements Functional{
         }
 
         // Calculate the corresponding numerical values for file and rank
-        int file = fileChar - 'a' + 1;
-        int rank = rankChar - '1' + 1;
+        int file = fileChar - 'a';
+        int rank = rankChar - '1';
 
         // Create and return the int[] with file and rank values
         return new int[] {file, rank};

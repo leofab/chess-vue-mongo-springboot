@@ -146,7 +146,7 @@ public class Board{
         for(int i = gameBoard.length-1; i >= 0; i--){
             for(int j = 0; j < gameBoard[i].length; j++){
 
-              System.out.print(gameBoard[i][j].getPiece() + " ");
+              System.out.print(gameBoard[i][j].getValue() + " ");
             }
             System.out.println();
         }
