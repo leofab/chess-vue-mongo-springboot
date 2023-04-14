@@ -1,18 +1,53 @@
-# Vue 3 + TypeScript + Vite
+# Chess Application 🏁
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This is a web-based open chess application built with Vue.js for the frontend, MongoDB for the database, Java for the chess logic, and SpringBoot for the backend requisitions and routing.
 
-## Recommended IDE Setup
+## Technologies Used 🛠️
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### Frontend:
 
-## Type Support For `.vue` Imports in TS
+Vite: Fast build tool and development server that is used in this project along with Vue.js for building the frontend. [https://vuejs.org/](Vite Documentation)🚀
+Vue.js: A progressive JavaScript framework for building user interfaces. [https://vuejs.org/](Vue.js Documentation)😎
+Vuex: A state management library for Vue.js that is used for managing the application's state. [https://vuex.vuejs.org/](Vuex Documentation)📊
+VueRouter: A routing library for Vue.js that is used for navigating between different views in the application. [https://router.vuejs.org/](VueRouter Documentation)🚦
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+### Backend:
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+SpringBoot: A Java-based framework that is used for building the backend of the application. It provides a simple and efficient way to build APIs and handle HTTP requests. [https://spring.io/projects/spring-boot](SpringBoot Documentation) 🚀
+MongoDB: A NoSQL database that is used for storing data related to the chess application. [https://docs.mongodb.com/](MongoDB Documentation) 📊
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### Java Chess Logic:
+
+DeepBlue UML: An inspiration for the chess business logic that is implemented in this project. [https://example.com/deepblue-uml](DeepBlue UML Reference) 📈
+
+## Workflow 🚀
+
+###Frontend Development:
+
+The frontend of the application is developed using Vue.js, Vuex, and VueRouter.
+Three main views are implemented: Home View, Login Screen, and Play Screen.
+The Home View includes six routes: "Play", "Learn", "Rank", "News", "Login In", and "Sign Up".
+The Login Screen includes Google Identity OAuth2 Google Button for tokenized login and registration.
+The Play Screen includes Board Square and Pieces views in SVG, with reactive grabbing and movement (yet to be implemented). 🖼️
+
+### Java Chess Logic:
+
+The chess business logic is implemented in Java, taking inspiration from DeepBlue UML. DeepBlue UML Reference 📈
+All the necessary models, such as Piece, Player, Board, and Square, are implemented with some methods yet to be implemented.
+Console display and movement logic and validation are implemented (validation still in progress). 💻
+
+### Backend Development:
+
+The backend of the application is implemented using SpringBoot and MongoDB.
+APIs and routes are implemented for handling HTTP requests from the frontend and interacting with the database.
+
+## Contribution 🤝
+👏 We welcome contributions to this project! If you would like to contribute, please follow these steps:
+
+Fork the repository and clone it to your local machine.
+Create a new branch for your changes.
+Make your changes and test them thoroughly.
+Commit your changes with descriptive commit messages.
+Push your changes to your forked repository.
+Create a pull request to the main repository, explaining your changes and how they improve the project.
+Let's work together to make this chess application even better! 🚀
