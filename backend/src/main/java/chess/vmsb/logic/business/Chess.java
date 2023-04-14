@@ -1,6 +1,7 @@
 package chess.vmsb.logic.business;
 
 import chess.vmsb.logic.business.board.Board;
+import chess.vmsb.logic.business.board.Square;
 import chess.vmsb.logic.business.models.Player;
 import chess.vmsb.logic.business.utils.ManagePlayerTurn;
 import chess.vmsb.logic.business.utils.MovementHandler;
@@ -16,6 +17,7 @@ public class Chess extends ManagePlayerTurn {
         Player[] players = {playerW,playerB};
 
         Board board = new Board(playerW,playerB);
+        board.initComponent(playerW,playerB);
         System.out.println(board);
 
         UserInterface userUI = new UserInterface();
