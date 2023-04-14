@@ -6,10 +6,14 @@ This is a web-based open chess application built with Vue.js for the frontend, M
 
 ### Frontend:
 
--Vite: Fast build tool and development server that is used in this project along with Vue.js for building the frontend. [!Vite Documentation](https://vuejs.org/)🚀
--Vue.js: A progressive JavaScript framework for building user interfaces. [!Vue.js Documentation](https://vuejs.org/)😎
--Vuex: A state management library for Vue.js that is used for managing the application's state. [!Vuex Documentation](https://vuex.vuejs.org/)📊
--VueRouter: A routing library for Vue.js that is used for navigating between different views in the application. [!VueRouter Documentation](https://router.vuejs.org/)🚦
+- Vite: Fast build tool and development server that is used in this project along with Vue.js for building the frontend. [!Vite Documentation](https://vuejs.org/)🚀
+
+- Vue.js: A progressive JavaScript framework for building user interfaces. [!Vue.js Documentation](https://vuejs.org/)😎
+
+- Vuex: A state management library for Vue.js that is used for managing the application's state. [!Vuex Documentation](https://vuex.vuejs.org/)📊
+
+- VueRouter: A routing library for Vue.js that is used for navigating between different views in the application. [!VueRouter Documentation](https://router.vuejs.org/)🚦
+
 
 ### Backend:
 
