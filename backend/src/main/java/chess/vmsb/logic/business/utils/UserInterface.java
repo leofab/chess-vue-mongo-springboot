@@ -49,7 +49,7 @@ public class UserInterface extends MovementHandler{
         if (fromSquare.getPiece() == null || toSquare.getPiece() != null) {
             System.out.println("Invalid move. Source square does not contain a piece or target square is not empty.");
             return false;
-        } else if(fromSquare.getPiece().isColor() == toSquare.getPiece().isColor()){
+        } else if(fromSquare.getPiece().isMoved() == toSquare.getPiece().isMoved()){
             System.out.println("Invalid move. You can't move your piece to a square occupied by your own piece.");
             return false;
         }

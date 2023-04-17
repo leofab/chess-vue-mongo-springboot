@@ -4,16 +4,7 @@ import chess.vmsb.logic.business.board.Board;
 
 import java.util.ArrayList;
 
-public class Piece {
-    protected boolean color;
-
-    public boolean isColor() {
-        return color;
-    }
-
-    public void setColor(boolean color) {
-        this.color = color;
-    }
+public abstract class Piece {
 
     private char pieceSign;
     private boolean moved;
@@ -21,20 +12,17 @@ public class Piece {
     private int dy;
     private ArrayList<int[]> lastMovePath;
 
-    public Piece(char pieceSign, boolean color) {
-        moved = false;
+    public Piece(char pieceSign, boolean moved) {
+
         this.pieceSign = pieceSign;
-        this.color = color;
+        this.moved = moved;
     }
 
     public Piece() {
 
     }
 
-    public boolean pieceVerifyMove(Board board, int[] from, int[] to){
-        //TODO implement the logic of pieceVerifyMove
-        return true;
-    }
+    public abstract boolean pieceVerifyMove(Board board, int[] from, int[] to);
 
     public void addMovePath(int coord){
         //TODO implement the logic of addMovePath
