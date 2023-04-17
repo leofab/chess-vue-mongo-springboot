@@ -2,11 +2,17 @@ package chess.vmsb.logic.business.utils;
 
 import java.util.ArrayList;
 
-public interface Functional {
-    ArrayList<Integer> splitCoordinatesString(String str);
-    int[] splitDataPair(ArrayList<Integer> data);
-    char[] toCharCoordinate(int cr);
-    int[] toIntCoordinate(String cr);
-    ArrayList<Integer> reverseCoordinate(ArrayList<Integer> coord);
-    Object deepCopy(Object odlObj);
+public class Functional {
+    public static ArrayList<Integer> splitCoordinatesString(String str){
+        ArrayList<Integer> coord= new ArrayList<>();
+        //to set 0,0 as upper left corner
+        coord.add(8-((int)str.charAt(1)-(int)'0'));//rows first
+        coord.add(((int)str.charAt(0))-((int)'A'));//cols second
+        return coord;
+    }
+
+    public static int[] splitDataPair(ArrayList<Integer> data){
+        int coord[]={data.get(0),data.get(1)};
+        return coord;
+    }
 }

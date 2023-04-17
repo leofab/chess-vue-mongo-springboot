@@ -4,15 +4,10 @@ import chess.vmsb.logic.business.board.Board;
 
 public class Rook extends Piece{
 
-    public Rook(char pieceSign) {
-        super(pieceSign);
+    public Rook(char pieceSign, boolean color) {
+        super(pieceSign, color);
     }
-
-    public Rook(boolean color){
-        super();
-    }
-
-    public boolean pieceVerifyMove(Board board, int[] from, int [] to){
+    public boolean pieceCheck(Board board, int[] from, int [] to){
         //TODO implement logic of pieceVerifyMove
         return true;
     }

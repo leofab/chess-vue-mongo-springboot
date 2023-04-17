@@ -4,15 +4,10 @@ import chess.vmsb.logic.business.board.Board;
 
 public class Queen extends Piece{
 
-        public Queen(char pieceSign) {
-            super(pieceSign);
+        public Queen(char pieceSign, boolean color) {
+            super(pieceSign,color);
         }
-
-        public Queen(boolean color){
-            super();
-        }
-
-        public boolean pieceVerifyMove(Board board, int[] from, int [] to){
+        public boolean pieceCheck(Board board, int[] from, int [] to){
             //TODO implement logic of pieceVerifyMove
             return true;
         }
