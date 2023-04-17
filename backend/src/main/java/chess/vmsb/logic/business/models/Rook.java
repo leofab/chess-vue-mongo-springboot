@@ -4,8 +4,8 @@ import chess.vmsb.logic.business.board.Board;
 
 public class Rook extends Piece{
 
-    public Rook(char pieceSign) {
-        super(pieceSign);
+    public Rook(char pieceSign, boolean color) {
+        super(pieceSign, color);
     }
 
     public Rook(boolean color){

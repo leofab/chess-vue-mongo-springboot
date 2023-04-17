@@ -5,8 +5,8 @@ import chess.vmsb.logic.business.board.Board;
 public class Pawn extends Piece {
 
 
-    public Pawn(char pieceSign) {
-        super(pieceSign);
+    public Pawn(char pieceSign, boolean color) {
+        super(pieceSign, color);
     }
 
     public Pawn(boolean color){

@@ -21,9 +21,10 @@ public class Piece {
     private int dy;
     private ArrayList<int[]> lastMovePath;
 
-    public Piece(char pieceSign) {
+    public Piece(char pieceSign, boolean color) {
         moved = false;
         this.pieceSign = pieceSign;
+        this.color = color;
     }
 
     public Piece() {

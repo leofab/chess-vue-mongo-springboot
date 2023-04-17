@@ -4,8 +4,8 @@ import chess.vmsb.logic.business.board.Board;
 
 public class Knight extends Piece{
 
-    public Knight(char pieceSign) {
-        super(pieceSign);
+    public Knight(char pieceSign, boolean color){
+        super(pieceSign, color);
     }
 
     public Knight(boolean color){

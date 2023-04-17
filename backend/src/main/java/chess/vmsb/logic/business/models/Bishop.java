@@ -4,8 +4,8 @@ import chess.vmsb.logic.business.board.Board;
 
 public class Bishop extends Piece {
 
-    public Bishop(char pieceSign) {
-        super(pieceSign);
+    public Bishop(char pieceSign, boolean color) {
+        super(pieceSign, color);
     }
 
     public Bishop(boolean color){
