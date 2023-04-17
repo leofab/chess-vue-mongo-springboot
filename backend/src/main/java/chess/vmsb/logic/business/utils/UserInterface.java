@@ -13,11 +13,11 @@ public class UserInterface {
     private static Scanner reader = new Scanner(System.in);
 
     public static void onError(){
-        System.out.println("Error!!, intente otra vez");
+        System.out.println("Erro de entrada, use valores entre 1 e 3");
     }
 
     private static void onDuplicateCoordinate(){
-        System.out.println("Error!!, Cooerdenadas iguales, intente otra vez");
+        System.out.println("Error: Coordenadas duplicadas");
     }
 
     public static void printBoard(Board board){
@@ -27,31 +27,31 @@ public class UserInterface {
 
     public static String readName(String col){
         System.out.println(divisor);
-        System.out.println("Ingrese nombre del jugador "+ col);
+        System.out.println("Nome do Jogador "+ col);
         return reader.next();
     }
 
     public static void welcome() {
         System.out.println(divisor);
-        System.out.println("Bienvenido al juego:!!");
+        System.out.println("Bem vindo ao Jogo");
     }
 
-    public static int menu() {
+    public static int readMenu() {
         System.out.println(divisor);
-        System.out.println("Seleccione una opcion");
-        System.out.println("1. Iniciar juego");
-        System.out.println("2. Salir");
+        System.out.println("Selecione uma opção");
+        System.out.println("1. Iniciar jogo");
+        System.out.println("2. Sair");
         return reader.nextInt();
     }
 
     public static void printCemetery(Player w, Player b) {
         System.out.println(divisor);
-        System.out.println("Cementerio: " );
-        System.out.println("Blancas->" );
+        System.out.println("Cemitério: " );
+        System.out.println("Brancas->" );
         for (int i=0;i<w.getCemetery().size();i++) {
             System.out.print(w.getCemetery().get(i).getPieceSign());
         }
-        System.out.println("Negras->" );
+        System.out.println("Pretas->" );
         for (int i=0;i<b.getCemetery().size();i++) {
             System.out.print(b.getCemetery().get(i).getPieceSign());
         }

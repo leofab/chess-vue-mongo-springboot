@@ -9,11 +9,6 @@ public class King extends Piece {
         super(pieceSign, color);
     }
 
-    public King(boolean color){
-        super();
-
-    }
-
     public boolean pieceVerifyMove(Board board, int[] from, int [] to){
         //TODO implement logic of pieceVerifyMove
         return true;

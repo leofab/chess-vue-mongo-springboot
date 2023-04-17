@@ -8,14 +8,12 @@ import chess.vmsb.logic.business.utils.UserInterface;
 import java.util.ArrayList;
 
 public class Chess {
-    public UserInterface userUI;
 
     public static void main(String[] args) {
+        UserInterface.welcome();
+        startGame();
     }
 
-    public void setUserUI(UserInterface userUI) {
-        this.userUI = userUI;
-    }
     public static void startGame(){
         boolean flag=true;
         do{
@@ -35,8 +33,8 @@ public class Chess {
     }
     private static void gameLoop(){
         Player player[]= new Player[2];
-        player[0]=new Player(UserInterface.readName("Blancas"), true);
-        player[1]= new Player(UserInterface.readName("Negras"), false);
+        player[0]=new Player(UserInterface.readName("Branco"), true);
+        player[1]= new Player(UserInterface.readName("Preto"), false);
 
         boolean flag=true;
         int turn=0;
@@ -46,6 +44,13 @@ public class Chess {
             UserInterface.printBoard(board);
             UserInterface.printCemetery(player[0],player[1]);
             ArrayList<ArrayList<Integer>> moveData = UserInterface.inputMove(player[turn]);
+            if(MovementHandler.isValidMove(board, moveData)){
+                MovementHandler.performMove(board, player,moveData);
+                if(turn==1)turn=0;//switch turn
+                else turn=1;
+            }else{
+                UI.onInvalidMove();
+            }
         }while (flag);
     }
 }

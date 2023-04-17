@@ -8,14 +8,6 @@ public class Pawn extends Piece {
     public Pawn(char pieceSign, boolean color) {
         super(pieceSign, color);
     }
-
-    public Pawn(boolean color){
-        this.color = color;
-
-    }
-
-
-
     public boolean pieceVerifyMove(Board board, int[] from, int [] to){
         //TODO implement logic of pieceVerifyMove
         return true;
