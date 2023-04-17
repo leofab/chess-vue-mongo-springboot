@@ -1,10 +1,16 @@
 package chess.vmsb.logic.business;
 
 import chess.vmsb.logic.business.board.Board;
+import chess.vmsb.logic.business.board.Square;
+import chess.vmsb.logic.business.models.King;
+import chess.vmsb.logic.business.models.Piece;
 import chess.vmsb.logic.business.models.Player;
+import chess.vmsb.logic.business.models.Rook;
 import chess.vmsb.logic.business.utils.ManagePlayerTurn;
 import chess.vmsb.logic.business.utils.MovementHandler;
 import chess.vmsb.logic.business.utils.UserInterface;
+
+import java.util.ArrayList;
 
 public class Chess extends ManagePlayerTurn {
     public UserInterface userUI;
@@ -16,12 +22,17 @@ public class Chess extends ManagePlayerTurn {
         Player[] players = {playerW,playerB};
 
         Board board = new Board(playerW,playerB);
-        System.out.println(board);
 
-        UserInterface userUI = new UserInterface();
-        userUI.performMove(board, players, userUI.inputMove());
+        board.initComponent(playerW,playerB);
 
         System.out.println(board);
+
+        MovementHandler move = new MovementHandler();
+
+//        UserInterface userUI = new UserInterface();
+//        userUI.performMove(board, players, userUI.inputMove());
+//
+//        System.out.println(board);
 
     }
 

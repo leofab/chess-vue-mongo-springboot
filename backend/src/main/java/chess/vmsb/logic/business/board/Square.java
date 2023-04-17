@@ -8,10 +8,9 @@ public class Square {
     private char value;
     private Piece piece;
 
-    public Square(int row, int col, char value) {
+    public Square(int row, int col) {
         this.row = row;
         this.col = col;
-        this.value = value;
     }
 
     public int getRow() {

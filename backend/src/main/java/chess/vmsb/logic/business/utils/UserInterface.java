@@ -10,93 +10,9 @@ import java.util.Scanner;
 
 public class UserInterface extends MovementHandler{
 
-//    + onWinMessage(Player player) : void
-    public void onWinMessage(Player player){
-
-    }
-
-//+ onTieMessage(Player]] player) : void
-    public void onTieMessage(Player[] player){
-    //TODO
-    }
-//+ messageStalemate() : void
-    public void messageStalemate(){
-    //TODO
-    }
-//+ onlnvalidMoveCheck(Player[] player, int turn) : void
-    public void onlnvalidMoveCheck(Player[] player, int turn){
-    //TODO
-    }
-//+ onCheck(Player[] player, int turn) : void
-    public void onCheck(Player[] player, int turn){
-    //TODO
-    }
-//
-//+ checkMate(Player[] player, int turn) : void
-    public void checkMate(Player[] player, int turn){
-    //TODO
-    }
-//
-//+ onQuitGame(Player player) : void
-    public void onQuitGame(Player player){
-    //TODO
-    }
-//
-//+ onError(int msg) : void
-    public void onError(int msg){
-    //TODO
-    }
-//
-//+ messageDrawFifty(Player[] player) : void
-    public void messageDrawFifty(Player[] player){
-    //TODO
-    }
-//
-//+ messageDrawKing(Player(] player) : void
-    public void messageDrawKing(Player[] player){
-    //TODO
-    }
-//
-//+ printBoard(Board board) : void
-    public void printBoard(Board board){
-    //TODO
-    }
-//
-//+ readName(String col) : String
-    public String readName(String col){
-    //TODO
-    return "";
-    }
-//
-//+ welcome) : void
-    public void welcome(){
-    //TODO
-    }
-//
-//+menu() : int
-    public int menu(){
-    //TODO
-    return 0;
-    }
-//
-//+ printCemetery(Player w, Player b) : void
-    public void printCemetery(Player w, Player b){
-    //TODO
-    }
-//
-//+ whosePlayer(Player player) : void
-    public void whosePlayer(Player player){
-    //TODO
-    }
-//
-//+ coordinateRead() : String
-    public String coordinateRead(){
-    //TODO
-    return "";
-    }
 //
 //+inputMove() : ArrayList<ArrayList<Integer>>
-    public ArrayList<ArrayList<Integer>> inputMove(){
+    public ArrayList<ArrayList<Integer>> inputMove(){ // Already transforms fileRank to Arraylist<ArrayList<Integer>>
         Scanner sc = new Scanner(System.in);
         ArrayList<ArrayList<Integer>> move = new ArrayList<>();
         System.out.println("Enter the coordinates of the piece you want to move: \n -> ");
@@ -132,6 +48,9 @@ public class UserInterface extends MovementHandler{
         // Validate if the 'from' square does not contains a piece and the 'to' square is empty
         if (fromSquare.getPiece() == null || toSquare.getPiece() != null) {
             System.out.println("Invalid move. Source square does not contain a piece or target square is not empty.");
+            return false;
+        } else if(fromSquare.getPiece().isColor() == toSquare.getPiece().isColor()){
+            System.out.println("Invalid move. You can't move your piece to a square occupied by your own piece.");
             return false;
         }
         // [Add additional logic to check if the move is valid based on your game rules]
@@ -172,41 +91,6 @@ public class UserInterface extends MovementHandler{
         }else {
             return new Object[]{board, player[0]};
         }
-    }
-
-
-
-    //+ askPromotioPiece(boolean color) : Piece
-    public Piece askPromotioPiece(boolean color){
-    //TODO
-    return null;
-    }
-//
-//+ movementOptions() : int
-    public int movementOptions(){
-    //TODO
-    return 0;
-    }
-//
-//+ showPlayHist(Player[] player) : void
-    public void showPlayHist(Player[] player){
-    //TODO
-    }
-//
-//+ overWriteMessage(String fileName) : boolean
-    public boolean overWriteMessage(String fileName){
-    //TODO
-    return false;
-    }
-//+ readPlayers() : Player[]
-    public Player[] readPlayers(){
-    //TODO
-    return null;
-    }
-//
-//+ createBoardinterface() : void
-    public void createBoardinterface(){
-    //TODO
     }
 
 }
