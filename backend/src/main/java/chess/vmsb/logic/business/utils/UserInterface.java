@@ -17,7 +17,15 @@ public class UserInterface {
     }
 
     private static void onDuplicateCoordinate(){
-        System.out.println("Error: Coordenadas duplicadas");
+        System.out.println(divisor);
+        System.out.println("\tError!!, Cooerdenadas iguales, intente otra vez");
+        System.out.println(divisor);
+    }
+
+    public static void onInvalidMove() {
+        System.out.println(divisor);
+        System.out.println("\tError!! Movimiento no valido, intente otra vez");
+        System.out.println(divisor);
     }
 
     public static void printBoard(Board board){

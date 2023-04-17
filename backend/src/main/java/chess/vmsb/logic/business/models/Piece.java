@@ -8,8 +8,8 @@ public abstract class Piece {
 
     private char pieceSign;
     private boolean moved;
-    private int dx;
-    private int dy;
+    private int[] dx;
+    private int[] dy;
     private ArrayList<int[]> lastMovePath;
 
     public Piece(char pieceSign, boolean moved) {
@@ -22,7 +22,7 @@ public abstract class Piece {
 
     }
 
-    public abstract boolean pieceVerifyMove(Board board, int[] from, int[] to);
+    public abstract boolean pieceCheck(Board board, int[] from, int[] to);
 
     public void addMovePath(int coord){
         //TODO implement the logic of addMovePath
@@ -44,19 +44,19 @@ public abstract class Piece {
         this.moved = moved;
     }
 
-    public int getDx() {
+    public int[] getDx() {
         return dx;
     }
 
-    public void setDx(int dx) {
+    public void setDx(int[] dx) {
         this.dx = dx;
     }
 
-    public int getDy() {
+    public int[] getDy() {
         return dy;
     }
 
-    public void setDy(int dy) {
+    public void setDy(int[] dy) {
         this.dy = dy;
     }
 

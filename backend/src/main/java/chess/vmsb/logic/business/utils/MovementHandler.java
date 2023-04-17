@@ -1,7 +1,6 @@
 package chess.vmsb.logic.business.utils;
 
 import chess.vmsb.logic.business.board.Board;
-import chess.vmsb.logic.business.board.Square;
 import chess.vmsb.logic.business.models.Piece;
 import chess.vmsb.logic.business.models.Player;
 
@@ -36,7 +35,7 @@ public class MovementHandler {
         return wbKingXY;
     }
 
-    protected static Board performMove(Board board, Player[] player, ArrayList<ArrayList<Integer>> moveData) {
+    public static Board performMove(Board board, Player[] player, ArrayList<ArrayList<Integer>> moveData) {
         int from[]=Functional.splitDataPair(moveData.get(0));//row,col
         int to[]=Functional.splitDataPair(moveData.get(1));//row,col
         return board;

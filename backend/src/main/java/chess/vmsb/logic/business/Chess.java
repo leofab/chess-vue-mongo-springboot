@@ -49,7 +49,7 @@ public class Chess {
                 if(turn==1)turn=0;//switch turn
                 else turn=1;
             }else{
-                UI.onInvalidMove();
+                UserInterface.onInvalidMove();
             }
         }while (flag);
     }
