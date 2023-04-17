@@ -35,7 +35,7 @@ public class MovementHandler {
         return wbKingXY;
     }
 
-    protected static Object[] performMove(Board board, Player[] player, ArrayList<ArrayList<Integer>> moveData) {
+    public static Object[] performMove(Board board, Player[] player, ArrayList<ArrayList<Integer>> moveData) {
         //need to return object and players
 
         int from[]=Functional.splitDataPair(moveData.get(0));//row,col
