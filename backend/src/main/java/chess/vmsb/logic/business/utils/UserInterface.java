@@ -18,13 +18,13 @@ public class UserInterface {
 
     private static void onDuplicateCoordinate(){
         System.out.println(divisor);
-        System.out.println("\tError!!, Cooerdenadas iguales, intente otra vez");
+        System.out.println("\tErro!!, Coordenadas iguais, digite novamente");
         System.out.println(divisor);
     }
 
     public static void onInvalidMove() {
         System.out.println(divisor);
-        System.out.println("\tError!! Movimiento no valido, intente otra vez");
+        System.out.println("\tErro!!, Coordenadas inválida, digite novamente");
         System.out.println(divisor);
     }
 
@@ -68,44 +68,40 @@ public class UserInterface {
 
 //
 //+inputMove() : ArrayList<ArrayList<Integer>>
-    public static ArrayList<ArrayList<Integer>> inputMove(Player player){ // Already transforms fileRank to Arraylist<ArrayList<Integer>>
-        Scanner sc = new Scanner(System.in);
-        ArrayList<ArrayList<Integer>> move = new ArrayList<>();
-        System.out.println("Enter the coordinates of the piece you want to move: \n -> ");
-        String coord = sc.nextLine();
-        int[] from = toIntCoordinate(coord);
-        move.add(new ArrayList<>(Arrays.asList(from[0], from[1])));
-        System.out.println("Enter the coordinates of the square you want to move to: \n -> ");
-        coord = sc.nextLine();
-        int[] to = toIntCoordinate(coord);
-        move.add(new ArrayList<>(Arrays.asList(to[0], to[1])));
-        return move;
+    private static String coordinateRead(){
+        String moveText= new String();
+            do{
+            moveText= reader.next();
+            if(!(moveText.charAt(0)>='a' && moveText.charAt(0)<='h' && moveText.charAt(1)>='1' && moveText.charAt(1)<='8')){
+                 onError();
+            }
+        }while(moveText.charAt(0)>='a' && moveText.charAt(0)<='h' && moveText.charAt(1)>='1' && moveText.charAt(1)<='8');
+        return moveText;
     }
 
-    public static int[] toIntCoordinate(String cr) {
-        // Convert the input String to lowercase to ensure case-insensitive comparison
-        cr = cr.toLowerCase();
+    public static ArrayList<ArrayList<Integer>> inputMove(Player player) {
+        String playerColor= (player.isColor())?"White":"Black";
+        boolean flag=true;
+        ArrayList<ArrayList<Integer>> moveCoordinates= new ArrayList<>();
 
-        // Check that the input String has exactly 2 characters
-        if (cr.length() != 2) {
-            throw new IllegalArgumentException("Input String must have exactly 2 characters");
-        }
+        do{
+            System.out.println(divisor);
+            System.out.println("Turno del jugador " + player.getName() + " - " + playerColor);
+            System.out.println("Ingrese Coordenadas de la pieza, es decir letra y numero, por");
+            System.out.println("ejemplo ->e4");
+            moveCoordinates.add(Functional.splitCoordinatesString(coordinateRead()));
+            System.out.println("Ingrese Coordenadas de destino de la misma forma:");
+            moveCoordinates.add(Functional.splitCoordinatesString(coordinateRead()));
 
-        // Extract the file (column) and rank (row) characters from the input String
-        char fileChar = cr.charAt(0);
-        char rankChar = cr.charAt(1);
+            if(moveCoordinates.get(0).equals(moveCoordinates.get(1))){//to avoid same coordinates input
+                onDuplicateCoordinate();
+                moveCoordinates.clear();
+            }else{
+                flag=false;
+            }
+        }while(flag);
 
-        // Check that the file and rank characters are valid
-        if (fileChar < 'a' || fileChar > 'h' || rankChar < '1' || rankChar > '8') {
-            throw new IllegalArgumentException("Invalid input String. Must be in the format 'fileRank', e.g., 'e4'");
-        }
-
-        // Calculate the corresponding numerical values for file and rank
-        int file = fileChar - 'a';
-        int rank = rankChar - '1';
-
-        // Create and return the int[] with file and rank values
-        return new int[] {file, rank};
+        return moveCoordinates;
     }
 
 
