@@ -166,8 +166,7 @@ public class Board{
         return gameBoard;
     }
 
-    @Override
-    public String toString() {
+    public String stringBoard() {
         for(int i = gameBoard.length-1; i >= 0; i--){
             for(int j = 0; j < gameBoard[i].length; j++){
 
