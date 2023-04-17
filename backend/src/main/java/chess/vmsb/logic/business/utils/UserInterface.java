@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class UserInterface {
     private static String divisor = "-------------------";
-    private static Scanner reader = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
 
     public static void onError(){
         System.out.println("Erro de entrada, use valores entre 1 e 3");
@@ -36,7 +36,7 @@ public class UserInterface {
     public static String readName(String col){
         System.out.println(divisor);
         System.out.println("Nome do Jogador "+ col);
-        return reader.next();
+        return sc.next();
     }
 
     public static void welcome() {
@@ -49,7 +49,7 @@ public class UserInterface {
         System.out.println("Selecione uma opção");
         System.out.println("1. Iniciar jogo");
         System.out.println("2. Sair");
-        return reader.nextInt();
+        return sc.nextInt();
     }
 
     public static void printCemetery(Player w, Player b) {
@@ -69,13 +69,16 @@ public class UserInterface {
 //
 //+inputMove() : ArrayList<ArrayList<Integer>>
     private static String coordinateRead(){
-        String moveText= new String();
-            do{
-            moveText= reader.next();
-            if(!(moveText.charAt(0)>='a' && moveText.charAt(0)<='h' && moveText.charAt(1)>='1' && moveText.charAt(1)<='8')){
-                 onError();
+        String moveText=new String();
+        boolean flag=true;
+        do{
+            moveText= sc.next();
+            if(moveText.charAt(0)>='a' && moveText.charAt(0)<='h' && moveText.charAt(1)>='1' && moveText.charAt(1)<='8'){
+                flag=false;
+            }else{
+                onError();
             }
-        }while(moveText.charAt(0)>='a' && moveText.charAt(0)<='h' && moveText.charAt(1)>='1' && moveText.charAt(1)<='8');
+        }while(flag);
         return moveText;
     }
 
@@ -86,11 +89,10 @@ public class UserInterface {
 
         do{
             System.out.println(divisor);
-            System.out.println("Turno del jugador " + player.getName() + " - " + playerColor);
-            System.out.println("Ingrese Coordenadas de la pieza, es decir letra y numero, por");
-            System.out.println("ejemplo ->e4");
+            System.out.println("Turno de " + player.getName() + " - " + playerColor);
+            System.out.println("Coloque as cordenadas de origem no formato rankFile : exemplo e2 e4");
             moveCoordinates.add(Functional.splitCoordinatesString(coordinateRead()));
-            System.out.println("Ingrese Coordenadas de destino de la misma forma:");
+            System.out.println("Coloque as coordenadas de destino:");
             moveCoordinates.add(Functional.splitCoordinatesString(coordinateRead()));
 
             if(moveCoordinates.get(0).equals(moveCoordinates.get(1))){//to avoid same coordinates input

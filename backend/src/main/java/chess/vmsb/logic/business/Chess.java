@@ -35,12 +35,12 @@ public class Chess {
         Player player[]= new Player[2];
         player[0]=new Player(UserInterface.readName("Branco"), true);
         player[1]= new Player(UserInterface.readName("Preto"), false);
+        Board board = new Board(player[0], player[1]);
 
         boolean flag=true;
         int turn=0;
 
         do{
-            Board board = new Board(player[0], player[1]);
             UserInterface.printBoard(board);
             UserInterface.printCemetery(player[0],player[1]);
             ArrayList<ArrayList<Integer>> moveData = UserInterface.inputMove(player[turn]);
