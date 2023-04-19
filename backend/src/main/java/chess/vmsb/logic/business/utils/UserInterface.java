@@ -111,7 +111,7 @@ public class UserInterface {
         ArrayList<Piece> values=new ArrayList<>(Arrays.asList(new Queen(color),
                 new Knight(color),new Rook(color),new Bishop(color)));
 
-        System.out.println("Seleccione pieza que quiere cambiar:");
+        System.out.println("Qual peça promover? :");
         System.out.println("1. Queen");
         System.out.println("2. Knight");
         System.out.println("3. Rook");
