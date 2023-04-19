@@ -1,8 +1,7 @@
 package chess.vmsb.logic.business.utils;
 import chess.vmsb.logic.business.board.Board;
 import chess.vmsb.logic.business.board.Square;
-import chess.vmsb.logic.business.models.Piece;
-import chess.vmsb.logic.business.models.Player;
+import chess.vmsb.logic.business.models.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,6 +103,30 @@ public class UserInterface {
         }while(flag);
 
         return moveCoordinates;
+    }
+
+    public static Piece askPromotioPiece(boolean color) {
+        Piece returnPiece;
+        //create pieces to return
+        ArrayList<Piece> values=new ArrayList<>(Arrays.asList(new Queen(color),
+                new Knight(color),new Rook(color),new Bishop(color)));
+
+        System.out.println("Seleccione pieza que quiere cambiar:");
+        System.out.println("1. Queen");
+        System.out.println("2. Knight");
+        System.out.println("3. Rook");
+        System.out.println("4. Bishop");
+
+        while(true){
+            int opt=sc.nextInt();
+            if(opt>=1 && opt<=4){
+                returnPiece= values.get(opt-1);
+                break;
+            }else{
+                onError();
+            }
+        }
+        return returnPiece;
     }
 
 

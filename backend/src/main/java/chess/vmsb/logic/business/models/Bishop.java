@@ -4,10 +4,14 @@ import chess.vmsb.logic.business.board.Board;
 
 public class Bishop extends Piece {
 
-    public Bishop(char pieceSign, boolean color) {
-        super(pieceSign, color);
+    public Bishop(char pieceSign) {
+        super(pieceSign);
         super.setDx(new int[]{-1,1,1,-1});//file
         super.setDy(new int[]{1,1,-1,-1});//rank
+    }
+
+    public Bishop(boolean color){
+        this((color)?'b':'B');
     }
     @Override
     public boolean pieceCheck(Board board, int[]from,int[]to){
@@ -33,18 +37,26 @@ public class Bishop extends Piece {
         return false;
     }
 
-    private boolean dfs(Board board,Piece sourceP, int[]from,int[]to,int x,int y){
+    private boolean dfs(Board board,Piece sourceP, int[]from,int[]to,int x,int y){  //not really a dfs, just a clever recursion
         while(true){
             if(from[0]+x<0 || from[0]+x>7)break;
-            if(from[0]+y<0 || from[0]+y>7)break;
-            if(board.getGameBoard()[from[0]+x][from[1]+y].getPiece()!=null)break;
+            if(from[1]+y<0 || from[1]+y>7)break;
 
             if(from[0]+x==to[0] && from[1]+y==to[1]){
+                if(board.getGameBoard()[to[0]][to[1]].getPiece()==null)return true; // true if there is no piece in that box
                 char pieceTo=board.getGameBoard()[to[0]][to[1]].getPiece().getPieceSign();
 
-                if(board.getGameBoard()[to[0]][to[1]].getPiece()==null)return true; // true if there is no piece in that box
-                return !(Character.isLowerCase(sourceP.getPieceSign()) && Character.isLowerCase(pieceTo));//false if there is a piece of the same color
+                if(Character.isLowerCase(sourceP.getPieceSign()) && Character.isUpperCase(pieceTo)){
+                    return true;
+                }
+                if(Character.isUpperCase(sourceP.getPieceSign()) && Character.isLowerCase(pieceTo)){
+                    return true;
+                }
+                break;
             }
+
+            if(board.getGameBoard()[from[0]+x][from[1]+y].getPiece()!=null)break;
+
             from[0]+=x;
             from[1]+=y;
             return dfs(board,sourceP,from,to,x,y);

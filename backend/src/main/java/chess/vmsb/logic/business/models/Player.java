@@ -27,12 +27,12 @@ public class Player {
             values="PRNBKQ";
         }
         //create pieces
-        for (int i = 0; i < 8; i++) pieces.add(new Pawn(values.charAt(0), color));
-        for (int i = 0; i < 2; i++) pieces.add(new Rook(values.charAt(1), color));
-        for (int i = 0; i < 2; i++) pieces.add(new Knight(values.charAt(2), color));
-        for (int i = 0; i < 2; i++) pieces.add(new Bishop(values.charAt(3), color));
-        pieces.add(new Queen(values.charAt(4), color));
-        pieces.add(new King(values.charAt(5), color));
+        for (int i = 0; i < 8; i++) pieces.add(new Pawn(values.charAt(0),false, color));
+        for (int i = 0; i < 2; i++) pieces.add(new Rook(values.charAt(1), false, color));
+        for (int i = 0; i < 2; i++) pieces.add(new Knight(values.charAt(2), false, color));
+        for (int i = 0; i < 2; i++) pieces.add(new Bishop(values.charAt(3), false, color));
+        pieces.add(new Queen(values.charAt(4), false, color));
+        pieces.add(new King(values.charAt(5), false, color));
     }
 
     public void addToHistory(int from, int to, Piece pieceFrom, Piece pieceTo, Piece promotionPiece){
@@ -81,6 +81,10 @@ public class Player {
 
     public void setHistory(ArrayList<String> history) {
         this.history = history;
+    }
+
+    public void addPieceCemetery(Piece cPiece){
+        this.cemetery.add(cPiece);
     }
 
     @Override

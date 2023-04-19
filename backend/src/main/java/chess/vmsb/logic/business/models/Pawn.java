@@ -3,8 +3,8 @@ package chess.vmsb.logic.business.models;
 import chess.vmsb.logic.business.board.Board;
 
 public class Pawn extends Piece {
-    public Pawn(char pieceSign, boolean moved) {
-        super(pieceSign, moved);
+    public Pawn(char pieceSign, boolean moved, boolean color) {
+        super(pieceSign, moved, color);
         //note, pawn has an extra move when it eats pieces, matrix also has to change according to its color
 
         if(Character.isLowerCase(pieceSign)){
