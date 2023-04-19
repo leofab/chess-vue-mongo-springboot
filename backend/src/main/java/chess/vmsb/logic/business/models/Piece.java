@@ -7,15 +7,24 @@ import java.util.ArrayList;
 public abstract class Piece {
 
     private char pieceSign;
-    private boolean moved;
+    private boolean moved = false;
     private int[] dx;
     private int[] dy;
+    private boolean color;
+
+    public boolean isColor() {
+        return color;
+    }
+
+    public void setColor(boolean color) {
+        this.color = color;
+    }
+
     private ArrayList<int[]> lastMovePath;
 
-    public Piece(char pieceSign, boolean moved) {
+    public Piece(char pieceSign) {
 
         this.pieceSign = pieceSign;
-        this.moved = moved;
     }
 
     public Piece() {

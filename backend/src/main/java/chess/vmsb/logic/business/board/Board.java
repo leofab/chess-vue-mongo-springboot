@@ -5,13 +5,8 @@ import chess.vmsb.logic.business.models.*;
 import java.util.ArrayList;
 
 public class Board{
-    private Player playerW;
-    private Player playerB;
     private Square[][] gameBoard;
 
-//    private Board(){
-//        super();
-//    }
 
     //Invoke Board with two players and set up the board with the pieces
     public Board (Player playerW, Player playerB){
