@@ -87,10 +87,6 @@ public class Player {
     }
 
 
-    public void addPieceCemetery(Piece cPiece){
-        this.cemetery.add(cPiece);
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
