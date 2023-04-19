@@ -75,6 +75,9 @@ public class Player {
         this.cemetery = cemetery;
     }
 
+    public void addPieceCemetery(Piece cPiece){
+        this.cemetery.add(cPiece);
+    }
     public ArrayList<String> getHistory() {
         return history;
     }
@@ -83,9 +86,10 @@ public class Player {
         this.history = history;
     }
 
+
     public void addPieceCemetery(Piece cPiece){
         this.cemetery.add(cPiece);
-    }
+
 
     @Override
     public boolean equals(Object o) {

@@ -41,6 +41,7 @@ public class MovementHandler {
         int from[]=Functional.splitDataPair(moveData.get(0));//row,col
         int to[]=Functional.splitDataPair(moveData.get(1));//row,col
 
+
         if(board.getGameBoard()[to[0]][to[1]].getPiece()!=null){// to add piece to cemetery
             Piece toDelete=board.getGameBoard()[to[0]][to[1]].getPiece();
             toDelete.setMoved(false);//in order to reboot it to initial state and perform .remove later
@@ -82,6 +83,7 @@ public class MovementHandler {
         int to[]=Functional.splitDataPair(moveData.get(1));//row,col
 
         if(board.getGameBoard()[from[0]][from[1]].getPiece()==null){
+
             return false;
         }else{
             Piece piece=board.getGameBoard()[from[0]][from[1]].getPiece();
@@ -89,6 +91,7 @@ public class MovementHandler {
                 return piece.pieceCheck(board,from,to);
             }
             if(Character.isUpperCase(piece.getPieceSign()) && whichPlayer==1){
+
                 return piece.pieceCheck(board,from,to);
             }
         }
