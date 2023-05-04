@@ -31,8 +31,8 @@ public class Player {
     for (int i = 0; i < 2; i++) pieces.add(new Rook(values.charAt(1)));
     for (int i = 0; i < 2; i++) pieces.add(new Knight(values.charAt(2)));
     for (int i = 0; i < 2; i++) pieces.add(new Bishop(values.charAt(3)));
-    pieces.add(new Queen(values.charAt(4)));
-    pieces.add(new King(values.charAt(5)));
+    pieces.add(new Queen(values.charAt(5)));
+    pieces.add(new King(values.charAt(4)));
   }
 
   public void addToHistory(int from, int to, Piece pieceFrom, Piece pieceTo, Piece promotionPiece){
