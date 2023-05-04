@@ -11,8 +11,28 @@ public class UserInterface {
   private static String divisor = "-------------------";
   private static Scanner sc = new Scanner(System.in);
 
+  public static void onWinMessage(Player player){
+    System.out.println(divisor);
+    System.out.println("\tJogador " + player.getName() + " ganhou!!");
+    System.out.println(divisor);
+  }
+
+  public static void onTieMessage(Player[] player){
+    System.out.println(divisor);
+    System.out.println("\tEmpate");
+    System.out.println(divisor);
+  }
+
+  public static void onQuitGame(Player player) {
+    System.out.println(divisor);
+    System.out.println(player.getName() + "abandonou a partida");
+    System.out.println(divisor);
+  }
+
   public static void onError(){
+    System.out.println(divisor);
     System.out.println("Erro de entrada, use valores entre 1 e 3");
+    System.out.println(divisor);
   }
 
   private static void onDuplicateCoordinate(){
@@ -127,6 +147,49 @@ public class UserInterface {
       }
     }
     return returnPiece;
+  }
+
+  public static int movementOptions() {
+    int dataRead;
+
+    System.out.println(divisor);
+    System.out.println("Selecione uma opção");
+    System.out.println("1. Fazer jogada");
+    System.out.println("2. Ver histórico de jogadas");
+    System.out.println("3. Sair");
+    while(true){
+      dataRead=sc.nextInt();
+      if(dataRead>=1 && dataRead<=3){
+        break;
+      }else{
+        onError();
+      }
+    }
+    return dataRead;
+  }
+
+  public static void showPlayHist(Player[] player) {
+    int it=0;
+    System.out.println(divisor);
+    System.out.println("Histórico de jogadas:");
+    System.out.println("   Brancas \tPretas");
+    while (true){
+      System.out.print(it+". ");
+      if(it<player[0].getHistory().size())System.out.print(player[0].getHistory().get(it)+"\t");
+      else System.out.print("        "+"\t");
+
+      if(it<player[1].getHistory().size())System.out.print(player[1].getHistory().get(it));
+      else System.out.print("        ");
+      System.out.println("");
+      if(it>=player[0].getHistory().size() && it>=player[0].getHistory().size()){
+        break;
+      }
+      it++;
+    }
+  }
+
+  public static void castleFail() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 
 

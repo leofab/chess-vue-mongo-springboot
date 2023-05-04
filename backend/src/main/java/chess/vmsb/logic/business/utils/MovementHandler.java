@@ -35,6 +35,47 @@ public class MovementHandler {
     return wbKingXY;
   }
 
+  static boolean isKingFrom(Board board,ArrayList<ArrayList<Integer>> moveData) {
+    int from[]=Functional.splitDataPair(moveData.get(0));//row,col
+    return (board.getGameBoard()[from[0]][from[1]].getPiece().getClass().toString().equals("class data.King"));
+  }
+
+  static boolean isRookTo(Board board,ArrayList<ArrayList<Integer>> moveData) {
+    int to[]=Functional.splitDataPair(moveData.get(1));//row,col
+    return (board.getGameBoard()[to[0]][to[1]].getPiece().getClass().toString().equals("class data.Rook"));
+  }
+
+  static boolean canCastle(Board board, ArrayList<ArrayList<Integer>> moveData, byte turn) {
+    int from[]=Functional.splitDataPair(moveData.get(0));//row,col
+    int to[]=Functional.splitDataPair(moveData.get(1));//row,col
+
+    if(!(MovementHandler.isKingFrom(board,moveData) && MovementHandler.isRookTo(board,moveData))){
+      return false;
+    }
+
+    Piece king =board.getGameBoard()[from[0]][from[1]].getPiece();
+    Piece rook =board.getGameBoard()[to[0]][from[0]].getPiece();
+
+    if(king.isMoved() || rook.isMoved())return false;
+
+    int op=(from[1]>to[1])?-1:1;
+    for(int i=0;i!=to[i];from[i]+=op){
+      if(board.getGameBoard()[from[0]][i].getPiece()!=null)return false;
+    }
+
+    return true;
+  }
+
+  protected static boolean isCheck(){
+    //TODO
+    return false;
+  }
+
+  protected static boolean isCheckMate(){
+    //TODO
+    return false;
+  }
+
   public static Object[] performCastling(Board board, Player[] player, ArrayList<ArrayList<Integer>> moveData) {
     //need to return object and players
     int from[]=Functional.splitDataPair(moveData.get(0));//row,col
