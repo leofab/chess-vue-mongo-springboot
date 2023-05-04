@@ -33,6 +33,7 @@ public class UserInterface {
     System.out.println(divisor);
     System.out.println("Erro de entrada, use valores entre 1 e 3");
     System.out.println(divisor);
+
   }
 
   private static void onDuplicateCoordinate(){
@@ -145,6 +146,7 @@ public class UserInterface {
       }else{
         onError();
       }
+
     }
     return returnPiece;
   }
@@ -190,6 +192,7 @@ public class UserInterface {
 
   public static void castleFail() {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
   }
 
 

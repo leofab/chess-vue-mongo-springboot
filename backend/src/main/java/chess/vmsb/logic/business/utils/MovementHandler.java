@@ -173,6 +173,7 @@ public class MovementHandler {
       }
       if(Character.isUpperCase(piece.getPieceSign()) && whichPlayer==1){
 
+
         return piece.pieceCheck(board,from,to);
       }
     }
