@@ -1,5 +1,7 @@
 package chess.vmsb.logic.business.models;
 
+import chess.vmsb.logic.business.utils.Functional;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -31,12 +33,30 @@ public class Player {
     for (int i = 0; i < 2; i++) pieces.add(new Rook(values.charAt(1)));
     for (int i = 0; i < 2; i++) pieces.add(new Knight(values.charAt(2)));
     for (int i = 0; i < 2; i++) pieces.add(new Bishop(values.charAt(3)));
-    pieces.add(new Queen(values.charAt(4)));
-    pieces.add(new King(values.charAt(5)));
+
+    pieces.add(new Queen(values.charAt(5)));
+    pieces.add(new King(values.charAt(4)));
   }
 
-  public void addToHistory(int from, int to, Piece pieceFrom, Piece pieceTo, Piece promotionPiece){
-    //TODO create logic of addToHistory
+  public void addToHistory(int[] from, int[] to, Piece pieceFrom, Piece pieceTo, Piece promotionPiece){
+    String toAdd= new String();
+    if(pieceFrom.getPieceSign()!='p' && pieceFrom.getPieceSign()!='P')
+      toAdd+=Character.toUpperCase(pieceFrom.getPieceSign());
+
+    toAdd+= Functional.toCharCoordinate(from[1]);
+    toAdd+=Integer.toString(8-from[0]);
+
+    if(pieceTo==null)toAdd+="-";
+    else toAdd+="x";
+
+    toAdd+=Functional.toCharCoordinate(to[1]);
+    toAdd+=Integer.toString(8-to[0]);
+
+    if(promotionPiece!=null){
+      toAdd+="=" + Character.toUpperCase(promotionPiece.getPieceSign());
+    }
+    history.add(toAdd);
+
   }
 
   public void addToHistory(String str){
@@ -86,17 +106,17 @@ public class Player {
     this.history = history;
   }
 
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Player player = (Player) o;
+      return color == player.color && name.equals(player.name) && pieces.equals(player.pieces) && cemetery.equals(player.cemetery) && history.equals(player.history);
+    }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Player player = (Player) o;
-    return color == player.color && name.equals(player.name) && pieces.equals(player.pieces) && cemetery.equals(player.cemetery) && history.equals(player.history);
+    @Override
+    public int hashCode() {
+      return Objects.hash(name, color, pieces, cemetery, history);
+    }
   }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, color, pieces, cemetery, history);
-  }
-}
