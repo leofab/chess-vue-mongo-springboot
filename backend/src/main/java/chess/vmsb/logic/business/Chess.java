@@ -2,8 +2,10 @@ package chess.vmsb.logic.business;
 
 import chess.vmsb.logic.business.board.Board;
 import chess.vmsb.logic.business.models.Player;
+import chess.vmsb.logic.business.utils.ManagePlayerTurn;
 import chess.vmsb.logic.business.utils.MovementHandler;
 import chess.vmsb.logic.business.utils.UserInterface;
+import org.apache.catalina.User;
 
 import java.util.ArrayList;
 
@@ -17,6 +19,7 @@ public class Chess {
   public static void startGame(){
     boolean flag=true;
     do{
+      ManagePlayerTurn.setTurn((byte)0);
       int readValue= UserInterface.readMenu();
       switch (readValue) {
         case 1:
@@ -43,6 +46,7 @@ public class Chess {
     do{
       UserInterface.printBoard(board);
       UserInterface.printCemetery(player[0],player[1]);
+      UserInterface.whosePlayer(player[ManagePlayerTurn.getTurn()]);
       ArrayList<ArrayList<Integer>> moveData = UserInterface.inputMove(player[turn]);
       if(MovementHandler.isValidMove(board, moveData,turn)){//missing if it is check, checkmate conditions, PUT IT LATER
         Object boardPlayer[]=MovementHandler.performMove(board, player,moveData);

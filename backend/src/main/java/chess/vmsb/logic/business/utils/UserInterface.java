@@ -85,6 +85,12 @@ public class UserInterface {
     System.out.println(divisor);
   }
 
+  public static void whosePlayer(Player player){
+    String playerColor= (player.isColor())?"Branco":"Preto";
+    System.out.println(divisor);
+    System.out.println("Turno do Jogador " + player.getName() + " - " + playerColor);
+  }
+
   //
 //+inputMove() : ArrayList<ArrayList<Integer>>
   private static String coordinateRead(){
