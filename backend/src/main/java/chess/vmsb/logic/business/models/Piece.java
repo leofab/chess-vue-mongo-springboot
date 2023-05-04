@@ -6,83 +6,83 @@ import java.util.ArrayList;
 
 public abstract class Piece {
 
-    private char pieceSign;
-    private boolean moved = false;
-    private int[] dx;
-    private int[] dy;
-    private boolean color;
+  private char pieceSign;
+  private boolean moved = false;
+  private int[] dx;
+  private int[] dy;
+  private boolean color;
 
-    public boolean isColor() {
-        return color;
-    }
+  public boolean isColor() {
+    return color;
+  }
 
-    public void setColor(boolean color) {
-        this.color = color;
-    }
+  public void setColor(boolean color) {
+    this.color = color;
+  }
 
-    private ArrayList<int[]> lastMovePath;
+  private ArrayList<int[]> lastMovePath;
 
-    public Piece(char pieceSign) {
+  public Piece(char pieceSign) {
 
-        this.pieceSign = pieceSign;
-    }
+    this.pieceSign = pieceSign;
+  }
 
-    public Piece() {
+  public Piece() {
 
-    }
+  }
 
-    public abstract boolean pieceCheck(Board board, int[] from, int[] to);
+  public abstract boolean pieceCheck(Board board, int[] from, int[] to);
 
-    public void addMovePath(int coord){
-        //TODO implement the logic of addMovePath
-    }
+  public void addMovePath(int coord){
+    //TODO implement the logic of addMovePath
+  }
 
-    public char getPieceSign() {
-        return pieceSign;
-    }
+  public char getPieceSign() {
+    return pieceSign;
+  }
 
-    public void setPieceSign(char pieceSign) {
-        this.pieceSign = pieceSign;
-    }
+  public void setPieceSign(char pieceSign) {
+    this.pieceSign = pieceSign;
+  }
 
-    public boolean isMoved() {
-        return moved;
-    }
+  public boolean isMoved() {
+    return moved;
+  }
 
-    public void setMoved(boolean moved) {
-        this.moved = moved;
-    }
+  public void setMoved(boolean moved) {
+    this.moved = moved;
+  }
 
-    public int[] getDx() {
-        return dx;
-    }
+  public int[] getDx() {
+    return dx;
+  }
 
-    public void setDx(int[] dx) {
-        this.dx = dx;
-    }
+  public void setDx(int[] dx) {
+    this.dx = dx;
+  }
 
-    public int[] getDy() {
-        return dy;
-    }
+  public int[] getDy() {
+    return dy;
+  }
 
-    public void setDy(int[] dy) {
-        this.dy = dy;
-    }
+  public void setDy(int[] dy) {
+    this.dy = dy;
+  }
 
-    public ArrayList<int[]> getLastMovePath() {
-        return lastMovePath;
-    }
+  public ArrayList<int[]> getLastMovePath() {
+    return lastMovePath;
+  }
 
-    public void setLastMovePath(ArrayList<int[]> lastMovePath) {
-        this.lastMovePath = lastMovePath;
-    }
+  public void setLastMovePath(ArrayList<int[]> lastMovePath) {
+    this.lastMovePath = lastMovePath;
+  }
 
-    @Override
-    public String toString() {
-        return "Piece{" +
-                "pieceSign=" + pieceSign +
-                ", dx=" + dx +
-                ", dy=" + dy +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "Piece{" +
+        "pieceSign=" + pieceSign +
+        ", dx=" + dx +
+        ", dy=" + dy +
+        '}';
+  }
 }
