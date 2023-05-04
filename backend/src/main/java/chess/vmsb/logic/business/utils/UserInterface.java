@@ -33,6 +33,7 @@ public class UserInterface {
     System.out.println(divisor);
     System.out.println("Erro de entrada, use valores entre 1 e 3");
     System.out.println(divisor);
+
   }
 
   private static void onDuplicateCoordinate(){
@@ -107,15 +108,14 @@ public class UserInterface {
     return moveText;
   }
 
-  public static ArrayList<ArrayList<Integer>> inputMove(Player player) {
-    String playerColor= (player.isColor())?"White":"Black";
+  public static ArrayList<ArrayList<Integer>> inputMove() {
     boolean flag=true;
     ArrayList<ArrayList<Integer>> moveCoordinates= new ArrayList<>();
 
     do{
       System.out.println(divisor);
-      System.out.println("Turno de " + player.getName() + " - " + playerColor);
       System.out.println("Coloque as cordenadas de origem no formato rankFile : exemplo e2 e4");
+      System.out.println("Para rookar coloque o rei na origem e a torre no destino");
       moveCoordinates.add(Functional.splitCoordinatesString(coordinateRead()));
       System.out.println("Coloque as coordenadas de destino:");
       moveCoordinates.add(Functional.splitCoordinatesString(coordinateRead()));
@@ -151,6 +151,7 @@ public class UserInterface {
       }else{
         onError();
       }
+
     }
     return returnPiece;
   }
@@ -196,6 +197,7 @@ public class UserInterface {
 
   public static void castleFail() {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
   }
 
 

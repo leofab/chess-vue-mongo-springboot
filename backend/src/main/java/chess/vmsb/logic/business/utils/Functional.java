@@ -16,6 +16,7 @@ public class Functional {
     return coord;
   }
 
+
   public static char toCharCoordinate(int cr){
     return (char)(cr+((int)'a'));
   }

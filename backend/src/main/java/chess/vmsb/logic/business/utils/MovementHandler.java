@@ -45,7 +45,7 @@ public class MovementHandler {
     return (board.getGameBoard()[to[0]][to[1]].getPiece().getClass().toString().equals("class data.Rook"));
   }
 
-  static boolean canCastle(Board board, ArrayList<ArrayList<Integer>> moveData, byte turn) {
+  public static boolean canCastle(Board board, ArrayList<ArrayList<Integer>> moveData, byte turn) {
     int from[]=Functional.splitDataPair(moveData.get(0));//row,col
     int to[]=Functional.splitDataPair(moveData.get(1));//row,col
 
@@ -66,7 +66,7 @@ public class MovementHandler {
     return true;
   }
 
-  protected static boolean isCheck(){
+  public static boolean isCheck(){
     //TODO
     return false;
   }
@@ -172,6 +172,7 @@ public class MovementHandler {
         return piece.pieceCheck(board,from,to);
       }
       if(Character.isUpperCase(piece.getPieceSign()) && whichPlayer==1){
+
 
         return piece.pieceCheck(board,from,to);
       }
