@@ -78,31 +78,49 @@ public class MovementHandler {
 
   public static Object[] performCastling(Board board, Player[] player, ArrayList<ArrayList<Integer>> moveData) {
     //need to return object and players
+
     int from[]=Functional.splitDataPair(moveData.get(0));//row,col
     int to[]=Functional.splitDataPair(moveData.get(1));//row,col
 
-    Piece king = board.getGameBoard()[from[0]][from[1]].getPiece();
-    Piece rook = board.getGameBoard()[to[0]][to[1]].getPiece();
-    int who=(Character.isLowerCase(king.getPieceSign()))?0:1;
-
-    board.getGameBoard()[from[0]][from[1]].setPiece(null);//clear unused pieces
-    board.getGameBoard()[to[0]][to[1]].setPiece(null);
-
-    king.setMoved(true);
-    rook.setMoved(true);
-
-    if(Math.abs(from[1]-to[1])==3){
-      //short castling
-      board.getGameBoard()[from[0]][6].setPiece(king);
-      board.getGameBoard()[to[0]][5].setPiece(rook);
-      player[who].addToHistory("0-0");
-    }else{
-      //long castling
-      board.getGameBoard()[from[0]][2].setPiece(king);
-      board.getGameBoard()[to[0]][3].setPiece(rook);
-      player[who].addToHistory("0-0-0");
+    if(board.getGameBoard()[to[0]][to[1]].getPiece()!=null){// to add piece to cemetery
+      Piece toDelete=board.getGameBoard()[to[0]][to[1]].getPiece();
+      toDelete.setMoved(false);//in order to reboot it to initial state and perform .remove later
+      if(Character.isLowerCase(toDelete.getPieceSign())){
+        player[0].addPieceCemetery(toDelete);
+        player[0].getPieces().remove(toDelete);// only removes first occurrence of the piece
+      }else{
+        player[1].addPieceCemetery(toDelete);
+        player[1].getPieces().remove(toDelete);// only removes first occurrence of the piece
+      }
     }
 
+    Piece toSet=board.getGameBoard()[from[0]][from[1]].getPiece();
+    Piece originalPiece=toSet;
+
+    //PawnPromotion
+    char cmp=toSet.getPieceSign();
+    int pos=(cmp=='p')?0:(cmp=='P')?7:-1;
+    int who=(Character.isLowerCase(cmp))?0:1;
+
+    if ((cmp=='p' || cmp=='P') && pos==to[0]){
+      toSet.setMoved(false);
+      player[who].getPieces().remove(toSet);
+
+      toSet=UserInterface.askPromotioPiece((cmp=='p')?true:false);
+      player[who].getPieces().add(toSet);
+
+      player[who].addToHistory(from, to, board.getGameBoard()[from[0]][from[1]].getPiece(),
+          board.getGameBoard()[to[0]][to[1]].getPiece(), toSet);
+    }else{
+      // in case there is no promotion
+      player[who].addToHistory(from, to, board.getGameBoard()[from[0]][from[1]].getPiece(),
+          board.getGameBoard()[to[0]][to[1]].getPiece(), null);
+    }
+
+
+    toSet.setMoved(true);
+    board.getGameBoard()[to[0]][to[1]].setPiece(toSet);//moves piece
+    board.getGameBoard()[from[0]][from[1]].setPiece(null);//clears square from
     Object dataReturn[]= {board,player};
 
     return dataReturn;
