@@ -23,15 +23,52 @@ public class UserInterface {
     System.out.println(divisor);
   }
 
+  public static void messageStalemate(){
+    System.out.println(divisor);
+    System.out.println("\tEmpate por afogamento");
+    System.out.println(divisor);
+  }
+
+  public static void onInvalidMoveCheck(Player[] player, int turn){
+    System.out.println(divisor);
+    System.out.println("\tJogador " + player[turn].getName() + " está em xeque, movimento inválido");
+    System.out.println(divisor);
+  }
+
+  public static void onCheck(Player[] player, int turn){
+    System.out.println(divisor);
+    System.out.println("\tJogador " + player[turn].getName() + " está em xeque");
+    System.out.println(divisor);
+  }
+
+  public static void checkMate(Player[] player, int turn){
+    System.out.println(divisor);
+    System.out.println("\tJogador " + player[turn].getName() + " perdeu");
+    System.out.println(divisor);
+  }
+
+
   public static void onQuitGame(Player player) {
     System.out.println(divisor);
     System.out.println(player.getName() + "abandonou a partida");
     System.out.println(divisor);
   }
 
-  public static void onError(){
+  public static String messages[]= new String[]{"Opção inválida","Não há peça na posição selecionada"
+      ,"Digite valor numérico","Digite uma coordenada válida com letra e número"
+      ,"Coordenadas erradas ou fora do limite","Movimento inválido"
+      ,"Coordenadas iguais","Movimento inválido"};
+
+  public static void onError(int msg){
     System.out.println(divisor);
-    System.out.println("Erro de entrada, use valores entre 1 e 3");
+    System.out.println("\tError!!");
+
+    if(msg<0 || msg>=messages.length){
+      System.out.println("\tMensagem não encontrada");
+    }else{
+      System.out.println("\t"+messages[msg]);
+    }
+    System.out.println("\t Digite novamente");
     System.out.println(divisor);
 
   }
@@ -45,6 +82,18 @@ public class UserInterface {
   public static void onInvalidMove() {
     System.out.println(divisor);
     System.out.println("\tErro!!, Coordenadas inválida, digite novamente");
+    System.out.println(divisor);
+  }
+
+  public static void messageDrawFifty(Player[] player){
+    System.out.println(divisor);
+    System.out.println("\tEmpate, ambos jogadores ficaram 50 jogadas sem captura ou movimento de peão");
+    System.out.println(divisor);
+  }
+
+  public static void messageDrawKing(Player[] player){
+    System.out.println(divisor);
+    System.out.println("\tEmpate, ambos jogadores ficaram apenas com o rei");
     System.out.println(divisor);
   }
 
@@ -66,10 +115,26 @@ public class UserInterface {
 
   public static int readMenu() {
     System.out.println(divisor);
-    System.out.println("Selecione uma opção");
-    System.out.println("1. Iniciar jogo");
-    System.out.println("2. Sair");
-    return sc.nextInt();
+    String opt;
+    int out;
+    while(true){
+      System.out.println("Seleccione una opcion");
+      System.out.println("1. Nuevo Juego");
+      System.out.println("2. Cargar Juego");
+      System.out.println("3. Salir");
+      try{
+        opt=sc.next();
+        out=Integer.parseInt(opt);
+        if(out>=1 && out<=3){
+          break;
+        }else{
+          onError(0);
+        }
+      }catch(NumberFormatException e){
+        onError(2);
+      }
+    }
+    return out;
   }
 
   public static void printCemetery(Player w, Player b) {
@@ -95,17 +160,22 @@ public class UserInterface {
   //
 //+inputMove() : ArrayList<ArrayList<Integer>>
   private static String coordinateRead(){
-    String moveText=new String();
+    String coord=new String();
     boolean flag=true;
     do{
-      moveText= sc.next();
-      if(moveText.charAt(0)>='a' && moveText.charAt(0)<='h' && moveText.charAt(1)>='1' && moveText.charAt(1)<='8'){
+      coord= sc.next();
+      if(coord.length()!=2){
+        onError(3);
+        continue;
+      }
+      coord=coord.toLowerCase();
+      if(coord.charAt(0)>='a' && coord.charAt(0)<='h' && coord.charAt(1)>='1' && coord.charAt(1)<='8'){
         flag=false;
       }else{
-        onError();
+        onError(4);
       }
     }while(flag);
-    return moveText;
+    return coord;
   }
 
   public static ArrayList<ArrayList<Integer>> inputMove() {
@@ -121,7 +191,7 @@ public class UserInterface {
       moveCoordinates.add(Functional.splitCoordinatesString(coordinateRead()));
 
       if(moveCoordinates.get(0).equals(moveCoordinates.get(1))){//to avoid same coordinates input
-        onDuplicateCoordinate();
+        onError(6);
         moveCoordinates.clear();
       }else{
         flag=false;
@@ -133,46 +203,56 @@ public class UserInterface {
 
   public static Piece askPromotioPiece(boolean color) {
     Piece returnPiece;
-    //create pieces to return
+    String opt;
+    int out;
     ArrayList<Piece> values=new ArrayList<>(Arrays.asList(new Queen(color),
         new Knight(color),new Rook(color),new Bishop(color)));
-
-    System.out.println("Qual peça promover? :");
-    System.out.println("1. Queen");
-    System.out.println("2. Knight");
-    System.out.println("3. Rook");
-    System.out.println("4. Bishop");
-
     while(true){
-      int opt=sc.nextInt();
-      if(opt>=1 && opt<=4){
-        returnPiece= values.get(opt-1);
-        break;
-      }else{
-        onError();
+      System.out.println(divisor);
+      System.out.println("Seleccione pieza que quiere cambiar:");
+      System.out.println("1. Queen");
+      System.out.println("2. Knight");
+      System.out.println("3. Rook");
+      System.out.println("4. Bishop");
+      try{
+        opt=sc.next();
+        out=Integer.parseInt(opt);
+        if(out>=1 && out<=4){
+          returnPiece= values.get(out-1);
+          break;
+        }else{
+          onError(0);
+        }
+      }catch (NumberFormatException e){
+        onError(2);
       }
-
     }
     return returnPiece;
   }
 
   public static int movementOptions() {
-    int dataRead;
-
-    System.out.println(divisor);
-    System.out.println("Selecione uma opção");
-    System.out.println("1. Fazer jogada");
-    System.out.println("2. Ver histórico de jogadas");
-    System.out.println("3. Sair");
+    int out;
+    String opt;
     while(true){
-      dataRead=sc.nextInt();
-      if(dataRead>=1 && dataRead<=3){
-        break;
-      }else{
-        onError();
+      System.out.println(divisor);
+      System.out.println("Seleccione una opcion:");
+      System.out.println("1. Realizar movimiento");
+      System.out.println("2. Mostrar historial de jugadas (notacion LAN)");
+      System.out.println("3. Guardar juego");
+      System.out.println("4. Retirarse");
+      try{
+        opt=sc.next();
+        out=Integer.parseInt(opt);
+        if(out>=1 && out<=4){
+          break;
+        }else{
+          onError(0);
+        }
+      }catch(NumberFormatException e){
+        onError(2);
       }
     }
-    return dataRead;
+    return out;
   }
 
   public static void showPlayHist(Player[] player) {
