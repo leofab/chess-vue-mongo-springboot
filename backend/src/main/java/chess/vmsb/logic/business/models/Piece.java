@@ -2,6 +2,7 @@ package chess.vmsb.logic.business.models;
 
 import chess.vmsb.logic.business.board.Board;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public abstract class Piece {
@@ -16,7 +17,6 @@ public abstract class Piece {
 
 
   public Piece(char pieceSign) {
-
     this.pieceSign = pieceSign;
   }
 

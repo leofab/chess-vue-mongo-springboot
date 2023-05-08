@@ -16,6 +16,29 @@ public class Rook extends Piece{
   }
 
   @Override
+  public boolean pieceVerifyMove(Board board, int[] from, int[] to) {
+    int myDx[] =super.getDx();
+    int myDy[] =super.getDy();
+
+    if(from[0]==to[0] || from[1]==to[1]){
+      Piece sourceP=board.getGameBoard()[from[0]][from[1]].getPiece();
+      if(from[0]==to[0] && to[1]<from[1]){//same row, left
+        return dfs(board,sourceP, from, to, myDx[3],myDy[3]);
+
+      }else if(from[0]==to[0] && to[1]>from[1]){//same row, right
+        return dfs(board,sourceP, from, to, myDx[1],myDy[1]);
+
+      }else if(to[0]<from[0] && from[1]==to[1]){//same col, up
+        return dfs(board,sourceP, from, to, myDx[0],myDy[0]);
+
+      }else if(to[0]>from[0] && from[1]==to[1]){//same col, down
+        return dfs(board,sourceP, from, to, myDx[2],myDy[2]);
+
+      }
+    }
+    return false;
+  }
+  @Override
   public boolean pieceCheck(Board board, int[]from,int[]to){
     int myDx[] =super.getDx();
     int myDy[] =super.getDy();
