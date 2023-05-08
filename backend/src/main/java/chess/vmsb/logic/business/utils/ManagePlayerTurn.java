@@ -12,5 +12,4 @@ public class ManagePlayerTurn {
   public static void setTurn(int turn){turn = turn;
   }
 
-
 }

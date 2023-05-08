@@ -118,10 +118,10 @@ public class UserInterface {
     String opt;
     int out;
     while(true){
-      System.out.println("Seleccione una opcion");
-      System.out.println("1. Nuevo Juego");
-      System.out.println("2. Cargar Juego");
-      System.out.println("3. Salir");
+      System.out.println("Menu");
+      System.out.println("1. Novo Jogo");
+      System.out.println("2. Carregar Jogo");
+      System.out.println("3. Sair");
       try{
         opt=sc.next();
         out=Integer.parseInt(opt);
@@ -209,7 +209,7 @@ public class UserInterface {
         new Knight(color),new Rook(color),new Bishop(color)));
     while(true){
       System.out.println(divisor);
-      System.out.println("Seleccione pieza que quiere cambiar:");
+      System.out.println("Escolha a peça para promoção:");
       System.out.println("1. Queen");
       System.out.println("2. Knight");
       System.out.println("3. Rook");
@@ -235,11 +235,11 @@ public class UserInterface {
     String opt;
     while(true){
       System.out.println(divisor);
-      System.out.println("Seleccione una opcion:");
-      System.out.println("1. Realizar movimiento");
-      System.out.println("2. Mostrar historial de jugadas (notacion LAN)");
-      System.out.println("3. Guardar juego");
-      System.out.println("4. Retirarse");
+      System.out.println("Escolha uma opção:");
+      System.out.println("1. Fazer jogada");
+      System.out.println("2. Histórico de jogadas");
+      System.out.println("3. Salvar Jogo");
+      System.out.println("4. Sair");
       try{
         opt=sc.next();
         out=Integer.parseInt(opt);
