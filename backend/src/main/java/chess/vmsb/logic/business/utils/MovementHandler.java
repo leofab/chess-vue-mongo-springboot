@@ -31,6 +31,22 @@ public class MovementHandler {
     return kingPos;
   }
 
+  public int getCountRep() {
+    return countRep;
+  }
+
+  public void setCountRep(int aCountRep) {
+    countRep = aCountRep;
+  }
+
+  public int[] getPieceCheckCoord() {
+    return pieceCheckCoord;
+  }
+
+  public void setPieceCheckCoord(int[] aPieceCheckCoord) {
+    pieceCheckCoord = aPieceCheckCoord;
+  }
+
   protected static boolean isFromEmpty(Board board, int from[]){
     return board.getGameBoard()[from[0]][from[1]].getPiece()==null;
   }
