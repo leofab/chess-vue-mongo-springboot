@@ -4,6 +4,9 @@ import chess.vmsb.logic.business.board.Board;
 
 public class King extends Piece {
 
+  public King(boolean color){
+    this((color)?'k':'K');
+  }
 
   public King(char pieceSign) {
     super(pieceSign);

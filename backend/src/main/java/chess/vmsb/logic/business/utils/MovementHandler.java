@@ -7,32 +7,32 @@ import chess.vmsb.logic.business.models.Player;
 import java.util.ArrayList;
 
 public class MovementHandler {
-  private int countRep;
-  private int pieceCheckCoord;
+  private int countRep = 0;
+  private int[] pieceCheckCoord={-1,-1};
   //TODO talks to VUE
-//    private UI userUI;
 
-  public int[] getKingXY(Board board, Player[] player) {
-    Player playerW = player[0];
-    Player playerB = player[1];
-    int[] wKingXY = new int[2];
-    int[] bKingXY = new int[2];
-    int[] wbKingXY = new int[4];
-    Piece wKing = playerW.getPieces().stream().filter(piece -> piece.getPieceSign() == 'k').findFirst().get();
-    Piece bKing = playerB.getPieces().stream().filter(piece -> piece.getPieceSign() == 'K').findFirst().get();
-    for (int i = 0; i < board.getGameBoard().length; i++) {
-      for (int j = 0; j < board.getGameBoard()[i].length; j++) {
-        if (board.getGameBoard()[i][j].getPiece() == wKing) {
-          wbKingXY[0] = i;
-          wbKingXY[1] = j;
-        }
-        if (board.getGameBoard()[i][j].getPiece() == bKing) {
-          wbKingXY[2] = i;
-          wbKingXY[3] = j;
+  public int[] getKingXY(Board board, Player[] player, int whichPlayer) {
+    int[] kingPos = new int[2];
+    char cmp;
+    for(int i=0;i<8;i++){
+      for(int j=0;j<8;j++){
+        if(board.getGameBoard()[i][j].getPiece()==null)continue;
+        if(board.getGameBoard()[i][j].getPiece().getClass().toString().equals("class data.King")){
+          cmp=board.getGameBoard()[i][j].getPiece().getPieceSign();
+          int pos=(cmp=='k')?0:1;
+          if(pos==whichPlayer){
+            kingPos[0]=i;
+            kingPos[1]=j;
+            break;
+          }
         }
       }
     }
-    return wbKingXY;
+    return kingPos;
+  }
+
+  protected static boolean isFromEmpty(Board board, int from[]){
+    return board.getGameBoard()[from[0]][from[1]].getPiece()==null;
   }
 
   static boolean isKingFrom(Board board,ArrayList<ArrayList<Integer>> moveData) {
@@ -45,28 +45,31 @@ public class MovementHandler {
     return (board.getGameBoard()[to[0]][to[1]].getPiece().getClass().toString().equals("class data.Rook"));
   }
 
-  static boolean canCastle(Board board, ArrayList<ArrayList<Integer>> moveData, byte turn) {
+  public static boolean canCastle(Board board, ArrayList<ArrayList<Integer>> moveData, int  whichPlayer) {
     int from[]=Functional.splitDataPair(moveData.get(0));//row,col
     int to[]=Functional.splitDataPair(moveData.get(1));//row,col
 
     if(!(MovementHandler.isKingFrom(board,moveData) && MovementHandler.isRookTo(board,moveData))){
       return false;
     }
-
     Piece king =board.getGameBoard()[from[0]][from[1]].getPiece();
     Piece rook =board.getGameBoard()[to[0]][from[0]].getPiece();
 
     if(king.isMoved() || rook.isMoved())return false;
 
-    int op=(from[1]>to[1])?-1:1;
-    for(int i=0;i!=to[i];from[i]+=op){
-      if(board.getGameBoard()[from[0]][i].getPiece()!=null)return false;
+    if(from[1]>to[1]){
+      for(int i=from[1]-1;i>to[1]+1;i--){
+        if(board.getGameBoard()[from[0]][i].getPiece()!=null)return false;
+      }
+    }else{
+      for(int i=from[1]+1;i<to[1]-1;i++){
+        if(board.getGameBoard()[from[0]][i].getPiece()!=null)return false;
+      }
     }
-
     return true;
   }
 
-  protected static boolean isCheck(){
+  public static boolean isCheck(){
     //TODO
     return false;
   }
@@ -162,20 +165,16 @@ public class MovementHandler {
   public static boolean isValidMove(Board board, ArrayList<ArrayList<Integer>> moveData,int whichPlayer){
     int from[]=Functional.splitDataPair(moveData.get(0));//row,col
     int to[]=Functional.splitDataPair(moveData.get(1));//row,col
+    return isValidMove(board, from, to, whichPlayer);
+  }
 
-    if(board.getGameBoard()[from[0]][from[1]].getPiece()==null){
-
-      return false;
-    }else{
-      Piece piece=board.getGameBoard()[from[0]][from[1]].getPiece();
-      if(Character.isLowerCase(piece.getPieceSign()) && whichPlayer==0){
-        return piece.pieceCheck(board,from,to);
-      }
-      if(Character.isUpperCase(piece.getPieceSign()) && whichPlayer==1){
-
-
-        return piece.pieceCheck(board,from,to);
-      }
+  public static boolean isValidMove(Board board,int from[], int to[],int whichPlayer){
+    Piece piece=board.getGameBoard()[from[0]][from[1]].getPiece();
+    if(Character.isLowerCase(piece.getPieceSign()) && whichPlayer==0){
+      return piece.pieceVerifyMove(board,from,to);
+    }
+    if(Character.isUpperCase(piece.getPieceSign()) && whichPlayer==1){
+      return piece.pieceVerifyMove(board,from,to);
     }
     return false;
   }

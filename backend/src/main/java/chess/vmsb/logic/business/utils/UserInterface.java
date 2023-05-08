@@ -77,13 +77,19 @@ public class UserInterface {
     System.out.println("Cemitério: " );
     System.out.println("Brancas->" );
     for (int i=0;i<w.getCemetery().size();i++) {
-      System.out.print(w.getCemetery().get(i).getPieceSign());
+      System.out.println(w.getCemetery().get(i).getPieceSign());
     }
     System.out.println("Pretas->" );
     for (int i=0;i<b.getCemetery().size();i++) {
-      System.out.print(b.getCemetery().get(i).getPieceSign());
+      System.out.println(b.getCemetery().get(i).getPieceSign());
     }
     System.out.println(divisor);
+  }
+
+  public static void whosePlayer(Player player){
+    String playerColor= (player.isColor())?"Branco":"Preto";
+    System.out.println(divisor);
+    System.out.println("Turno do Jogador " + player.getName() + " - " + playerColor);
   }
 
   //
@@ -102,15 +108,14 @@ public class UserInterface {
     return moveText;
   }
 
-  public static ArrayList<ArrayList<Integer>> inputMove(Player player) {
-    String playerColor= (player.isColor())?"White":"Black";
+  public static ArrayList<ArrayList<Integer>> inputMove() {
     boolean flag=true;
     ArrayList<ArrayList<Integer>> moveCoordinates= new ArrayList<>();
 
     do{
       System.out.println(divisor);
-      System.out.println("Turno de " + player.getName() + " - " + playerColor);
       System.out.println("Coloque as cordenadas de origem no formato rankFile : exemplo e2 e4");
+      System.out.println("Para rookar coloque o rei na origem e a torre no destino");
       moveCoordinates.add(Functional.splitCoordinatesString(coordinateRead()));
       System.out.println("Coloque as coordenadas de destino:");
       moveCoordinates.add(Functional.splitCoordinatesString(coordinateRead()));

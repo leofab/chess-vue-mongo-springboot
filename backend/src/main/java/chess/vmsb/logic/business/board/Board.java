@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public class Board{
   private Square[][] gameBoard;
 
-
   //Invoke Board with two players and set up the board with the pieces
   public Board (Player playerW, Player playerB){
     this();
