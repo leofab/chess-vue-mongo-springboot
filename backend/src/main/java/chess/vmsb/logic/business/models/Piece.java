@@ -36,12 +36,6 @@ public abstract class Piece {
     this.color = color;
   }
 
-  public abstract boolean pieceCheck(Board board, int[] from, int[] to);
-
-  public void addMovePath(int coord){
-    //TODO implement the logic of addMovePath
-  }
-
   public char getPieceSign() {
     return pieceSign;
   }
