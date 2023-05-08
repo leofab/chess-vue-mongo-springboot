@@ -45,24 +45,27 @@ public class MovementHandler {
     return (board.getGameBoard()[to[0]][to[1]].getPiece().getClass().toString().equals("class data.Rook"));
   }
 
-  public static boolean canCastle(Board board, ArrayList<ArrayList<Integer>> moveData, byte turn) {
+  public static boolean canCastle(Board board, ArrayList<ArrayList<Integer>> moveData, int  whichPlayer) {
     int from[]=Functional.splitDataPair(moveData.get(0));//row,col
     int to[]=Functional.splitDataPair(moveData.get(1));//row,col
 
     if(!(MovementHandler.isKingFrom(board,moveData) && MovementHandler.isRookTo(board,moveData))){
       return false;
     }
-
     Piece king =board.getGameBoard()[from[0]][from[1]].getPiece();
     Piece rook =board.getGameBoard()[to[0]][from[0]].getPiece();
 
     if(king.isMoved() || rook.isMoved())return false;
 
-    int op=(from[1]>to[1])?-1:1;
-    for(int i=0;i!=to[i];from[i]+=op){
-      if(board.getGameBoard()[from[0]][i].getPiece()!=null)return false;
+    if(from[1]>to[1]){
+      for(int i=from[1]-1;i>to[1]+1;i--){
+        if(board.getGameBoard()[from[0]][i].getPiece()!=null)return false;
+      }
+    }else{
+      for(int i=from[1]+1;i<to[1]-1;i++){
+        if(board.getGameBoard()[from[0]][i].getPiece()!=null)return false;
+      }
     }
-
     return true;
   }
 
