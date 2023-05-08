@@ -31,6 +31,10 @@ public class MovementHandler {
     return kingPos;
   }
 
+  protected static boolean isFromEmpty(Board board, int from[]){
+    return board.getGameBoard()[from[0]][from[1]].getPiece()==null;
+  }
+
   static boolean isKingFrom(Board board,ArrayList<ArrayList<Integer>> moveData) {
     int from[]=Functional.splitDataPair(moveData.get(0));//row,col
     return (board.getGameBoard()[from[0]][from[1]].getPiece().getClass().toString().equals("class data.King"));
@@ -158,20 +162,16 @@ public class MovementHandler {
   public static boolean isValidMove(Board board, ArrayList<ArrayList<Integer>> moveData,int whichPlayer){
     int from[]=Functional.splitDataPair(moveData.get(0));//row,col
     int to[]=Functional.splitDataPair(moveData.get(1));//row,col
+    return isValidMove(board, from, to, whichPlayer);
+  }
 
-    if(board.getGameBoard()[from[0]][from[1]].getPiece()==null){
-
-      return false;
-    }else{
-      Piece piece=board.getGameBoard()[from[0]][from[1]].getPiece();
-      if(Character.isLowerCase(piece.getPieceSign()) && whichPlayer==0){
-        return piece.pieceCheck(board,from,to);
-      }
-      if(Character.isUpperCase(piece.getPieceSign()) && whichPlayer==1){
-
-
-        return piece.pieceCheck(board,from,to);
-      }
+  public static boolean isValidMove(Board board,int from[], int to[],int whichPlayer){
+    Piece piece=board.getGameBoard()[from[0]][from[1]].getPiece();
+    if(Character.isLowerCase(piece.getPieceSign()) && whichPlayer==0){
+      return piece.pieceVerifyMove(board,from,to);
+    }
+    if(Character.isUpperCase(piece.getPieceSign()) && whichPlayer==1){
+      return piece.pieceVerifyMove(board,from,to);
     }
     return false;
   }

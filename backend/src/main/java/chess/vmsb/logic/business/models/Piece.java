@@ -11,16 +11,9 @@ public abstract class Piece {
   private int[] dx;
   private int[] dy;
   private boolean color;
+  private ArrayList<int[]> lastMovePath = new ArrayList<>();
 
-  public boolean isColor() {
-    return color;
-  }
 
-  public void setColor(boolean color) {
-    this.color = color;
-  }
-
-  private ArrayList<int[]> lastMovePath;
 
   public Piece(char pieceSign) {
 
@@ -29,6 +22,18 @@ public abstract class Piece {
 
   public Piece() {
 
+  }
+
+  public abstract boolean pieceVerifyMove(Board board, int[]from,int[]to);
+  public void addMovePath(int coord[]){
+    lastMovePath.add(coord);
+  }
+  public boolean isColor() {
+    return color;
+  }
+
+  public void setColor(boolean color) {
+    this.color = color;
   }
 
   public abstract boolean pieceCheck(Board board, int[] from, int[] to);
