@@ -16,7 +16,7 @@ public class Queen extends Piece{
   }
 
   @Override
-  public boolean pieceCheck(Board board, int[]from,int[]to){
+  public boolean pieceVerifyMove(Board board, int[] from, int[] to) {
     int myDx[] =super.getDx();
     int myDy[] =super.getDy();
 
@@ -56,7 +56,6 @@ public class Queen extends Piece{
     }
     return false;
   }
-
 
   private boolean dfs(Board board,Piece sourceP, int[]from,int[]to,int x,int y){  //not really a dfs, just a clever recursion
     while(true){

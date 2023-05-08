@@ -7,11 +7,11 @@ import chess.vmsb.logic.business.models.Player;
 import java.util.ArrayList;
 
 public class MovementHandler {
-  private int countRep = 0;
-  private int[] pieceCheckCoord={-1,-1};
+  private static int countRep = 0;
+  private static int[] pieceCheckCoord={-1,-1};
   //TODO talks to VUE
 
-  public int[] getKingXY(Board board, Player[] player, int whichPlayer) {
+  public static int[] getKingXY(Board board, Player[] player, int whichPlayer) {
     int[] kingPos = new int[2];
     char cmp;
     for(int i=0;i<8;i++){
@@ -29,6 +29,22 @@ public class MovementHandler {
       }
     }
     return kingPos;
+  }
+
+  public int getCountRep() {
+    return countRep;
+  }
+
+  public void setCountRep(int aCountRep) {
+    countRep = aCountRep;
+  }
+
+  public int[] getPieceCheckCoord() {
+    return pieceCheckCoord;
+  }
+
+  public static void setPieceCheckCoord(int[] aPieceCheckCoord) {
+    pieceCheckCoord = aPieceCheckCoord;
   }
 
   protected static boolean isFromEmpty(Board board, int from[]){
@@ -69,8 +85,122 @@ public class MovementHandler {
     return true;
   }
 
-  public static boolean isCheck(){
-    //TODO
+  // just coded 50move repetition, accepted as chess variation with only this rule and stalemate
+  public static boolean drawFifty(){
+    //repetition rule
+    return countRep>=50;
+  }
+
+  public static boolean isCheck(Board board, Player[] player, int whichPlayer) {
+    int kingpos[]=getKingXY(board,player,whichPlayer);
+
+    if(whichPlayer==0){
+      for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+          if(board.getGameBoard()[i][j].getPiece() == null)continue;
+          if(i==kingpos[0] && j==kingpos[1])continue;
+          if(Character.isUpperCase(board.getGameBoard()[i][j].getPiece().getPieceSign())){//if turn 0(white), need to compare with black pieces(uppercase)
+            if(board.getGameBoard()[i][j].getPiece().pieceVerifyMove(board, new int[]{i,j}, kingpos)){
+              pieceCheckCoord[0]=i;
+              pieceCheckCoord[1]=j;
+              return true;
+            }
+          }
+        }
+      }
+    }else{
+      for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+          if(board.getGameBoard()[i][j].getPiece() == null)continue;
+          if(i==kingpos[0] && j==kingpos[1])continue;
+          if(Character.isLowerCase(board.getGameBoard()[i][j].getPiece().getPieceSign())){//if turn 1(black), need to compare with white pieces(lowercase)
+            if(board.getGameBoard()[i][j].getPiece().pieceVerifyMove(board, new int[]{i,j}, kingpos)){
+              pieceCheckCoord[0]=i;
+              pieceCheckCoord[1]=j;
+              return true;
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  public static boolean isCheckRemovable(Board board, Player[] player, int whichPlayer){
+    //capture piece, block piece - OK
+    ArrayList<int[]> pathSearch =board.getGameBoard()[pieceCheckCoord[0]][pieceCheckCoord[1]].getPiece().getLastMovePath();
+    for(int i=0;i<8;i++){
+      for(int j=0;j<8;j++){
+        if(board.getGameBoard()[i][j].getPiece()==null)continue;
+        int coord[]={i,j};
+        for(int k=0;k<pathSearch.size();k++){
+          if(isValidMove(board, coord,pathSearch.get(k),whichPlayer)){
+            Object st[]=performMove(board,player,coord,pathSearch.get(k));//from ij to the piece is making check
+            Board provisionalBoard=(Board) st[0];
+            if(!isCheck(provisionalBoard, player, whichPlayer)){
+              return true;
+            }
+          }
+        }
+      }
+    }
+
+    //move king
+    int mx[]={-1,0,1,0,-1,1,1,-1};//rows
+    int my[]={0,1,0,-1,1,1,-1,-1};//cols
+    int kingpos[]=getKingXY(board,player,whichPlayer);
+    for(int i=0;i<8;i++){
+      int advance[]={kingpos[0]+mx[i],kingpos[1]+my[i]};
+      if(kingpos[0]+mx[i]<0 || kingpos[0]+mx[i]>7)continue;
+      if(kingpos[1]+my[i]<0 || kingpos[1]+my[i]>7)continue;
+      if(isValidMove(board, kingpos, advance, whichPlayer)){
+        Object st[]=performMove(board,player,kingpos,advance);
+        Board provisionalBoard=(Board) st[0];
+        if(!isCheck(provisionalBoard, player, whichPlayer))return true;
+      }
+    }
+    return false;
+  }
+
+  public static boolean isKingStalemate(Board board, Player[] player, int whichPlayer){
+    //move king
+    int mx[]={-1,0,1,0,-1,1,1,-1};//rows
+    int my[]={0,1,0,-1,1,1,-1,-1};//cols
+    boolean stalemate=true;
+    int kingpos[]=getKingXY(board,player,whichPlayer);
+    for(int i=0;i<8;i++){
+      int advance[]={kingpos[0]+mx[i],kingpos[1]+my[i]};
+      if(kingpos[0]+mx[i]<0 || kingpos[0]+mx[i]>7)continue;
+      if(kingpos[1]+my[i]<0 || kingpos[1]+my[i]>7)continue;
+      if(isValidMove(board, kingpos, advance,(whichPlayer+1)%2)){
+        Object st[]=performMove(board,player,kingpos,advance);
+        Board provisionalBoard=(Board) st[0];
+        if(!isCheck(provisionalBoard, player, whichPlayer)) stalemate=stalemate&&false;
+      }
+    }
+
+    if(stalemate){ //checks if there is stalemate
+      for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+          if(board.getGameBoard()[i][j].getPiece()==null)continue;
+          if(Character.isLowerCase(board.getGameBoard()[i][j].getPiece().getPieceSign()) && whichPlayer==0){
+            if(pieceNotLocked(board, new int[]{i,j}, player, whichPlayer))return false;
+          }else if(Character.isUpperCase(board.getGameBoard()[i][j].getPiece().getPieceSign()) && whichPlayer==1){
+            if(pieceNotLocked(board, new int[]{i,j}, player, whichPlayer))return false;
+          }
+        }
+      }
+    }
+
+    return true;
+  }
+
+  public static boolean pieceNotLocked(Board board, int from[], Player[] player, int whichPlayer){
+    for(int i=0;i<8;i++){
+      for(int j=0;j<8;j++){
+        if(isValidMove(board, from, new int[]{i,j}, whichPlayer))return true;
+      }
+    }
     return false;
   }
 
@@ -111,12 +241,8 @@ public class MovementHandler {
     return dataReturn;
   }
 
-  public static Object[] performMove(Board board, Player[] player, ArrayList<ArrayList<Integer>> moveData) {
+  public static Object[] performMove(Board board, Player[] player,int from[],int to[]) {
     //need to return object and players
-
-    int from[]=Functional.splitDataPair(moveData.get(0));//row,col
-    int to[]=Functional.splitDataPair(moveData.get(1));//row,col
-
 
     if(board.getGameBoard()[to[0]][to[1]].getPiece()!=null){// to add piece to cemetery
       Piece toDelete=board.getGameBoard()[to[0]][to[1]].getPiece();
@@ -131,7 +257,6 @@ public class MovementHandler {
     }
 
     Piece toSet=board.getGameBoard()[from[0]][from[1]].getPiece();
-    Piece originalPiece=toSet;
 
     //PawnPromotion
     char cmp=toSet.getPieceSign();
@@ -153,13 +278,21 @@ public class MovementHandler {
           board.getGameBoard()[to[0]][to[1]].getPiece(), null);
     }
 
-
+    if(cmp=='p' ||cmp=='P' || board.getGameBoard()[to[0]][to[1]].getPiece()!=null)countRep=0;//counter goes zero in case a pawn is moved or piece is captured
+    else countRep++;
     toSet.setMoved(true);
     board.getGameBoard()[to[0]][to[1]].setPiece(toSet);//moves piece
     board.getGameBoard()[from[0]][from[1]].setPiece(null);//clears square from
     Object dataReturn[]= {board,player};
 
     return dataReturn;
+  }
+
+  public static Object[] performMove(Board board, Player[] player, ArrayList<ArrayList<Integer>> moveData) {
+    //need to return object and players
+    int from[]=Functional.splitDataPair(moveData.get(0));//row,col
+    int to[]=Functional.splitDataPair(moveData.get(1));//row,col
+    return performMove(board,player,from,to);
   }
 
   public static boolean isValidMove(Board board, ArrayList<ArrayList<Integer>> moveData,int whichPlayer){

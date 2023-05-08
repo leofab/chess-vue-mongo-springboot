@@ -16,7 +16,7 @@ public class Rook extends Piece{
   }
 
   @Override
-  public boolean pieceCheck(Board board, int[]from,int[]to){
+  public boolean pieceVerifyMove(Board board, int[] from, int[] to) {
     int myDx[] =super.getDx();
     int myDy[] =super.getDy();
 
