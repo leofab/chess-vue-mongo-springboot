@@ -77,11 +77,11 @@ public class UserInterface {
     System.out.println("Cemitério: " );
     System.out.println("Brancas->" );
     for (int i=0;i<w.getCemetery().size();i++) {
-      System.out.print(w.getCemetery().get(i).getPieceSign());
+      System.out.println(w.getCemetery().get(i).getPieceSign());
     }
     System.out.println("Pretas->" );
     for (int i=0;i<b.getCemetery().size();i++) {
-      System.out.print(b.getCemetery().get(i).getPieceSign());
+      System.out.println(b.getCemetery().get(i).getPieceSign());
     }
     System.out.println(divisor);
   }
