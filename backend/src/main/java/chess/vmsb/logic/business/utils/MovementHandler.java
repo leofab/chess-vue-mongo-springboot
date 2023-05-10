@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class MovementHandler {
   private static int countRep = 0;
   private static int[] pieceCheckCoord={-1,-1};
-  //TODO talks to VUE
 
   public static int[] getKingXY(Board board, Player[] player, int whichPlayer) {
     int[] kingPos = new int[2];
@@ -17,7 +16,7 @@ public class MovementHandler {
     for(int i=0;i<8;i++){
       for(int j=0;j<8;j++){
         if(board.getGameBoard()[i][j].getPiece()==null)continue;
-        if(board.getGameBoard()[i][j].getPiece().getClass().toString().equals("class data.King")){
+        if(board.getGameBoard()[i][j].getPiece().getClass().toString().equals("class chess.vmsb.logic.business.models.King")){
           cmp=board.getGameBoard()[i][j].getPiece().getPieceSign();
           int pos=(cmp=='k')?0:1;
           if(pos==whichPlayer){
@@ -128,7 +127,7 @@ public class MovementHandler {
 
   public static boolean isCheckRemovable(Board board, Player[] player, int whichPlayer){
     //capture piece, block piece - OK
-    ArrayList<int[]> pathSearch =board.getGameBoard()[pieceCheckCoord[0]][pieceCheckCoord[1]].getPiece().getLastMovePath();
+    ArrayList<int[]> pathSearch = board.getGameBoard()[pieceCheckCoord[0]][pieceCheckCoord[1]].getPiece().getLastMovePath();
     for(int i=0;i<8;i++){
       for(int j=0;j<8;j++){
         if(board.getGameBoard()[i][j].getPiece()==null)continue;
