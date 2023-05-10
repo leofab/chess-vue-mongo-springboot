@@ -227,33 +227,36 @@ public class MovementHandler {
   }
 
   public static Object[] performCastling(Board board, Player[] player, ArrayList<ArrayList<Integer>> moveData) {
+    Board copyBoard = (Board) Functional.deepCopy(board);
+    Player copyPlayer[] = (Player[]) Functional.deepCopy(player);
     //need to return object and players
     int from[]=Functional.splitDataPair(moveData.get(0));//row,col
     int to[]=Functional.splitDataPair(moveData.get(1));//row,col
 
-    Piece king = board.getGameBoard()[from[0]][from[1]].getPiece();
-    Piece rook = board.getGameBoard()[to[0]][to[1]].getPiece();
+    Piece king = copyBoard.getGameBoard()[from[0]][from[1]].getPiece();
+    Piece rook = copyBoard.getGameBoard()[to[0]][to[1]].getPiece();
     int who=(Character.isLowerCase(king.getPieceSign()))?0:1;
 
-    board.getGameBoard()[from[0]][from[1]].setPiece(null);//clear unused pieces
-    board.getGameBoard()[to[0]][to[1]].setPiece(null);
+    copyBoard.getGameBoard()[from[0]][from[1]].setPiece(null);//clear unused pieces
+    copyBoard.getGameBoard()[to[0]][to[1]].setPiece(null);
 
     king.setMoved(true);
     rook.setMoved(true);
 
     if(Math.abs(from[1]-to[1])==3){
       //short castling
-      board.getGameBoard()[from[0]][6].setPiece(king);
-      board.getGameBoard()[to[0]][5].setPiece(rook);
-      player[who].addToHistory("0-0");
+      copyBoard.getGameBoard()[from[0]][6].setPiece(king);
+      copyBoard.getGameBoard()[to[0]][5].setPiece(rook);
+      copyPlayer[who].addToHistory("0-0");
     }else{
       //long castling
-      board.getGameBoard()[from[0]][2].setPiece(king);
-      board.getGameBoard()[to[0]][3].setPiece(rook);
-      player[who].addToHistory("0-0-0");
+      copyBoard.getGameBoard()[from[0]][2].setPiece(king);
+      copyBoard.getGameBoard()[to[0]][3].setPiece(rook);
+      copyPlayer[who].addToHistory("0-0-0");
     }
 
-    Object dataReturn[]= {board,player};
+    Object dataReturn[]= {copyBoard,copyPlayer};
+    countRep++; //counting repetitions
 
     return dataReturn;
   }
