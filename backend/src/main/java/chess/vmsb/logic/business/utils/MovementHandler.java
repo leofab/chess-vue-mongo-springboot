@@ -177,30 +177,32 @@ public class MovementHandler {
   }
 
   public static boolean isKingStalemate(Board board, Player[] player, int whichPlayer){
+    Board copyBoard = (Board) Functional.deepCopy(board);
+    Player copyPlayer[] = (Player[]) Functional.deepCopy(player);
     //move king
     int mx[]={-1,0,1,0,-1,1,1,-1};//rows
     int my[]={0,1,0,-1,1,1,-1,-1};//cols
     boolean stalemate=true;
-    int kingpos[]=getKingXY(board,player,whichPlayer);
+    int kingpos[]=getKingXY(copyBoard,copyPlayer,whichPlayer);
     for(int i=0;i<8;i++){
       int advance[]={kingpos[0]+mx[i],kingpos[1]+my[i]};
       if(kingpos[0]+mx[i]<0 || kingpos[0]+mx[i]>7)continue;
       if(kingpos[1]+my[i]<0 || kingpos[1]+my[i]>7)continue;
-      if(isValidMove(board, kingpos, advance,(whichPlayer+1)%2)){
-        Object st[]=performMove(board,player,kingpos,advance);
+      if(isValidMove(copyBoard, kingpos, advance,(whichPlayer+1)%2)){
+        Object st[]=performMove(copyBoard,copyPlayer,kingpos,advance);
         Board provisionalBoard=(Board) st[0];
-        if(!isCheck(provisionalBoard, player, whichPlayer)) stalemate=stalemate&&false;
+        if(!isCheck(provisionalBoard, copyPlayer, whichPlayer)) stalemate=stalemate&&false;
       }
     }
 
     if(stalemate){ //checks if there is stalemate
       for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
-          if(board.getGameBoard()[i][j].getPiece()==null)continue;
-          if(Character.isLowerCase(board.getGameBoard()[i][j].getPiece().getPieceSign()) && whichPlayer==0){
-            if(pieceNotLocked(board, new int[]{i,j}, player, whichPlayer))return false;
-          }else if(Character.isUpperCase(board.getGameBoard()[i][j].getPiece().getPieceSign()) && whichPlayer==1){
-            if(pieceNotLocked(board, new int[]{i,j}, player, whichPlayer))return false;
+          if(copyBoard.getGameBoard()[i][j].getPiece()==null)continue;
+          if(Character.isLowerCase(copyBoard.getGameBoard()[i][j].getPiece().getPieceSign()) && whichPlayer==0){
+            if(pieceNotLocked(copyBoard, new int[]{i,j}, copyPlayer, whichPlayer))return false;
+          }else if(Character.isUpperCase(copyBoard.getGameBoard()[i][j].getPiece().getPieceSign()) && whichPlayer==1){
+            if(pieceNotLocked(copyBoard, new int[]{i,j}, copyPlayer, whichPlayer))return false;
           }
         }
       }
