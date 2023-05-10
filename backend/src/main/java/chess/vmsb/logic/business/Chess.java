@@ -10,7 +10,7 @@ import org.apache.catalina.User;
 import java.util.ArrayList;
 
 public class Chess {
-
+  public static UserInterface ui;
   public static void main(String[] args) {
     UserInterface.welcome();
     startGame();
