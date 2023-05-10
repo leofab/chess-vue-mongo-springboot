@@ -212,9 +212,10 @@ public class MovementHandler {
   }
 
   public static boolean pieceNotLocked(Board board, int from[], Player[] player, int whichPlayer){
+    Board copyBoard = (Board) Functional.deepCopy(board);
     for(int i=0;i<8;i++){
       for(int j=0;j<8;j++){
-        if(isValidMove(board, from, new int[]{i,j}, whichPlayer))return true;
+        if(isValidMove(copyBoard, from, new int[]{i,j}, whichPlayer))return true;
       }
     }
     return false;
@@ -258,21 +259,23 @@ public class MovementHandler {
   }
 
   public static Object[] performMove(Board board, Player[] player,int from[],int to[]) {
+    Board copyBoard = (Board) Functional.deepCopy(board);
+    Player copyPlayer[] = (Player[]) Functional.deepCopy(player);
     //need to return object and players
 
-    if(board.getGameBoard()[to[0]][to[1]].getPiece()!=null){// to add piece to cemetery
-      Piece toDelete=board.getGameBoard()[to[0]][to[1]].getPiece();
+    if(copyBoard.getGameBoard()[to[0]][to[1]].getPiece()!=null){// to add piece to cemetery
+      Piece toDelete=copyBoard.getGameBoard()[to[0]][to[1]].getPiece();
       toDelete.setMoved(false);//in order to reboot it to initial state and perform .remove later
       if(Character.isLowerCase(toDelete.getPieceSign())){
-        player[0].addPieceCemetery(toDelete);
-        player[0].getPieces().remove(toDelete);// only removes first occurrence of the piece
+        copyPlayer[0].addPieceCemetery(toDelete);
+        copyPlayer[0].getPieces().remove(toDelete);// only removes first occurrence of the piece
       }else{
-        player[1].addPieceCemetery(toDelete);
-        player[1].getPieces().remove(toDelete);// only removes first occurrence of the piece
+        copyPlayer[1].addPieceCemetery(toDelete);
+        copyPlayer[1].getPieces().remove(toDelete);// only removes first occurrence of the piece
       }
     }
 
-    Piece toSet=board.getGameBoard()[from[0]][from[1]].getPiece();
+    Piece toSet=copyBoard.getGameBoard()[from[0]][from[1]].getPiece();
 
     //PawnPromotion
     char cmp=toSet.getPieceSign();
@@ -281,34 +284,36 @@ public class MovementHandler {
 
     if ((cmp=='p' || cmp=='P') && pos==to[0]){
       toSet.setMoved(false);
-      player[who].getPieces().remove(toSet);
+      copyPlayer[who].getPieces().remove(toSet);
 
-      toSet=UserInterface.askPromotioPiece((cmp=='p')?true:false);
-      player[who].getPieces().add(toSet);
+      toSet=ui.askPromotioPiece((cmp=='p')?true:false);
+      copyPlayer[who].getPieces().add(toSet);
 
-      player[who].addToHistory(from, to, board.getGameBoard()[from[0]][from[1]].getPiece(),
-          board.getGameBoard()[to[0]][to[1]].getPiece(), toSet);
+      copyPlayer[who].addToHistory(from, to, copyBoard.getGameBoard()[from[0]][from[1]].getPiece(),
+          copyBoard.getGameBoard()[to[0]][to[1]].getPiece(), toSet);
     }else{
       // in case there is no promotion
-      player[who].addToHistory(from, to, board.getGameBoard()[from[0]][from[1]].getPiece(),
-          board.getGameBoard()[to[0]][to[1]].getPiece(), null);
+      copyPlayer[who].addToHistory(from, to, copyBoard.getGameBoard()[from[0]][from[1]].getPiece(),
+          copyBoard.getGameBoard()[to[0]][to[1]].getPiece(), null);
     }
 
-    if(cmp=='p' ||cmp=='P' || board.getGameBoard()[to[0]][to[1]].getPiece()!=null)countRep=0;//counter goes zero in case a pawn is moved or piece is captured
+    if(cmp=='p' ||cmp=='P' || copyBoard.getGameBoard()[to[0]][to[1]].getPiece()!=null)countRep=0;//counter goes zero in case a pawn is moved or piece is captured
     else countRep++;
     toSet.setMoved(true);
-    board.getGameBoard()[to[0]][to[1]].setPiece(toSet);//moves piece
-    board.getGameBoard()[from[0]][from[1]].setPiece(null);//clears square from
-    Object dataReturn[]= {board,player};
+    copyBoard.getGameBoard()[to[0]][to[1]].setPiece(toSet);//moves piece
+    copyBoard.getGameBoard()[from[0]][from[1]].setPiece(null);//clears square from
+    Object dataReturn[]= {copyBoard,copyPlayer};
 
     return dataReturn;
   }
 
   public static Object[] performMove(Board board, Player[] player, ArrayList<ArrayList<Integer>> moveData) {
+    Board copyBoard = (Board) Functional.deepCopy(board);
+    Player copyPlayer[] = (Player[]) Functional.deepCopy(player);
     //need to return object and players
     int from[]=Functional.splitDataPair(moveData.get(0));//row,col
     int to[]=Functional.splitDataPair(moveData.get(1));//row,col
-    return performMove(board,player,from,to);
+    return performMove(copyBoard,copyPlayer,from,to);
   }
 
   public static boolean isValidMove(Board board, ArrayList<ArrayList<Integer>> moveData,int whichPlayer){
