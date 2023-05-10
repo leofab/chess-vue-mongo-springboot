@@ -1,5 +1,6 @@
 package chess.vmsb.logic.business.utils;
 
+import chess.vmsb.logic.business.Chess;
 import chess.vmsb.logic.business.board.Board;
 import chess.vmsb.logic.business.models.Piece;
 import chess.vmsb.logic.business.models.Player;
@@ -9,15 +10,17 @@ import java.util.ArrayList;
 public class MovementHandler {
   private static int countRep = 0;
   private static int[] pieceCheckCoord={-1,-1};
+  private static UserInterface ui = Chess.ui;
 
   public static int[] getKingXY(Board board, Player[] player, int whichPlayer) {
+    Board copyBoard = (Board) Functional.deepCopy(board);
     int[] kingPos = new int[2];
     char cmp;
     for(int i=0;i<8;i++){
       for(int j=0;j<8;j++){
-        if(board.getGameBoard()[i][j].getPiece()==null)continue;
-        if(board.getGameBoard()[i][j].getPiece().getClass().toString().equals("class chess.vmsb.logic.business.models.King")){
-          cmp=board.getGameBoard()[i][j].getPiece().getPieceSign();
+        if(copyBoard.getGameBoard()[i][j].getPiece()==null)continue;
+        if(copyBoard.getGameBoard()[i][j].getPiece().getClass().toString().equals("class chess.vmsb.logic.business.models.King")){
+          cmp=copyBoard.getGameBoard()[i][j].getPiece().getPieceSign();
           int pos=(cmp=='k')?0:1;
           if(pos==whichPlayer){
             kingPos[0]=i;
@@ -52,12 +55,14 @@ public class MovementHandler {
 
   static boolean isKingFrom(Board board,ArrayList<ArrayList<Integer>> moveData) {
     int from[]=Functional.splitDataPair(moveData.get(0));//row,col
-    return (board.getGameBoard()[from[0]][from[1]].getPiece().getClass().toString().equals("class data.King"));
+    if(board.getGameBoard()[from[0]][from[1]].getPiece()==null)return false;
+    return (board.getGameBoard()[from[0]][from[1]].getPiece().getClass().toString().equals("class chess.vmsb.logic.business.models.King"));
   }
 
   static boolean isRookTo(Board board,ArrayList<ArrayList<Integer>> moveData) {
     int to[]=Functional.splitDataPair(moveData.get(1));//row,col
-    return (board.getGameBoard()[to[0]][to[1]].getPiece().getClass().toString().equals("class data.Rook"));
+    if(board.getGameBoard()[to[0]][to[1]].getPiece()==null)return false;
+    return (board.getGameBoard()[to[0]][to[1]].getPiece().getClass().toString().equals("class chess.vmsb.logic.business.models.Rook"));
   }
 
   public static boolean canCastle(Board board, ArrayList<ArrayList<Integer>> moveData, int  whichPlayer) {
@@ -295,13 +300,16 @@ public class MovementHandler {
   }
 
   public static boolean isValidMove(Board board, ArrayList<ArrayList<Integer>> moveData,int whichPlayer){
+    Board copyBoard = (Board) Functional.deepCopy(board);
     int from[]=Functional.splitDataPair(moveData.get(0));//row,col
     int to[]=Functional.splitDataPair(moveData.get(1));//row,col
-    return isValidMove(board, from, to, whichPlayer);
+    return isValidMove(copyBoard, from, to, whichPlayer);
   }
 
   public static boolean isValidMove(Board board,int from[], int to[],int whichPlayer){
-    Piece piece=board.getGameBoard()[from[0]][from[1]].getPiece();
+    Board copyBoard = (Board) Functional.deepCopy(board);
+    Piece piece=copyBoard.getGameBoard()[from[0]][from[1]].getPiece();
+    if(piece==null)return false;
     if(Character.isLowerCase(piece.getPieceSign()) && whichPlayer==0){
       return piece.pieceVerifyMove(board,from,to);
     }
