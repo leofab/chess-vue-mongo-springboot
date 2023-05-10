@@ -96,15 +96,18 @@ public class MovementHandler {
   }
 
   public static boolean isCheck(Board board, Player[] player, int whichPlayer) {
-    int kingpos[]=getKingXY(board,player,whichPlayer);
+    Board copyBoard = (Board) Functional.deepCopy(board);
+    Player[] copyPlayer = (Player[]) Functional.deepCopy(player);
+
+    int kingpos[]=getKingXY(copyBoard,copyPlayer,whichPlayer);
 
     if(whichPlayer==0){
       for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
-          if(board.getGameBoard()[i][j].getPiece() == null)continue;
+          if(copyBoard.getGameBoard()[i][j].getPiece() == null)continue;
           if(i==kingpos[0] && j==kingpos[1])continue;
-          if(Character.isUpperCase(board.getGameBoard()[i][j].getPiece().getPieceSign())){//if turn 0(white), need to compare with black pieces(uppercase)
-            if(board.getGameBoard()[i][j].getPiece().pieceVerifyMove(board, new int[]{i,j}, kingpos)){
+          if(Character.isUpperCase(copyBoard.getGameBoard()[i][j].getPiece().getPieceSign())){//if turn 0(white), need to compare with black pieces(uppercase)
+            if(copyBoard.getGameBoard()[i][j].getPiece().pieceVerifyMove(copyBoard, new int[]{i,j}, kingpos)){
               pieceCheckCoord[0]=i;
               pieceCheckCoord[1]=j;
               return true;
@@ -115,10 +118,10 @@ public class MovementHandler {
     }else{
       for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
-          if(board.getGameBoard()[i][j].getPiece() == null)continue;
+          if(copyBoard.getGameBoard()[i][j].getPiece() == null)continue;
           if(i==kingpos[0] && j==kingpos[1])continue;
-          if(Character.isLowerCase(board.getGameBoard()[i][j].getPiece().getPieceSign())){//if turn 1(black), need to compare with white pieces(lowercase)
-            if(board.getGameBoard()[i][j].getPiece().pieceVerifyMove(board, new int[]{i,j}, kingpos)){
+          if(Character.isLowerCase(copyBoard.getGameBoard()[i][j].getPiece().getPieceSign())){//if turn 1(black), need to compare with white pieces(lowercase)
+            if(copyBoard.getGameBoard()[i][j].getPiece().pieceVerifyMove(copyBoard, new int[]{i,j}, kingpos)){
               pieceCheckCoord[0]=i;
               pieceCheckCoord[1]=j;
               return true;
@@ -132,18 +135,26 @@ public class MovementHandler {
 
   public static boolean isCheckRemovable(Board board, Player[] player, int whichPlayer){
     //capture piece, block piece - OK
+    Board copyBoard = (Board) Functional.deepCopy(board);
+    Player copyPlayer[] = (Player[]) Functional.deepCopy(player);
     ArrayList<int[]> pathSearch = board.getGameBoard()[pieceCheckCoord[0]][pieceCheckCoord[1]].getPiece().getLastMovePath();
+    int[] kingPos = getKingXY(copyBoard,copyPlayer,whichPlayer);
+
     for(int i=0;i<8;i++){
       for(int j=0;j<8;j++){
-        if(board.getGameBoard()[i][j].getPiece()==null)continue;
-        int coord[]={i,j};
-        for(int k=0;k<pathSearch.size();k++){
-          if(isValidMove(board, coord,pathSearch.get(k),whichPlayer)){
-            Object st[]=performMove(board,player,coord,pathSearch.get(k));//from ij to the piece is making check
-            Board provisionalBoard=(Board) st[0];
-            if(!isCheck(provisionalBoard, player, whichPlayer)){
-              return true;
-            }
+        if(i==kingPos[0] && j==kingPos[1])continue;
+        if(copyBoard.getGameBoard()[i][j].getPiece()==null)continue;
+
+        Piece prov = copyBoard.getGameBoard()[i][j].getPiece();
+        if(Character.isLowerCase(prov.getPieceSign()) && whichPlayer==1)continue;
+        if(Character.isUpperCase(prov.getPieceSign()) && whichPlayer==0)continue;
+        int[] coord = {i,j};
+        for(int k = 0; k < pathSearch.size(); k++){
+          if(isValidMove(copyBoard,coord,pathSearch.get(k),whichPlayer)){
+            Object[] st = performMove(copyBoard,copyPlayer,coord,pathSearch.get(k));// from ij to the piece that is making the check
+            Board provisionalBoard = (Board) st[0];
+            if(!isCheck(provisionalBoard,copyPlayer,whichPlayer))
+            return true;
           }
         }
       }
@@ -152,15 +163,14 @@ public class MovementHandler {
     //move king
     int mx[]={-1,0,1,0,-1,1,1,-1};//rows
     int my[]={0,1,0,-1,1,1,-1,-1};//cols
-    int kingpos[]=getKingXY(board,player,whichPlayer);
     for(int i=0;i<8;i++){
-      int advance[]={kingpos[0]+mx[i],kingpos[1]+my[i]};
-      if(kingpos[0]+mx[i]<0 || kingpos[0]+mx[i]>7)continue;
-      if(kingpos[1]+my[i]<0 || kingpos[1]+my[i]>7)continue;
-      if(isValidMove(board, kingpos, advance, whichPlayer)){
-        Object st[]=performMove(board,player,kingpos,advance);
+      int advance[]={kingPos[0]+mx[i],kingPos[1]+my[i]};
+      if(kingPos[0]+mx[i]<0 || kingPos[0]+mx[i]>7)continue;
+      if(kingPos[1]+my[i]<0 || kingPos[1]+my[i]>7)continue;
+      if(isValidMove(copyBoard, kingPos, advance, whichPlayer)){
+        Object st[]=performMove(copyBoard,copyPlayer,kingPos,advance);
         Board provisionalBoard=(Board) st[0];
-        if(!isCheck(provisionalBoard, player, whichPlayer))return true;
+        if(!isCheck(provisionalBoard, copyPlayer, whichPlayer))return true;
       }
     }
     return false;
