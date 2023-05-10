@@ -2,9 +2,10 @@ package chess.vmsb.logic.business.models;
 
 import chess.vmsb.logic.business.board.Board;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pawn extends Piece {
+public class Pawn extends Piece implements Serializable {
   public Pawn(char pieceSign) {
     super(pieceSign);
     //note, pawn has an extra move when it eats pieces, matrix also has to change according to its color

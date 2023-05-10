@@ -2,7 +2,9 @@ package chess.vmsb.logic.business.models;
 
 import chess.vmsb.logic.business.board.Board;
 
-public class Queen extends Piece{
+import java.io.Serializable;
+
+public class Queen extends Piece implements Serializable {
 
   public Queen(char pieceSign) {
     super(pieceSign);
