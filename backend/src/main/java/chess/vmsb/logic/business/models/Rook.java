@@ -2,7 +2,9 @@ package chess.vmsb.logic.business.models;
 
 import chess.vmsb.logic.business.board.Board;
 
-public class Rook extends Piece{
+import java.io.Serializable;
+
+public class Rook extends Piece implements Serializable {
 
   public Rook(char pieceSign) {
     super(pieceSign);
@@ -16,7 +18,7 @@ public class Rook extends Piece{
   }
 
   @Override
-  public boolean pieceCheck(Board board, int[]from,int[]to){
+  public boolean pieceVerifyMove(Board board, int[] from, int[] to) {
     int myDx[] =super.getDx();
     int myDy[] =super.getDy();
 

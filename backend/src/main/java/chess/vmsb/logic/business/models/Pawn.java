@@ -2,7 +2,10 @@ package chess.vmsb.logic.business.models;
 
 import chess.vmsb.logic.business.board.Board;
 
-public class Pawn extends Piece {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Pawn extends Piece implements Serializable {
   public Pawn(char pieceSign) {
     super(pieceSign);
     //note, pawn has an extra move when it eats pieces, matrix also has to change according to its color
@@ -20,7 +23,7 @@ public class Pawn extends Piece {
   }
 
   @Override
-  public boolean pieceCheck(Board board, int[]from,int[]to){
+  public boolean pieceVerifyMove(Board board, int[] from, int[] to) {
     if(super.isMoved()==true){//if pawn already moved, just allowed to perform a movement
       if(Character.isLowerCase(super.getPieceSign())){
         super.setDx(new int[]{-1});//blancas
@@ -30,7 +33,7 @@ public class Pawn extends Piece {
     }
     int myDx[] =super.getDx();
     int myDy[] =super.getDy();
-
+    super.setLastMovePath(new ArrayList<>());//clear path
     for(int i=0;i<myDx.length;i++){
       for(int j=0;j<myDy.length;j++){
         if(from[0]+myDx[i]<0 || from[0]+myDx[i]>7)continue;
@@ -54,8 +57,10 @@ public class Pawn extends Piece {
           }
           return false;
         }
+        addMovePath(new int[]{from[0],from[1]});
       }
     }
     return false;
   }
+
 }

@@ -2,8 +2,14 @@ package chess.vmsb.logic.business.models;
 
 import chess.vmsb.logic.business.board.Board;
 
-public class King extends Piece {
+import java.io.Serializable;
+import java.util.ArrayList;
 
+public class King extends Piece implements Serializable {
+
+  public King(boolean color){
+    this((color)?'k':'K');
+  }
 
   public King(char pieceSign) {
     super(pieceSign);
@@ -14,7 +20,8 @@ public class King extends Piece {
   }
 
   @Override
-  public boolean pieceCheck(Board board, int[]from,int[]to){
+  public boolean pieceVerifyMove(Board board, int[] from, int[] to) {
+    super.setLastMovePath(new ArrayList<>());//clear path
     int myDx[] =super.getDx();
     int myDy[] =super.getDy();
     for(int i=0;i<8;i++){
@@ -34,7 +41,9 @@ public class King extends Piece {
         }
         return false;
       }
+      addMovePath(new int[]{from[0],from[1]});
     }
     return false;
   }
+
 }

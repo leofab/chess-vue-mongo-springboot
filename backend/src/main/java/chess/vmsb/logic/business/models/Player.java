@@ -2,20 +2,20 @@ package chess.vmsb.logic.business.models;
 
 import chess.vmsb.logic.business.utils.Functional;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Player {
+public class Player implements Serializable {
   private String name;
   private boolean color;
-  private ArrayList<Piece> pieces;
-  private ArrayList<Piece> cemetery;
-  private ArrayList<String> history;
+  private ArrayList<Piece> pieces = new ArrayList<>();
+  private ArrayList<Piece> cemetery = new ArrayList<>();
+  private ArrayList<String> history = new ArrayList<>();
 
   public Player(String name, boolean color){
     this.name = name;
     this.color = color;
-    this.cemetery= new ArrayList<>();
     createPieces();
   }
 
@@ -60,7 +60,7 @@ public class Player {
   }
 
   public void addToHistory(String str){
-    //TODO create logic of addToHistory
+    history.add(str);
   }
 
   public String getName() {

@@ -15,7 +15,8 @@
     "vue-sidebar-menu-akahon": "^1.0.2",
     "vue3-google-login": "^2.0.15",
     "vue3-google-oauth2": "^1.0.7",
-    "vuex": "^4.1.0"
+    "vuex": "^4.1.0",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",

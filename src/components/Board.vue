@@ -218,13 +218,13 @@ export default {
     fill: gold;
     " class="square_tb_81"/>
 
-    <Queen style="
-    fill: gold;
-    " class="square_qb_85"/>
-
     <King style="
     fill: gold;
-    " class="square_kb_84"/>
+    " class="square_kb_85"/>
+
+    <Queen style="
+    fill: gold;
+    " class="square_qb_84"/>
 
 </template>
 
@@ -650,14 +650,14 @@ export default {
     left: 519px;
     top:69px;
 }
-.square_qb_85{
+.square_kb_85{
     width: 90px;
     height: 90px;
     position: fixed;
     left: 455px;
     top:69px;
 }
-.square_kb_84{
+.square_qb_84{
     width: 90px;
     height: 90px;
     position: fixed;

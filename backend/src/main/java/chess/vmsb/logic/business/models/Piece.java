@@ -2,28 +2,21 @@ package chess.vmsb.logic.business.models;
 
 import chess.vmsb.logic.business.board.Board;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Piece {
+public abstract class Piece implements Serializable{
 
   private char pieceSign;
   private boolean moved = false;
   private int[] dx;
   private int[] dy;
   private boolean color;
+  private ArrayList<int[]> lastMovePath = new ArrayList<>();
 
-  public boolean isColor() {
-    return color;
-  }
 
-  public void setColor(boolean color) {
-    this.color = color;
-  }
-
-  private ArrayList<int[]> lastMovePath;
 
   public Piece(char pieceSign) {
-
     this.pieceSign = pieceSign;
   }
 
@@ -31,10 +24,16 @@ public abstract class Piece {
 
   }
 
-  public abstract boolean pieceCheck(Board board, int[] from, int[] to);
+  public abstract boolean pieceVerifyMove(Board board, int[]from,int[]to);
+  public void addMovePath(int coord[]){
+    lastMovePath.add(coord);
+  }
+  public boolean isColor() {
+    return color;
+  }
 
-  public void addMovePath(int coord){
-    //TODO implement the logic of addMovePath
+  public void setColor(boolean color) {
+    this.color = color;
   }
 
   public char getPieceSign() {

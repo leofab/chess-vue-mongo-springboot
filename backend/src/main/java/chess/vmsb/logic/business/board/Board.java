@@ -2,11 +2,11 @@ package chess.vmsb.logic.business.board;
 
 import chess.vmsb.logic.business.models.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Board{
+public class Board implements Serializable {
   private Square[][] gameBoard;
-
 
   //Invoke Board with two players and set up the board with the pieces
   public Board (Player playerW, Player playerB){
