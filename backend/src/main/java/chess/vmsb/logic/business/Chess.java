@@ -5,7 +5,6 @@ import chess.vmsb.logic.business.models.Player;
 import chess.vmsb.logic.business.utils.ManagePlayerTurn;
 import chess.vmsb.logic.business.utils.MovementHandler;
 import chess.vmsb.logic.business.utils.UserInterface;
-import org.apache.catalina.User;
 
 import java.util.ArrayList;
 

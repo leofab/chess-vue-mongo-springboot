@@ -2,10 +2,11 @@ package chess.vmsb.logic.business.models;
 
 import chess.vmsb.logic.business.utils.Functional;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Player {
+public class Player implements Serializable {
   private String name;
   private boolean color;
   private ArrayList<Piece> pieces = new ArrayList<>();

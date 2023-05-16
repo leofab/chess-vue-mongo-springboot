@@ -5,7 +5,7 @@ import chess.vmsb.logic.business.board.Board;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Piece {
+public abstract class Piece implements Serializable{
 
   private char pieceSign;
   private boolean moved = false;

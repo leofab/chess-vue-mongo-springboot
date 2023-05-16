@@ -2,7 +2,9 @@ package chess.vmsb.logic.business.board;
 
 import chess.vmsb.logic.business.models.Piece;
 
-public class Square {
+import java.io.Serializable;
+
+public class Square implements Serializable {
   private int row;
   private int col;
   private char value;

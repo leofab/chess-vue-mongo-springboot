@@ -2,7 +2,9 @@ package chess.vmsb.logic.business.models;
 
 import chess.vmsb.logic.business.board.Board;
 
-public class Bishop extends Piece {
+import java.io.Serializable;
+
+public class Bishop extends Piece implements Serializable {
 
   public Bishop(char pieceSign) {
     super(pieceSign);

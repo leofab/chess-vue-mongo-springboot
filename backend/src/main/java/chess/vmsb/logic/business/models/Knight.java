@@ -2,9 +2,10 @@ package chess.vmsb.logic.business.models;
 
 import chess.vmsb.logic.business.board.Board;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Knight extends Piece{
+public class Knight extends Piece implements Serializable {
 
   public Knight(char pieceSign){
     super(pieceSign);

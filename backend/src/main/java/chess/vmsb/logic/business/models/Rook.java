@@ -2,7 +2,9 @@ package chess.vmsb.logic.business.models;
 
 import chess.vmsb.logic.business.board.Board;
 
-public class Rook extends Piece{
+import java.io.Serializable;
+
+public class Rook extends Piece implements Serializable {
 
   public Rook(char pieceSign) {
     super(pieceSign);
