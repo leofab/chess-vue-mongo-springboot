@@ -230,11 +230,11 @@ export default {
 
 <style scoped>
 .board{
-    top: 5rem;
-    width: 52rem;
-    height: 52rem;
-    position: relative;
-    left: 20rem;
+    top: 7.15rem;
+    width: 51.3rem;
+    height: 51.3rem;
+    position: fixed;
+    left: 21.15rem;
     opacity: 20%;
 }
 .square_tw_18{
